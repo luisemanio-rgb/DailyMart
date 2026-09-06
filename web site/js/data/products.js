@@ -1553,17 +1553,36 @@ window.searchProducts = (query) => {
   );
 };
 
-// Load custom products from localStorage
+// Load custom products, overrides, and filter deleted products from localStorage
 try {
+  // 1. Filter out deleted products
+  const deleted = JSON.parse(localStorage.getItem('dm_deleted_products') || '[]');
+  if (deleted && deleted.length) {
+    window.PRODUCTS = window.PRODUCTS.filter(p => !deleted.includes(p.id));
+  }
+
+  // 2. Apply product edits/overrides
+  const overrides = JSON.parse(localStorage.getItem('dm_product_overrides') || '{}');
+  Object.keys(overrides).forEach(id => {
+    const idx = window.PRODUCTS.findIndex(p => p.id === id);
+    if (idx !== -1) {
+      window.PRODUCTS[idx] = { ...window.PRODUCTS[idx], ...overrides[id] };
+    }
+  });
+
+  // 3. Load custom added products
   const savedCustom = JSON.parse(localStorage.getItem('dm_custom_products') || '[]');
   if (savedCustom && savedCustom.length) {
     savedCustom.forEach(cp => {
-      if (!window.PRODUCTS.some(p => p.id === cp.id)) {
+      const existingIdx = window.PRODUCTS.findIndex(p => p.id === cp.id);
+      if (existingIdx !== -1) {
+        window.PRODUCTS[existingIdx] = cp;
+      } else {
         window.PRODUCTS.unshift(cp);
       }
     });
   }
 } catch (e) {
-  console.error('Error loading custom products:', e);
+  console.error('Error loading custom products or overrides:', e);
 }
 

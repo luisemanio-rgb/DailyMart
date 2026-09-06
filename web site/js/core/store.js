@@ -161,10 +161,41 @@ window.Store = (() => {
       return product;
     },
 
+    updateProduct: (updatedProduct) => {
+      // 1. Update in custom products if it exists there
+      let custom = JSON.parse(localStorage.getItem('dm_custom_products') || '[]');
+      const cIdx = custom.findIndex(p => p.id === updatedProduct.id);
+      if (cIdx !== -1) {
+        custom[cIdx] = { ...custom[cIdx], ...updatedProduct };
+        localStorage.setItem('dm_custom_products', JSON.stringify(custom));
+      }
+
+      // 2. Also save to overrides so ANY product (built-in or custom) stays updated
+      const overrides = JSON.parse(localStorage.getItem('dm_product_overrides') || '{}');
+      overrides[updatedProduct.id] = updatedProduct;
+      localStorage.setItem('dm_product_overrides', JSON.stringify(overrides));
+
+      // 3. Update in memory
+      const idx = window.PRODUCTS.findIndex(p => p.id === updatedProduct.id);
+      if (idx !== -1) {
+        window.PRODUCTS[idx] = { ...window.PRODUCTS[idx], ...updatedProduct };
+      }
+      notify();
+      return updatedProduct;
+    },
+
     deleteProduct: (productId) => {
       let custom = JSON.parse(localStorage.getItem('dm_custom_products') || '[]');
       custom = custom.filter(p => p.id !== productId);
       localStorage.setItem('dm_custom_products', JSON.stringify(custom));
+
+      // Track deleted products in localStorage so built-in products remain deleted across reloads
+      const deleted = JSON.parse(localStorage.getItem('dm_deleted_products') || '[]');
+      if (!deleted.includes(productId)) {
+        deleted.push(productId);
+        localStorage.setItem('dm_deleted_products', JSON.stringify(deleted));
+      }
+
       window.PRODUCTS = window.PRODUCTS.filter(p => p.id !== productId);
       notify();
     },
@@ -215,8 +246,8 @@ window.Store = (() => {
 
       if (!user) {
         // If no user found in DB, check if admin credentials or create mock user
-        if (idStr === "admin" && password === "admin") {
-          state.user = { id: 'admin', name: 'Store Admin', phone: '01700000000', email: 'admin@dailymartbd.com', district: 'Dhaka', address: 'DailyMart HQ' };
+        if ((idStr === "admin" || idStr === "admin@dailymartbd.com") && (password === "admin" || password === "admin123")) {
+          state.user = { id: 'admin', name: 'Store Admin', phone: '01700000000', email: 'admin@dailymartbd.com', role: 'admin', district: 'Dhaka', address: 'DailyMart HQ' };
           persist();
           notify();
           return { success: true, user: state.user };
@@ -228,10 +259,34 @@ window.Store = (() => {
         return { success: false, message: 'Incorrect password. Please try again.' };
       }
 
-      state.user = { id: user.id, name: user.name, phone: user.phone, email: user.email, district: user.district, address: user.address };
+      state.user = { id: user.id, name: user.name, phone: user.phone, email: user.email, role: user.role || (user.email === 'admin@dailymartbd.com' ? 'admin' : 'customer'), district: user.district, address: user.address };
       persist();
       notify();
       return { success: true, user: state.user };
+    },
+
+    isAdmin: () => {
+      return !!(state.user && (state.user.role === 'admin' || state.user.id === 'admin' || state.user.email === 'admin@dailymartbd.com'));
+    },
+
+    adminLogin: (password, identifier = 'admin') => {
+      const p = password ? password.trim() : '';
+      if (p === 'admin' || p === 'admin123' || p === '1234') {
+        state.user = { id: 'admin', name: 'Store Administrator', phone: '01700000000', email: 'admin@dailymartbd.com', role: 'admin', district: 'Dhaka', address: 'DailyMart HQ' };
+        persist();
+        notify();
+        return { success: true, user: state.user };
+      }
+      return { success: false, message: 'Incorrect admin password! (Default: admin)' };
+    },
+
+    adminLogout: () => {
+      if (state.user && state.user.role === 'admin') {
+        state.user = null;
+        localStorage.removeItem('dm_user');
+        persist();
+        notify();
+      }
     },
 
     updateProfile: (updatedData) => {

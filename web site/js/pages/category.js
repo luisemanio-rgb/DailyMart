@@ -175,11 +175,11 @@ window.Pages.subcategory = (params) => {
 
   const getOriginLabel = (orig) => {
     if (orig === 'all') return `All (${products.length})`;
-    if (orig === 'Bangladesh') return '🇧🇩 Bangladeshi';
-    if (orig === 'India') return '🇮🇳 Indian';
-    if (orig === 'Pakistan') return '🇵🇰 Pakistani';
-    if (orig === 'Sri Lanka') return '🇱🇰 Sri Lankan';
-    if (orig.includes('Holland')) return '🇳🇱 Holland Diamond';
+    if (orig === 'Bangladesh') return 'Bangladeshi';
+    if (orig === 'India') return 'Indian';
+    if (orig === 'Pakistan') return 'Pakistani';
+    if (orig === 'Sri Lanka') return 'Sri Lankan';
+    if (orig.includes('Holland')) return 'Holland Diamond';
     return orig;
   };
 
