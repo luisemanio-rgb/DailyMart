@@ -1,0 +1,59 @@
+potato                    | Bangladeshi Deshi Potato (দেশি আলু)      | https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80
+potato-indian             | Indian Fresh Potato (ভারতীয় আলু)         | https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=600&q=80
+potato-pakistani          | Pakistani Fresh Potato (পাকিস্তানি আলু)  | https://images.unsplash.com/photo-1640094093297-c56ea33a55fc?w=600&q=80
+potato-srilankan          | Sri Lankan Imported Potato (শ্রীলঙ্কান আলু) | https://images.unsplash.com/photo-1508747703725-719777637510?w=600&q=80
+potato-holland            | Holland Diamond Potato (হল্যান্ড ডায়মন্ড আলু) | https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80
+potato-red                | Bogra Red Potato - Lal Alu (বগুড়ার লাল আলু) | https://images.unsplash.com/photo-1544994672-7a17e76a3c3d?w=600&q=80
+potato-baby               | New Harvest Baby Potato (নতুন ছোট গোল আলু) | https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80
+potato-organic            | Organic Certified Potato (অর্গানিক আলু)  | https://images.unsplash.com/photo-1640094093297-c56ea33a55fc?w=600&q=80
+onion                     | Bangladeshi Deshi Onion (পাবনার দেশি পেঁয়াজ) | https://images.unsplash.com/photo-1508747703725-719777637510?w=600&q=80
+onion-indian              | Indian Nashik Onion (ভারতীয় পেঁয়াজ)      | https://images.unsplash.com/photo-1518843875459-f738682238a6?w=600&q=80
+onion-pakistani           | Pakistani Fresh Onion (পাকিস্তানি পেঁয়াজ) | https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=600&q=80
+onion-egyptian            | Egyptian Golden Onion (মিশরীয় পেঁয়াজ)    | https://images.unsplash.com/photo-1508747703725-719777637510?w=600&q=80
+tomato                    | Tomato                                   | https://images.unsplash.com/photo-1546094096-0df4bcabd337?w=600&q=80
+garlic                    | Garlic                                   | https://images.unsplash.com/photo-1501200291289-c5a76c232e5f?w=600&q=80
+ginger                    | Ginger                                   | https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=600&q=80
+carrot                    | Carrot                                   | https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=600&q=80
+cauliflower               | Cauliflower                              | https://images.unsplash.com/photo-1568584711271-6c929fb49b60?w=600&q=80
+eggplant                  | Eggplant (Begun)                         | https://images.unsplash.com/photo-1597362925123-77861d3fbac7?w=600&q=80
+mango                     | Mango                                    | https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=600&q=80
+banana                    | Banana                                   | https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=600&q=80
+apple                     | Apple                                    | https://images.unsplash.com/photo-1584306670957-acf935f5033c?w=600&q=80
+hilsa                     | Hilsa Fish (Ilish)                       | https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=600&q=80
+rui                       | Rui Fish (Rohu)                          | https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&q=80
+shrimp                    | Shrimp (Chingri)                         | https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=600&q=80
+katla                     | Katla Fish                               | https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&q=80
+chicken                   | Broiler Chicken                          | https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=600&q=80
+beef                      | Beef                                     | https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?w=600&q=80
+mutton                    | Mutton (Khashi)                          | https://images.unsplash.com/photo-1588347818036-c8e3cebed73f?w=600&q=80
+eggs                      | Farm Fresh Eggs                          | https://images.unsplash.com/photo-1582169296194-e4d644c48063?w=600&q=80
+milk                      | Fresh Milk                               | https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&q=80
+rice                      | Miniket Rice                             | https://images.unsplash.com/photo-1536304993881-ff86e06d1784?w=600&q=80
+lentils                   | Masoor Dal (Red Lentils)                 | https://images.unsplash.com/photo-1585238342024-78d387f4a707?w=600&q=80
+soybean-oil               | Soybean Oil                              | https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&q=80
+sugar                     | Sugar                                    | https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80
+tea                       | Bangladeshi Black Tea                    | https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80
+dishwash                  | Dishwashing Liquid                       | https://images.unsplash.com/photo-1563453392212-326f5e854473?w=600&q=80
+detergent                 | Laundry Detergent                        | https://images.unsplash.com/photo-1582735688369-4fe1d304b4e4?w=600&q=80
+shampoo                   | Shampoo                                  | https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=600&q=80
+soap                      | Bath Soap                                | https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&q=80
+toothpaste                | Toothpaste                               | https://images.unsplash.com/photo-1606265698956-ef52a45cb5e4?w=600&q=80
+biscuits                  | Cream Crackers                           | https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&q=80
+baby-cereal               | Baby Cereal                              | https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&q=80
+cucumber                  | Cucumber                                 | https://images.unsplash.com/photo-1582095133179-bfd08e2fb6b8?w=600&q=80
+green-chili               | Green Chili (Kacha Morich)               | https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?w=600&q=80
+pumpkin                   | Pumpkin (Kumra)                          | https://images.unsplash.com/photo-1570586437263-ab629fccc818?w=600&q=80
+watermelon                | Watermelon                               | https://images.unsplash.com/photo-1563114773-84221bd62daa?w=600&q=80
+tilapia                   | Tilapia Fish (Tilapia)                   | https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80
+flour                     | Wheat Flour (Maida/Atta)                 | https://images.unsplash.com/photo-1574323347407-f5e1ad6962b3?w=600&q=80
+orange                    | Orange                                   | https://images.unsplash.com/photo-1557800636-894a64c1696f?w=600&q=80
+mustard-oil               | Mustard Oil                              | https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&q=80
+grapes                    | Grapes                                   | https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=80
+papaya                    | Papaya                                   | https://images.unsplash.com/photo-1616684000067-36952fde56ec?w=600&q=80
+pabda                     | Pabda Fish                               | https://images.unsplash.com/photo-1498654200943-1088dd4438ae?w=600&q=80
+cabbage                   | Cabbage                                  | https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=600&q=80
+okra                      | Okra (Dharosh)                           | https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80
+bottle-gourd              | Bottle Gourd (Lau)                       | https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=600&q=80
+duck                      | Duck (Hansh)                             | https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&q=80
+tissue                    | Facial Tissue                            | https://images.unsplash.com/photo-1583947581924-860bda6a26df?w=600&q=80
+face-wash                 | Face Wash                                | https://images.unsplash.com/photo-1556228852-80b6e5eeff06?w=600&q=80
