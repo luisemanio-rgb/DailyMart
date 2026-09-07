@@ -110,13 +110,13 @@ window.Pages.home = () => {
       </div>
       <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-3">
         ${window.CATEGORIES.map(cat => `
-          <div class="category-card bg-[#F0FDF4] hover:bg-[#DCFCE7] border border-[#E2E8E4] rounded-2xl shadow-xs overflow-hidden cursor-pointer transition-all hover:scale-102" onclick="window.Router.navigate('/category/${cat.slug}')">
-            <div class="overflow-hidden h-20 sm:h-24 bg-white">
+          <div class="category-card bg-white rounded-2xl shadow-card overflow-hidden cursor-pointer" onclick="window.Router.navigate('/category/${cat.slug}')">
+            <div class="overflow-hidden h-20 sm:h-24">
               <img src="${cat.image}" alt="${cat.name}" class="cat-img w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?w=200&q=60'" loading="lazy" />
             </div>
-            <div class="p-2.5 text-center">
-              <div class="text-base sm:text-lg mb-0.5">${cat.icon}</div>
-              <div class="text-xs font-bold text-[#166534] leading-tight">${cat.name}</div>
+            <div class="p-2 text-center">
+              <div class="text-lg">${cat.icon}</div>
+              <div class="text-xs font-semibold text-gray-700 leading-tight">${cat.name}</div>
             </div>
           </div>
         `).join('')}

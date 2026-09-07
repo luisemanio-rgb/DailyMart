@@ -12,43 +12,39 @@
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ==========================================================================
-   DAILYMART BD — PREMIUM FRESH GROCERY COLOR SYSTEM
-   - Primary / Header: Deep Green #166534
-   - Primary Hover: Dark Green #14532D
-   - Accent: Fresh Lime Green #84CC16
-   - Page Background: Soft Off-White #F8FAF7
-   - Card Background: White #FFFFFF
-   - Main Text: Dark Charcoal #17251B
-   - Secondary Text: Slate Gray #64748B
-   - Border: Light Gray-Green #E2E8E4
-   - Price / Success: Green #16A34A
-   - Sale / Discount: Warm Red #DC2626
-   - Category Normal: #F0FDF4 (Text: #166534)
-   - Category Hover: #DCFCE7
-   - Category Active: #166534 (Text: #FFFFFF)
+   60-30-10 UI COLOR HARMONY SYSTEM
+   - 60% Base / Neutral: Clean, eye-soothing backdrop & surfaces (prevents fatigue)
+   - 30% Primary / Brand: Rich Emerald & Slate establishing structure & trust
+   - 10% Accent / CTA: Vibrant, high-converting interactive focal points (CTAs, badges)
    ========================================================================== */
 :root {
-  --color-primary: #166534;
-  --color-primary-hover: #14532D;
-  --color-accent: #84CC16;
-  --color-page-bg: #F8FAF7;
-  --color-card-bg: #FFFFFF;
-  --color-main-text: #17251B;
-  --color-secondary-text: #64748B;
-  --color-border: #E2E8E4;
-  --color-price: #16A34A;
-  --color-sale: #DC2626;
-  --color-cat-bg: #F0FDF4;
-  --color-cat-hover: #DCFCE7;
-  --color-cat-text: #166534;
+  /* 60% Base & Neutral Surfaces */
+  --ui-base-canvas: #f8fafc;
+  --ui-base-surface: #ffffff;
+  --ui-base-text: #0f172a;
+  --ui-base-subtext: #475569;
+  --ui-base-border: #f1f5f9;
+
+  /* 30% Brand & Structural Primary */
+  --ui-brand-dark: #064e3b;
+  --ui-brand-primary: #059669;
+  --ui-brand-light: #10b981;
+  --ui-brand-soft: #ecfdf5;
+  --ui-brand-border: #a7f3d0;
+
+  /* 10% High-Impact Accent & CTAs */
+  --ui-accent-cta: #f97316;
+  --ui-accent-buy: #16a34a;
+  --ui-accent-urgent: #ef4444;
+  --ui-accent-star: #f59e0b;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { 
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; 
-  background-color: var(--color-page-bg); 
-  color: var(--color-main-text); 
+  background-color: var(--ui-base-canvas); 
+  color: var(--ui-base-text); 
 }
 
 /* Page transitions */
