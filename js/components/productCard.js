@@ -3,6 +3,11 @@ window.ProductCard = {
   render: (product, variant = null) => {
     const v = variant || product.variants[0];
     const discountPct = v.oldPrice ? window.Utils.discountPercent(v.price, v.oldPrice) : 0;
+    const cleanName = (product.name || '')
+      .replace(/\s*\([\u0980-\u09FF\s\-]+\)/g, '')
+      .replace(/^Bangladeshi\s+/i, '')
+      .replace(/\bBD\b/g, '')
+      .trim();
 
     return `
     <div 
@@ -27,7 +32,7 @@ window.ProductCard = {
 
         <img
           src="${v.image || product.image}"
-          alt="${product.name}"
+          alt="${cleanName}"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           onerror="this.src='images/potatoes/potato-deshi.jpg';this.classList.add('fallback')"
           loading="lazy"
@@ -39,7 +44,7 @@ window.ProductCard = {
         <div>
           <!-- Product Name -->
           <h3 class="text-xs sm:text-sm font-semibold text-gray-800 hover:text-emerald-700 transition-colors line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem] leading-snug mb-1.5">
-            ${product.name}
+            ${cleanName}
           </h3>
 
           <!-- Price Row -->
