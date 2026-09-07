@@ -18,7 +18,7 @@ window.ProductCard = {
       onclick="window.Router.navigate('/product/${product.slug}')"
     >
       <!-- Top Image Container -->
-      <div class="relative w-full h-36 sm:h-48 bg-gray-50/40 overflow-hidden flex items-center justify-center p-3">
+      <div class="relative w-full h-40 sm:h-48 bg-gray-100 overflow-hidden flex items-center justify-center">
         <!-- Top-Left: Discount Badge -->
         ${discountPct > 0 ? `
           <span class="absolute top-2.5 left-2.5 z-10 bg-red-500 text-white text-[10px] sm:text-xs font-black px-2 py-0.5 rounded-lg shadow-sm tracking-tight pointer-events-none">
@@ -41,7 +41,7 @@ window.ProductCard = {
         <img
           src="${v.image || product.image}"
           alt="${cleanName}"
-          class="w-full h-full object-contain rounded-xl group-hover:scale-105 transition-transform duration-500"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           onerror="this.src='images/potatoes/potato-deshi.jpg';this.classList.add('fallback')"
           loading="lazy"
         />
