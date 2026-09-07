@@ -66,7 +66,7 @@ window.MobileNav = (() => {
             <a
               href="#${targetPath}"
               data-path="${item.path}"
-              class="mobile-nav-item rounded-full transition-all duration-300 flex items-center justify-center ${isActive ? 'bg-gray-900 text-white px-3.5 py-2 shadow-sm font-medium text-xs gap-1.5' : 'text-gray-500 hover:text-gray-900 p-2.5'}"
+              class="mobile-nav-item rounded-full transition-all duration-300 flex items-center justify-center ${isActive ? 'bg-[#166534] text-white px-3.5 py-2 shadow-sm font-medium text-xs gap-1.5' : 'text-[#64748B] hover:text-[#166534] p-2.5'}"
             >
               ${item.svg}
               <span class="${isActive ? 'block' : 'hidden'} text-xs font-semibold leading-none">${item.label}</span>
@@ -94,10 +94,10 @@ window.MobileNav = (() => {
       const isActive = itemPath === path || (itemPath !== '/' && path.startsWith(itemPath));
 
       if (isActive) {
-        item.className = 'mobile-nav-item rounded-full transition-all duration-300 flex items-center justify-center bg-gray-900 text-white px-3.5 py-2 shadow-sm font-medium text-xs gap-1.5';
+        item.className = 'mobile-nav-item rounded-full transition-all duration-300 flex items-center justify-center bg-[#166534] text-white px-3.5 py-2 shadow-sm font-medium text-xs gap-1.5';
         if (labelSpan) labelSpan.classList.remove('hidden');
       } else {
-        item.className = 'mobile-nav-item rounded-full transition-all duration-300 flex items-center justify-center text-gray-500 hover:text-gray-900 p-2.5';
+        item.className = 'mobile-nav-item rounded-full transition-all duration-300 flex items-center justify-center text-[#64748B] hover:text-[#166534] p-2.5';
         if (labelSpan) labelSpan.classList.add('hidden');
       }
     });

@@ -45,9 +45,9 @@ window.Pages.category = (params) => {
         <!-- Subcategory chips -->
         ${category.subcategories && category.subcategories.length > 0 ? `
         <div class="flex gap-3 overflow-x-auto pb-2 mb-6 scrollbar-hide">
-          <button onclick="window.Router.navigate('/category/${slug}')" class="flex-shrink-0 px-4 py-2 bg-emerald-600 text-white text-sm font-semibold rounded-full whitespace-nowrap">All ${category.name}</button>
+          <button onclick="window.Router.navigate('/category/${slug}')" class="flex-shrink-0 px-4 py-2 bg-[#166534] text-white text-sm font-semibold rounded-full whitespace-nowrap shadow-xs">All ${category.name}</button>
           ${category.subcategories.map(sub => `
-            <button class="subcategory-chip flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-white shadow-sm border border-gray-200 text-gray-700 text-sm font-medium rounded-full whitespace-nowrap hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700 transition-colors" onclick="window.Router.navigate('/category/${slug}/${sub.slug}')">
+            <button class="subcategory-chip flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-[#F0FDF4] shadow-xs border border-[#E2E8E4] text-[#166534] text-sm font-semibold rounded-full whitespace-nowrap hover:bg-[#DCFCE7] transition-colors" onclick="window.Router.navigate('/category/${slug}/${sub.slug}')">
               ${sub.icon} ${sub.name}
             </button>
           `).join('')}
