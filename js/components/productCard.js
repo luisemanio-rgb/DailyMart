@@ -44,63 +44,57 @@ window.ProductCard = {
       </div>
 
       <!-- Product Info -->
-      <div class="p-4 flex flex-col justify-between flex-1">
+      <div class="p-3 sm:p-4 flex flex-col justify-between flex-1">
         <div>
-            <!-- Category & Origin Badge -->
-            <div class="flex items-center justify-between gap-1 text-xs mb-1.5">
-              <span class="text-emerald-600 font-semibold capitalize truncate">${product.category.replace(/-/g, ' ')}</span>
-              ${product.originCountry ? `<span class="bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1">${product.originCountry === 'Bangladesh' ? 'BD' : product.originCountry === 'India' ? 'India' : product.originCountry === 'Pakistan' ? 'Pak' : product.originCountry === 'Sri Lanka' ? 'Sri Lanka' : product.originCountry.includes('Holland') ? 'Holland' : product.originCountry}</span>` : ''}
-            </div>
+          <!-- Category & Origin Badge -->
+          <div class="flex items-center justify-between gap-1 text-xs mb-1.5">
+            <span class="text-emerald-600 font-semibold capitalize truncate text-[11px] sm:text-xs">${product.category.replace(/-/g, ' ')}</span>
+            ${product.originCountry ? `<span class="bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded flex items-center gap-1">${product.originCountry === 'Bangladesh' ? 'BD' : product.originCountry === 'India' ? 'India' : product.originCountry === 'Pakistan' ? 'Pak' : product.originCountry === 'Sri Lanka' ? 'Sri Lanka' : product.originCountry.includes('Holland') ? 'Holland' : product.originCountry}</span>` : ''}
+          </div>
 
           <!-- Product Name -->
-          <h3 class="text-sm sm:text-base font-bold text-gray-900 mb-2 line-clamp-2 hover:text-emerald-700 transition-colors leading-snug">
+          <h3 class="text-xs sm:text-sm font-bold text-gray-900 mb-1.5 line-clamp-2 hover:text-emerald-700 transition-colors leading-snug">
             ${product.name}
           </h3>
 
-          <!-- (Regular Deshi Potato & Description snippet removed for clean look) -->
-
-          <!-- Rating & Grade -->
-          <div class="flex items-center justify-between gap-1 mb-2.5">
+          <!-- Rating & Stock in One Clean Row (Grade moved to Product Details) -->
+          <div class="flex items-center justify-between gap-1 mb-2">
             <div class="flex items-center gap-1">
               ${window.Utils.stars(product.rating, 'sm')}
-              <span class="text-xs text-gray-500 font-medium">(${product.reviewCount})</span>
+              <span class="text-[11px] text-gray-400 font-medium">(${product.reviewCount})</span>
             </div>
-            ${v.grade ? `<span class="text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-100">Grade ${v.grade}</span>` : ''}
+            <span class="text-[11px] font-semibold ${stock.color === 'red' ? 'text-red-500' : stock.color === 'yellow' ? 'text-amber-500' : 'text-emerald-600'} flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full ${stock.color === 'red' ? 'bg-red-500' : stock.color === 'yellow' ? 'bg-amber-400' : 'bg-emerald-500'}"></span>
+              ${stock.text}
+            </span>
           </div>
 
           <!-- Price Row -->
-          <div class="flex items-baseline gap-2 mb-2">
-            <span class="text-lg font-black text-emerald-700">${window.Utils.formatPrice(v.price)}</span>
-            ${v.oldPrice ? `<span class="text-xs text-gray-400 line-through">${window.Utils.formatPrice(v.oldPrice)}</span>` : ''}
-            <span class="text-xs text-gray-400 ml-auto font-medium">/${v.unit}</span>
-          </div>
-
-          <!-- Stock Status -->
-          <div class="mb-3.5">
-            <span class="text-xs font-semibold ${stock.color === 'red' ? 'text-red-500' : stock.color === 'yellow' ? 'text-amber-500' : 'text-emerald-600'} flex items-center gap-1">
-              ${stock.color === 'green' ? '✓' : stock.color === 'yellow' ? '⚠' : '✕'} ${stock.text}
-            </span>
+          <div class="flex items-baseline gap-1.5 mb-2">
+            <span class="text-base sm:text-lg font-black text-emerald-700">${window.Utils.formatPrice(v.price)}</span>
+            ${v.oldPrice ? `<span class="text-[11px] sm:text-xs text-gray-400 line-through">${window.Utils.formatPrice(v.oldPrice)}</span>` : ''}
+            <span class="text-[11px] sm:text-xs text-gray-400 ml-auto font-medium">/${v.unit}</span>
           </div>
         </div>
 
-        <!-- Premium Buy Now + Cart Option (Replacing the old clunky stepper) -->
-        <div class="flex items-center gap-2 pt-2 border-t border-gray-100 mt-auto">
+        <!-- Premium Action Buttons (Rock-solid on Mobile) -->
+        <div class="flex items-center gap-1.5 sm:gap-2 pt-2 border-t border-gray-100 mt-auto">
           <button
-            class="buy-now-btn flex-1 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 active:scale-95 text-white font-bold py-2.5 px-3 rounded-xl shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-1.5 text-xs sm:text-sm tracking-wide"
+            class="buy-now-btn flex-1 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 active:scale-95 text-white font-bold py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-1 text-xs sm:text-sm tracking-wide min-w-0"
             onclick="event.stopPropagation(); window.ProductCard.buyNow(this, '${product.id}', '${v.variantId}')"
             title="Buy Now (Direct Checkout)"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
-            <span>Buy Now</span>
+            <span class="truncate">Buy Now</span>
           </button>
           <button
-            class="add-cart-icon-btn w-10 h-10 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200/80 rounded-xl flex items-center justify-center transition-all active:scale-95 shadow-xs flex-shrink-0"
+            class="add-cart-icon-btn w-8 h-8 sm:w-9 sm:h-9 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200/80 rounded-xl flex items-center justify-center transition-all active:scale-95 shadow-2xs flex-shrink-0"
             onclick="event.stopPropagation(); window.ProductCard.quickAdd(this, '${product.id}', '${v.variantId}')"
             title="Add to Cart"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
             </svg>
           </button>

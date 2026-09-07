@@ -44,69 +44,89 @@ window.Header = (() => {
       </div>
 
       <!-- Main header -->
-      <div class="max-w-7xl mx-auto px-4 py-3">
-        <div class="flex items-center gap-3 md:gap-6">
-          <!-- Hamburger (mobile) -->
-          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Menu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          </button>
+      <div class="max-w-7xl mx-auto px-4 py-2.5 sm:py-3">
+        <div class="flex items-center justify-between gap-3 md:gap-6">
+          
+          <!-- Left: Hamburger & Brand Logo -->
+          <div class="flex items-center gap-2 sm:gap-3">
+            <button id="mobile-menu-btn" class="md:hidden p-2 -ml-1.5 rounded-xl hover:bg-gray-100 text-gray-700 transition-colors" aria-label="Menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
 
-          <!-- Logo -->
-          <a href="#/" class="flex items-center gap-2 flex-shrink-0">
-            <div class="w-9 h-9 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center shadow-md">
-              <span class="text-white font-black text-lg">D</span>
-            </div>
-            <div class="hidden sm:block">
-              <div class="font-black text-gray-900 text-lg leading-tight">DailyMart <span class="text-emerald-600">BD</span></div>
-              <div class="text-[10px] text-gray-400 font-medium leading-tight">Fresh. Fair. Daily.</div>
-            </div>
-          </a>
+            <a href="#/" class="flex items-center gap-2.5 flex-shrink-0 group">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                <span class="text-white font-black text-lg sm:text-xl">D</span>
+              </div>
+              <div>
+                <div class="font-black text-gray-900 text-base sm:text-lg leading-tight tracking-tight">DailyMart <span class="text-emerald-600">BD</span></div>
+                <div class="text-[10px] text-gray-400 font-medium leading-tight hidden xs:block">Fresh. Fair. Daily.</div>
+              </div>
+            </a>
+          </div>
 
-          <!-- Search bar -->
-          <div class="flex-1 max-w-2xl">
+          <!-- Center: Desktop Search Bar (Hidden on mobile) -->
+          <div class="hidden md:block flex-1 max-w-xl mx-2">
             <div class="relative" id="search-wrapper">
-              <input
-                type="text"
-                id="header-search"
-                placeholder="Search for potato, fish, meat, rice..."
-                class="w-full pl-5 pr-14 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100 text-sm transition-all outline-none"
-                autocomplete="off"
-              />
-              <button id="search-submit-btn" class="absolute right-0 top-0 bottom-0 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-r-xl transition-colors flex items-center justify-center">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-              </button>
+              <div class="relative flex items-center">
+                <svg class="w-4 h-4 text-emerald-600 absolute left-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input
+                  type="text"
+                  id="header-search"
+                  placeholder="Search fresh vegetables, fish, meat, dairy..."
+                  class="w-full pl-11 pr-24 py-2.5 rounded-full border border-gray-200 bg-gray-50/70 hover:bg-gray-50 focus:bg-white focus:border-emerald-500 focus:ring-3 focus:ring-emerald-100 text-xs sm:text-sm transition-all outline-none shadow-2xs"
+                  autocomplete="off"
+                />
+                <button id="search-submit-btn" class="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-bold rounded-full transition-all flex items-center justify-center shadow-xs">
+                  <span>Search</span>
+                </button>
+              </div>
               <!-- Autocomplete dropdown -->
-              <div id="search-autocomplete" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-xl shadow-xl mt-1 z-50 overflow-hidden max-h-64 overflow-y-auto"></div>
+              <div id="search-autocomplete" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-100 rounded-2xl shadow-2xl mt-2 z-50 overflow-hidden max-h-72 overflow-y-auto"></div>
             </div>
           </div>
 
-          <!-- Actions -->
+          <!-- Right Actions -->
           <div class="flex items-center gap-1 sm:gap-3">
-            <!-- Mobile search icon -->
-            <button id="mobile-search-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Search">
-              <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-            </button>
-
             <!-- Account -->
-            <a href="${user ? '#/account' : '#/login'}" class="hidden sm:flex flex-col items-center p-2 rounded-lg hover:bg-gray-50 transition-colors group">
+            <a href="${user ? '#/account' : '#/login'}" class="hidden sm:flex flex-col items-center p-2 rounded-xl hover:bg-gray-50 transition-colors group">
               <svg class="w-5 h-5 ${user ? 'text-emerald-600' : 'text-gray-600'} group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
               <span class="text-[10px] ${user ? 'text-emerald-700 font-bold' : 'text-gray-500'} group-hover:text-emerald-600">${user ? (user.name || 'Account').split(' ')[0] : 'Sign In'}</span>
             </a>
 
             <!-- Wishlist -->
-            <a href="#/wishlist" class="hidden sm:flex flex-col items-center p-2 rounded-lg hover:bg-gray-50 transition-colors group">
+            <a href="#/wishlist" class="hidden sm:flex flex-col items-center p-2 rounded-xl hover:bg-gray-50 transition-colors group">
               <svg class="w-5 h-5 text-gray-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
               <span class="text-[10px] text-gray-500 group-hover:text-red-500">Wishlist</span>
             </a>
 
-            <!-- Cart -->
-            <button id="cart-toggle-btn" class="relative flex flex-col items-center p-2 rounded-lg hover:bg-gray-50 transition-colors group" aria-label="Cart">
+            <!-- Cart Toggle -->
+            <button id="cart-toggle-btn" class="relative flex items-center gap-2 p-2 sm:px-3 sm:py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 transition-all group active:scale-95 shadow-2xs" aria-label="Cart">
               <div class="relative">
-                <svg class="w-5 h-5 text-gray-600 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                ${cartCount > 0 ? `<span id="cart-badge" class="cart-badge absolute -top-2 -right-2 bg-emerald-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">${cartCount > 9 ? '9+' : cartCount}</span>` : `<span id="cart-badge" class="hidden"></span>`}
+                <svg class="w-5 h-5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                ${cartCount > 0 ? `<span id="cart-badge" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">${cartCount > 9 ? '9+' : cartCount}</span>` : `<span id="cart-badge" class="hidden"></span>`}
               </div>
-              <span class="hidden sm:block text-[10px] text-gray-500 group-hover:text-emerald-600">Cart</span>
+              <span class="hidden sm:inline text-xs font-bold text-emerald-900">Cart</span>
             </button>
+          </div>
+        </div>
+
+        <!-- Mobile Search Bar (Clean dedicated full-width row) -->
+        <div class="md:hidden mt-2.5">
+          <div class="relative" id="mobile-search-wrapper">
+            <svg class="w-4 h-4 text-emerald-600 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <input
+              type="text"
+              id="mobile-header-search"
+              placeholder="Search potato, chicken, fish, mango..."
+              class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-200 bg-gray-50/80 focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 text-xs text-gray-800 transition-all outline-none shadow-2xs"
+              autocomplete="off"
+            />
+            <!-- Mobile Autocomplete dropdown -->
+            <div id="mobile-search-autocomplete" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-100 rounded-2xl shadow-xl mt-1.5 z-50 overflow-hidden max-h-64 overflow-y-auto"></div>
           </div>
         </div>
       </div>
@@ -194,78 +214,83 @@ window.Header = (() => {
       window.SearchOverlay.open();
     });
 
-    // Search input
-    const searchInput = document.getElementById('header-search');
-    const autocomplete = document.getElementById('search-autocomplete');
+    // Unified search handler (Desktop & Mobile)
+    const bindSearchInput = (inputId, dropdownId, wrapperId) => {
+      const input = document.getElementById(inputId);
+      const dropdown = document.getElementById(dropdownId);
+      if (!input || !dropdown) return;
 
-    const doSearch = () => {
-      const q = searchInput.value.trim();
-      if (q.length >= 2) {
-        const results = window.searchProducts(q).slice(0, 6);
-        if (results.length) {
-          autocomplete.innerHTML = results.map(p => `
-            <div class="autocomplete-item flex items-center gap-3 px-4 py-2.5 cursor-pointer border-b border-gray-50 last:border-0 transition-colors" data-slug="${p.slug}">
-              <img src="${p.image}" alt="${p.name}" class="w-10 h-10 object-cover rounded-lg flex-shrink-0" onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?w=100&q=60'" />
-              <div class="min-w-0">
-                <div class="text-sm font-medium text-gray-800 truncate">${p.name}</div>
-                <div class="text-xs text-emerald-600 font-semibold">${window.Utils.formatPrice(p.variants[0].price)}</div>
+      const runSearch = () => {
+        const q = input.value.trim();
+        if (q.length >= 2) {
+          const results = window.searchProducts(q).slice(0, 6);
+          if (results.length) {
+            dropdown.innerHTML = results.map(p => `
+              <div class="autocomplete-item flex items-center gap-3 px-4 py-2.5 cursor-pointer border-b border-gray-50 last:border-0 hover:bg-emerald-50/50 transition-colors" data-slug="${p.slug}">
+                <img src="${p.image}" alt="${p.name}" class="w-10 h-10 object-cover rounded-xl border border-gray-100 flex-shrink-0" onerror="this.src='images/potatoes/potato-deshi.jpg'" />
+                <div class="min-w-0 flex-1">
+                  <div class="text-xs sm:text-sm font-semibold text-gray-900 truncate">${p.name}</div>
+                  <div class="text-xs text-emerald-700 font-bold">${window.Utils.formatPrice(p.variants[0].price)} <span class="text-gray-400 font-normal text-[11px]">/${p.variants[0].unit || '1kg'}</span></div>
+                </div>
+                <span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full capitalize">${p.category}</span>
               </div>
-              <div class="ml-auto text-xs text-gray-400 capitalize">${p.category}</div>
-            </div>
-          `).join('') + `
-            <div class="px-4 py-2.5 bg-gray-50 text-center">
-              <button id="search-all-btn" class="text-sm text-emerald-600 font-semibold hover:text-emerald-700">See all results for "${q}"</button>
-            </div>
-          `;
-          autocomplete.classList.remove('hidden');
-          // Attach item clicks
-          autocomplete.querySelectorAll('.autocomplete-item').forEach(item => {
-            item.addEventListener('click', () => {
-              autocomplete.classList.add('hidden');
-              searchInput.value = '';
-              window.Router.navigate(`/product/${item.dataset.slug}`);
+            `).join('') + `
+              <div class="p-2.5 bg-gray-50 text-center border-t border-gray-100">
+                <button class="see-all-btn text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors">See all results for "${q}" →</button>
+              </div>
+            `;
+            dropdown.classList.remove('hidden');
+
+            dropdown.querySelectorAll('.autocomplete-item').forEach(item => {
+              item.addEventListener('click', () => {
+                dropdown.classList.add('hidden');
+                input.value = '';
+                window.Router.navigate(`/product/${item.dataset.slug}`);
+              });
             });
-          });
-          document.getElementById('search-all-btn')?.addEventListener('click', () => {
-            autocomplete.classList.add('hidden');
-            window.Router.navigate(`/search?q=${encodeURIComponent(q)}`);
-            searchInput.value = '';
-          });
+
+            dropdown.querySelector('.see-all-btn')?.addEventListener('click', () => {
+              dropdown.classList.add('hidden');
+              window.Router.navigate(`/search?q=${encodeURIComponent(q)}`);
+              input.value = '';
+            });
+          } else {
+            dropdown.innerHTML = `<div class="px-4 py-6 text-center text-xs text-gray-400">No products found for "${q}"</div>`;
+            dropdown.classList.remove('hidden');
+          }
         } else {
-          autocomplete.innerHTML = `<div class="px-4 py-6 text-center text-sm text-gray-500">No results for "${q}"</div>`;
-          autocomplete.classList.remove('hidden');
+          dropdown.classList.add('hidden');
         }
-      } else {
-        autocomplete.classList.add('hidden');
-      }
+      };
+
+      input.addEventListener('input', window.Utils.debounce(runSearch, 200));
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const q = input.value.trim();
+          if (q) {
+            dropdown.classList.add('hidden');
+            window.Router.navigate(`/search?q=${encodeURIComponent(q)}`);
+            input.value = '';
+          }
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!document.getElementById(wrapperId)?.contains(e.target)) {
+          dropdown.classList.add('hidden');
+        }
+      });
     };
 
-    searchInput?.addEventListener('input', window.Utils.debounce(doSearch, 250));
-
-    searchInput?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const q = searchInput.value.trim();
-        if (q) {
-          autocomplete.classList.add('hidden');
-          window.Router.navigate(`/search?q=${encodeURIComponent(q)}`);
-          searchInput.value = '';
-        }
-      }
-    });
+    bindSearchInput('header-search', 'search-autocomplete', 'search-wrapper');
+    bindSearchInput('mobile-header-search', 'mobile-search-autocomplete', 'mobile-search-wrapper');
 
     document.getElementById('search-submit-btn')?.addEventListener('click', () => {
-      const q = searchInput.value.trim();
+      const q = document.getElementById('header-search')?.value?.trim();
       if (q) {
-        autocomplete.classList.add('hidden');
+        document.getElementById('search-autocomplete')?.classList.add('hidden');
         window.Router.navigate(`/search?q=${encodeURIComponent(q)}`);
-        searchInput.value = '';
-      }
-    });
-
-    // Close autocomplete on outside click
-    document.addEventListener('click', (e) => {
-      if (!document.getElementById('search-wrapper')?.contains(e.target)) {
-        autocomplete?.classList.add('hidden');
       }
     });
   };

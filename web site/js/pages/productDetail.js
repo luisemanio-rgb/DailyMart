@@ -43,7 +43,7 @@ window.Pages.productDetail = (params) => {
     const stock = window.Utils.stockLabel(selectedVariant.stock);
 
     content.innerHTML = `
-    <div class="page-enter">
+    <div class="page-enter pb-28 sm:pb-16">
       <div class="max-w-7xl mx-auto px-4 py-6">
 
         <!-- Breadcrumb -->
@@ -99,8 +99,12 @@ window.Pages.productDetail = (params) => {
             </div>
 
             <!-- Grade & origin -->
-            <div class="flex flex-wrap gap-2 mb-5">
-              ${selectedVariant.grade ? `${window.Utils.badge(`Grade ${selectedVariant.grade}`, window.Utils.gradeColor(selectedVariant.grade))}` : ''}
+            <div class="flex flex-wrap items-center gap-2 mb-5">
+              ${selectedVariant.grade ? `
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200/80 shadow-xs">
+                  <span class="text-amber-500">🏅</span> Grade ${selectedVariant.grade} · Premium Quality
+                </span>
+              ` : ''}
               ${window.Utils.badge(product.origin, 'gray')}
               ${product.organic ? window.Utils.badge('🌿 Organic', 'green') : ''}
               ${product.bestSeller ? window.Utils.badge('⭐ Best Seller', 'yellow') : ''}
@@ -171,20 +175,20 @@ window.Pages.productDetail = (params) => {
               </div>
             </div>
 
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-3 mb-6">
+            <!-- CTA Buttons (Responsive single row, perfectly aligned on all screen sizes) -->
+            <div class="flex items-center gap-2 sm:gap-3 mb-6">
               ${stock.available ? `
-                <button id="add-to-cart-detail" onclick="window.Pages.addToCartDetail()" class="add-to-cart-btn flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                  Add to Cart
+                <button id="buy-now-btn" onclick="window.Pages.buyNow()" class="flex-1 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 active:scale-98 text-white font-black py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-1.5 text-xs sm:text-sm md:text-base whitespace-nowrap min-w-0">
+                  <span>⚡</span> <span class="truncate">Buy Now</span>
                 </button>
-                <button id="buy-now-btn" onclick="window.Pages.buyNow()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 rounded-xl transition-colors flex items-center justify-center gap-2">
-                  ⚡ Buy Now
+                <button id="add-to-cart-detail" onclick="window.Pages.addToCartDetail()" class="add-to-cart-btn flex-1 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 active:scale-98 text-white font-bold py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-1.5 text-xs sm:text-sm md:text-base whitespace-nowrap min-w-0">
+                  <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                  <span class="truncate">Add to Cart</span>
                 </button>
               ` : `
-                <button class="flex-1 bg-gray-200 text-gray-500 font-bold py-3.5 rounded-xl cursor-not-allowed" disabled>Out of Stock</button>
+                <button class="flex-1 bg-gray-200 text-gray-500 font-bold py-3 sm:py-3.5 rounded-xl cursor-not-allowed text-xs sm:text-sm md:text-base" disabled>Out of Stock</button>
               `}
-              <button id="wishlist-detail-btn" onclick="window.Pages.toggleDetailWishlist()" class="w-12 h-12 border-2 ${inWishlist ? 'border-red-300 bg-red-50 text-red-500' : 'border-gray-200 text-gray-400 hover:border-red-300 hover:text-red-400'} rounded-xl flex items-center justify-center transition-colors flex-shrink-0">
+              <button id="wishlist-detail-btn" onclick="window.Pages.toggleDetailWishlist()" title="Save to Wishlist" class="w-11 h-11 sm:w-12 sm:h-12 border-2 ${inWishlist ? 'border-red-300 bg-red-50 text-red-500' : 'border-gray-200 text-gray-400 hover:border-red-300 hover:text-red-500 hover:bg-red-50/50'} rounded-xl flex items-center justify-center transition-all flex-shrink-0 active:scale-95 shadow-2xs">
                 <svg class="w-5 h-5" fill="${inWishlist ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
               </button>
             </div>
