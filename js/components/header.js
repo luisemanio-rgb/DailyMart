@@ -181,15 +181,15 @@ window.Header = (() => {
         </div>
       </nav>
 
-      <!-- Sleek 40% Sidebar Drawer (Flow UI ES6 Style matching Reference Image) -->
+      <!-- Sleek 40% Sidebar Drawer (Flow UI ES6 Style: Left, Top, Bottom completely filled) -->
       <div id="sidebar-drawer-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-[99] hidden transition-opacity duration-300 opacity-0"></div>
 
       <aside
         id="sidebar-drawer"
-        class="fixed top-0 bottom-0 left-0 z-[100] w-[80vw] sm:w-[50vw] md:w-[40vw] max-w-[390px] p-3 sm:p-4 transform -translate-x-full transition-transform duration-300 ease-out flex flex-col pointer-events-none"
+        class="fixed top-0 bottom-0 left-0 z-[100] w-[80vw] sm:w-[50vw] md:w-[40vw] max-w-[390px] h-full transform -translate-x-full transition-transform duration-300 ease-out flex flex-col pointer-events-none"
         aria-label="Main Navigation Sidebar"
       >
-        <div class="pointer-events-auto h-full w-full bg-[#182234]/95 backdrop-blur-xl border border-white/10 text-white rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+        <div class="pointer-events-auto h-full w-full bg-[#0f172a]/98 backdrop-blur-xl border-r border-white/10 text-white rounded-r-3xl shadow-2xl flex flex-col overflow-hidden">
           
           <!-- Sidebar Header: Flow UI Style (Matching Reference Image) -->
           <div class="p-4 sm:p-5 flex items-center justify-between border-b border-white/10">
@@ -306,14 +306,14 @@ window.Header = (() => {
               <span>Wishlist</span>
             </a>
 
-            <!-- 6. Add Product (Admin) -->
+            <!-- 6. Add Product (10% CTA Highlight) -->
             <a
               href="#/admin"
-              class="sidebar-nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-emerald-300 hover:text-white bg-emerald-950/50 hover:bg-emerald-900/60 border border-emerald-500/30 font-semibold text-sm transition-all mt-2"
+              class="sidebar-nav-item flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-white bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 shadow-lg shadow-emerald-950/40 font-bold text-sm transition-all active:scale-98 mt-3"
               data-path="/admin"
             >
-              <span class="text-emerald-400 font-bold flex-shrink-0">➕</span>
-              <span>Add Product</span>
+              <span class="text-white text-base font-black flex-shrink-0">➕</span>
+              <span>Add Product (Admin)</span>
             </a>
 
           </div>

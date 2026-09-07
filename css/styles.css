@@ -11,9 +11,41 @@
 @keyframes toastSlide { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ==========================================================================
+   60-30-10 UI COLOR HARMONY SYSTEM
+   - 60% Base / Neutral: Clean, eye-soothing backdrop & surfaces (prevents fatigue)
+   - 30% Primary / Brand: Rich Emerald & Slate establishing structure & trust
+   - 10% Accent / CTA: Vibrant, high-converting interactive focal points (CTAs, badges)
+   ========================================================================== */
+:root {
+  /* 60% Base & Neutral Surfaces */
+  --ui-base-canvas: #f8fafc;
+  --ui-base-surface: #ffffff;
+  --ui-base-text: #0f172a;
+  --ui-base-subtext: #475569;
+  --ui-base-border: #f1f5f9;
+
+  /* 30% Brand & Structural Primary */
+  --ui-brand-dark: #064e3b;
+  --ui-brand-primary: #059669;
+  --ui-brand-light: #10b981;
+  --ui-brand-soft: #ecfdf5;
+  --ui-brand-border: #a7f3d0;
+
+  /* 10% High-Impact Accent & CTAs */
+  --ui-accent-cta: #f97316;
+  --ui-accent-buy: #16a34a;
+  --ui-accent-urgent: #ef4444;
+  --ui-accent-star: #f59e0b;
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: #f8fafc; }
+body { 
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; 
+  background-color: var(--ui-base-canvas); 
+  color: var(--ui-base-text); 
+}
 
 /* Page transitions */
 .page-enter { animation: fadeIn 0.25s ease forwards; }
