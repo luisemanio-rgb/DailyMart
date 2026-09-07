@@ -142,9 +142,6 @@ window.Header = (() => {
               { label: 'Home', path: '/' },
               { label: 'Categories', path: '/categories' },
               { label: '🔥 Deals', path: '/deals' },
-              { label: '🥗 Fresh Food', path: '/fresh' },
-              { label: '🛒 Grocery', path: '/category/grocery' },
-              { label: '🏠 Household', path: '/category/household' },
               { label: '📞 Contact', path: '/contact' },
               { label: '⚙️ Add Product', path: '/admin' },
             ].map(({ label, path }) => `
