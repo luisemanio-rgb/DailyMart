@@ -5,7 +5,7 @@ window.PRODUCTS = [
   // ========== POTATOES (MULTI-ORIGIN & VARIETIES) ==========
   {
     id: 'potato',
-    name: 'Bangladeshi Deshi Potato (দেশি আলু)',
+    name: 'Deshi Potato',
     slug: 'potato',
     category: 'vegetables',
     subcategory: 'potato',
@@ -36,7 +36,7 @@ window.PRODUCTS = [
   },
   {
     id: 'potato-indian',
-    name: 'Indian Fresh Potato (ভারতীয় আলু)',
+    name: 'Indian Fresh Potato',
     slug: 'potato-indian',
     category: 'vegetables',
     subcategory: 'potato',
@@ -66,7 +66,7 @@ window.PRODUCTS = [
   },
   {
     id: 'potato-pakistani',
-    name: 'Pakistani Fresh Potato (পাকিস্তানি আলু)',
+    name: 'Pakistani Fresh Potato',
     slug: 'potato-pakistani',
     category: 'vegetables',
     subcategory: 'potato',
@@ -95,7 +95,7 @@ window.PRODUCTS = [
   },
   {
     id: 'potato-srilankan',
-    name: 'Sri Lankan Imported Potato (শ্রীলঙ্কান আলু)',
+    name: 'Sri Lankan Imported Potato',
     slug: 'potato-srilankan',
     category: 'vegetables',
     subcategory: 'potato',
@@ -124,7 +124,7 @@ window.PRODUCTS = [
   },
   {
     id: 'potato-holland',
-    name: 'Holland Diamond Potato (হল্যান্ড ডায়মন্ড আলু)',
+    name: 'Holland Diamond Potato',
     slug: 'potato-holland',
     category: 'vegetables',
     subcategory: 'potato',
@@ -153,7 +153,7 @@ window.PRODUCTS = [
   },
   {
     id: 'potato-red',
-    name: 'Bogra Red Potato - Lal Alu (বগুড়ার লাল আলু)',
+    name: 'Bogra Red Potato',
     slug: 'potato-red',
     category: 'vegetables',
     subcategory: 'potato',
@@ -182,7 +182,7 @@ window.PRODUCTS = [
   },
   {
     id: 'potato-baby',
-    name: 'New Harvest Baby Potato (নতুন ছোট গোল আলু)',
+    name: 'New Harvest Baby Potato',
     slug: 'potato-baby',
     category: 'vegetables',
     subcategory: 'potato',
@@ -210,7 +210,7 @@ window.PRODUCTS = [
   },
   {
     id: 'potato-organic',
-    name: 'Organic Certified Potato (অর্গানিক আলু)',
+    name: 'Organic Certified Potato',
     slug: 'potato-organic',
     category: 'vegetables',
     subcategory: 'potato',
@@ -239,7 +239,7 @@ window.PRODUCTS = [
     // ========== ONIONS (MULTI-ORIGIN & VARIETIES) ==========
   {
     id: 'onion',
-    name: 'Bangladeshi Deshi Onion (পাবনার দেশি পেঁয়াজ)',
+    name: 'Deshi Onion',
     slug: 'onion',
     category: 'vegetables',
     subcategory: 'onion',
@@ -265,7 +265,7 @@ window.PRODUCTS = [
   },
   {
     id: 'onion-indian',
-    name: 'Indian Nashik Onion (ভারতীয় পেঁয়াজ)',
+    name: 'Indian Nashik Onion',
     slug: 'onion-indian',
     category: 'vegetables',
     subcategory: 'onion',
@@ -291,7 +291,7 @@ window.PRODUCTS = [
   },
   {
     id: 'onion-pakistani',
-    name: 'Pakistani Fresh Onion (পাকিস্তানি পেঁয়াজ)',
+    name: 'Pakistani Fresh Onion',
     slug: 'onion-pakistani',
     category: 'vegetables',
     subcategory: 'onion',
@@ -317,7 +317,7 @@ window.PRODUCTS = [
   },
   {
     id: 'onion-egyptian',
-    name: 'Egyptian Golden Onion (মিশরীয় পেঁয়াজ)',
+    name: 'Egyptian Golden Onion',
     slug: 'onion-egyptian',
     category: 'vegetables',
     subcategory: 'onion',
@@ -907,7 +907,7 @@ window.PRODUCTS = [
   // ========== BEVERAGES ==========
   {
     id: 'tea',
-    name: 'Bangladeshi Black Tea',
+    name: 'Black Tea',
     slug: 'tea',
     category: 'beverages',
     subcategory: 'tea',

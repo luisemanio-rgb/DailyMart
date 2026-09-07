@@ -98,14 +98,13 @@ window.Pages.productDetail = (params) => {
               <span class="text-sm text-emerald-600 font-medium">Brand: ${product.brand}</span>
             </div>
 
-            <!-- Grade & origin -->
+            <!-- Grade & tags -->
             <div class="flex flex-wrap items-center gap-2 mb-5">
               ${selectedVariant.grade ? `
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200/80 shadow-xs">
                   <span class="text-amber-500">🏅</span> Grade ${selectedVariant.grade} · Premium Quality
                 </span>
               ` : ''}
-              ${window.Utils.badge(product.origin, 'gray')}
               ${product.organic ? window.Utils.badge('🌿 Organic', 'green') : ''}
               ${product.bestSeller ? window.Utils.badge('⭐ Best Seller', 'yellow') : ''}
             </div>
