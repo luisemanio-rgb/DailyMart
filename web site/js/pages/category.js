@@ -20,25 +20,21 @@ window.Pages.category = (params) => {
     content.innerHTML = `
     <div class="page-enter">
 
-      <!-- Category Banner -->
-      <div class="relative h-48 md:h-64 overflow-hidden">
-        <img src="${category.image}" alt="${category.name}" class="w-full h-full object-cover" onerror="this.parentElement.style.background='linear-gradient(135deg,#064e3b,#059669)'" loading="lazy" />
-        <div class="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-900/20 flex items-end pb-8">
-          <div class="max-w-7xl mx-auto px-4 w-full">
-            <!-- Breadcrumb -->
-            <nav class="breadcrumb flex items-center text-white/70 text-sm mb-3">
-              <a href="#/" class="hover:text-white transition-colors">Home</a>
-              <span class="mx-2 text-white/40">›</span>
-              <span class="text-white font-medium">${category.name}</span>
-            </nav>
-            <div class="flex items-end justify-between">
+      <!-- Clean Category Header matching Reference Image 1 -->
+      <div class="bg-white border-b border-gray-100 shadow-2xs">
+        <div class="max-w-7xl mx-auto px-4 py-3.5 sm:py-4">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <button onclick="window.history.back()" class="w-9 h-9 rounded-full bg-white border border-gray-200 shadow-2xs flex items-center justify-center text-gray-600 hover:text-emerald-600 hover:border-emerald-300 active:scale-95 transition-all" title="Back">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+              </button>
               <div>
-                <h1 class="text-3xl md:text-4xl font-black text-white">${category.icon} ${category.name}</h1>
-                <p class="text-white/70 mt-1">${category.description}</p>
+                <span class="text-[11px] text-gray-400 font-medium block leading-tight">ক্যাটাগরি</span>
+                <h1 class="text-xl sm:text-2xl font-black text-gray-900 leading-tight">${category.name}</h1>
               </div>
-              <div class="bg-white/20 backdrop-blur rounded-xl px-4 py-2 text-white text-sm font-medium">
-                ${products.length} Products
-              </div>
+            </div>
+            <div class="text-xs text-gray-500 bg-gray-50 border border-gray-200/80 rounded-full px-3 py-1 font-medium hidden xs:block">
+              ${products.length} Products
             </div>
           </div>
         </div>

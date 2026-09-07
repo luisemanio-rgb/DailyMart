@@ -64,22 +64,21 @@ window.Header = (() => {
             </a>
           </div>
 
-          <!-- Center: Desktop Search Bar (Hidden on mobile) -->
+          <!-- Center: Desktop Search Bar (Matching Reference Image 2) -->
           <div class="hidden md:block flex-1 max-w-xl mx-2">
             <div class="relative" id="search-wrapper">
-              <div class="relative flex items-center">
-                <svg class="w-4 h-4 text-emerald-600 absolute left-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
+              <div class="relative flex items-center bg-white rounded-full shadow-sm border border-gray-200/90 hover:border-orange-300 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-100 transition-all p-1 pl-5">
                 <input
                   type="text"
                   id="header-search"
-                  placeholder="Search fresh vegetables, fish, meat, dairy..."
-                  class="w-full pl-11 pr-24 py-2.5 rounded-full border border-gray-200 bg-gray-50/70 hover:bg-gray-50 focus:bg-white focus:border-emerald-500 focus:ring-3 focus:ring-emerald-100 text-xs sm:text-sm transition-all outline-none shadow-2xs"
+                  placeholder="Search..."
+                  class="w-full bg-transparent text-xs sm:text-sm text-gray-800 placeholder-gray-400 outline-none pr-3"
                   autocomplete="off"
                 />
-                <button id="search-submit-btn" class="absolute right-1.5 top-1.5 bottom-1.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-bold rounded-full transition-all flex items-center justify-center shadow-xs">
-                  <span>Search</span>
+                <button id="search-submit-btn" class="w-9 h-9 flex-shrink-0 bg-gradient-to-r from-orange-500 to-[#ff5722] hover:from-orange-600 hover:to-[#f4511e] active:scale-95 text-white rounded-full transition-all flex items-center justify-center shadow-xs" title="Search">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                  </svg>
                 </button>
               </div>
               <!-- Autocomplete dropdown -->
@@ -112,19 +111,23 @@ window.Header = (() => {
           </div>
         </div>
 
-        <!-- Mobile Search Bar (Clean dedicated full-width row) -->
+        <!-- Mobile Search Bar (Matching Reference Image 2) -->
         <div class="md:hidden mt-2.5">
           <div class="relative" id="mobile-search-wrapper">
-            <svg class="w-4 h-4 text-emerald-600 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-            </svg>
-            <input
-              type="text"
-              id="mobile-header-search"
-              placeholder="Search potato, chicken, fish, mango..."
-              class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-200 bg-gray-50/80 focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 text-xs text-gray-800 transition-all outline-none shadow-2xs"
-              autocomplete="off"
-            />
+            <div class="relative flex items-center bg-white rounded-full shadow-xs border border-gray-200 focus-within:border-orange-500 focus-within:ring-2 focus-within:ring-orange-100 transition-all p-1 pl-4">
+              <input
+                type="text"
+                id="mobile-header-search"
+                placeholder="Search..."
+                class="w-full bg-transparent text-xs sm:text-sm text-gray-800 placeholder-gray-400 outline-none pr-2"
+                autocomplete="off"
+              />
+              <button id="mobile-search-submit-btn" class="w-8 h-8 flex-shrink-0 bg-gradient-to-r from-orange-500 to-[#ff5722] hover:from-orange-600 hover:to-[#f4511e] active:scale-95 text-white rounded-full transition-all flex items-center justify-center shadow-xs" title="Search">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+              </button>
+            </div>
             <!-- Mobile Autocomplete dropdown -->
             <div id="mobile-search-autocomplete" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-100 rounded-2xl shadow-xl mt-1.5 z-50 overflow-hidden max-h-64 overflow-y-auto"></div>
           </div>
@@ -290,6 +293,14 @@ window.Header = (() => {
       const q = document.getElementById('header-search')?.value?.trim();
       if (q) {
         document.getElementById('search-autocomplete')?.classList.add('hidden');
+        window.Router.navigate(`/search?q=${encodeURIComponent(q)}`);
+      }
+    });
+
+    document.getElementById('mobile-search-submit-btn')?.addEventListener('click', () => {
+      const q = document.getElementById('mobile-header-search')?.value?.trim();
+      if (q) {
+        document.getElementById('mobile-search-autocomplete')?.classList.add('hidden');
         window.Router.navigate(`/search?q=${encodeURIComponent(q)}`);
       }
     });
