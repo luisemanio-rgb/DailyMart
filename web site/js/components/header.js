@@ -37,40 +37,40 @@ window.Header = (() => {
     <header id="site-header" class="bg-white border-b border-[#E5E7EB] sticky top-0 z-50">
       
       <!-- 1. Top Utility Bar (Desktop) -->
-      <div class="bg-[#056B4D] text-white text-xs py-1.5 px-4 hidden sm:block border-b border-emerald-900/20">
+      <div class="bg-[#93e2e4] text-[#004d52] text-xs py-1.5 px-4 hidden sm:block border-b border-[#007d83]/20">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div class="flex items-center gap-5 text-[12px]">
-            <span class="flex items-center gap-1.5 text-emerald-100">
-              ${icons.mapPin ? icons.mapPin(14, 'text-[#FF7A18]') : ''}
+            <span class="flex items-center gap-1.5 text-[#004d52] font-medium">
+              ${icons.mapPin ? icons.mapPin(14, 'text-[#007d83]') : ''}
               <span>Delivering across Bangladesh</span>
             </span>
-            <span class="text-emerald-300/40">•</span>
-            <span class="flex items-center gap-1.5 text-emerald-100">
-              ${icons.phone ? icons.phone(13, 'text-emerald-200') : ''}
+            <span class="text-[#007d83]/30">•</span>
+            <span class="flex items-center gap-1.5 text-[#004d52] font-medium">
+              ${icons.phone ? icons.phone(13, 'text-[#007d83]') : ''}
               <span>+880 1700-000000</span>
             </span>
-            <span class="text-emerald-300/40">•</span>
-            <span class="text-emerald-100">Free delivery on orders over ৳1000</span>
+            <span class="text-[#007d83]/30">•</span>
+            <span class="text-[#004d52] font-medium">Free delivery on orders over ৳1000</span>
           </div>
 
           <div class="flex items-center gap-4 text-[12px]">
-            <a href="#/admin" class="inline-flex items-center gap-1 text-emerald-100 hover:text-white font-medium transition-colors">
-              ${icons.plus ? icons.plus(13, 'text-[#FF7A18]') : ''}
+            <a href="#/admin" class="inline-flex items-center gap-1 text-[#004d52] font-medium hover:text-[#002b2e] font-medium transition-colors">
+              ${icons.plus ? icons.plus(13, 'text-[#007d83]') : ''}
               <span>Add Product</span>
             </a>
-            <span class="text-emerald-300/40">•</span>
+            <span class="text-[#007d83]/30">•</span>
             ${user ? `
               <div class="flex items-center gap-2">
-                <a href="#/account" class="text-emerald-100 hover:text-white font-medium transition-colors flex items-center gap-1">
-                  ${icons.user ? icons.user(13, 'text-emerald-200') : ''}
+                <a href="#/account" class="text-[#004d52] font-medium hover:text-[#002b2e] font-medium transition-colors flex items-center gap-1">
+                  ${icons.user ? icons.user(13, 'text-[#007d83]') : ''}
                   <span>Hi, ${(user.name || 'User').split(' ')[0]}</span>
                 </a>
-                <span class="text-emerald-300/40">•</span>
-                <button onclick="window.Header.logout()" class="text-emerald-200 hover:text-white underline text-[11px] transition-colors">Sign Out</button>
+                <span class="text-[#007d83]/30">•</span>
+                <button onclick="window.Header.logout()" class="text-[#007d83] hover:text-[#002b2e] underline text-[11px] transition-colors">Sign Out</button>
               </div>
             ` : `
-              <a href="#/login" class="text-emerald-100 hover:text-white font-medium transition-colors flex items-center gap-1">
-                ${icons.user ? icons.user(13, 'text-emerald-200') : ''}
+              <a href="#/login" class="text-[#004d52] font-medium hover:text-[#002b2e] font-medium transition-colors flex items-center gap-1">
+                ${icons.user ? icons.user(13, 'text-[#007d83]') : ''}
                 <span>Login / Register</span>
               </a>
             `}
@@ -84,13 +84,13 @@ window.Header = (() => {
           
           <!-- Brand Logo & Mobile Menu Toggle -->
           <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-            <button id="mobile-menu-btn" class="p-2 -ml-1.5 rounded-lg text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors flex items-center justify-center active:scale-95" aria-label="Main Menu" title="Open Navigation Menu">
+            <button id="mobile-menu-btn" class="p-2 -ml-1.5 rounded-lg text-[#17212B] hover:bg-[#eefbfc] hover:text-[#007d83] transition-colors flex items-center justify-center active:scale-95" aria-label="Main Menu" title="Open Navigation Menu">
               ${icons.menu ? icons.menu(22) : '☰'}
             </button>
 
             <!-- Production Logo -->
             <a href="#/" class="flex items-center gap-2 group flex-shrink-0">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 bg-[#087F5B] rounded-lg flex items-center justify-center shadow-xs group-hover:bg-[#056B4D] transition-colors">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 bg-[#007d83] rounded-lg flex items-center justify-center shadow-xs group-hover:bg-[#006065] transition-colors">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M11 20A7 7 0 0 1 4 13c0-4 3-8 8-11 5 3 8 7 8 11a7 7 0 0 1-7 7Z"></path>
                   <path d="M12 2v20"></path>
@@ -99,7 +99,7 @@ window.Header = (() => {
               <div class="flex flex-col">
                 <div class="flex items-center gap-1">
                   <span class="font-extrabold text-xl sm:text-[22px] text-[#17212B] tracking-tight leading-none">DailyMart</span>
-                  <span class="bg-[#FF7A18] text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none">BD</span>
+                  <span class="bg-[#007d83] text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none">BD</span>
                 </div>
                 <span class="text-[10px] font-medium text-[#667085] tracking-wider leading-tight hidden xs:block mt-0.5">Fresh. Fair. Daily.</span>
               </div>
@@ -109,7 +109,7 @@ window.Header = (() => {
           <!-- Desktop Search Bar (Large & Elegant) -->
           <div class="hidden md:block flex-1 max-w-2xl mx-2">
             <div class="relative" id="search-wrapper">
-              <div class="relative flex items-center bg-white rounded-lg border border-[#E5E7EB] focus-within:border-[#087F5B] focus-within:ring-2 focus-within:ring-[#087F5B]/15 transition-all p-1 pl-3.5">
+              <div class="relative flex items-center bg-white rounded-lg border border-[#E5E7EB] focus-within:border-[#007d83] focus-within:ring-2 focus-within:ring-[#007d83]/15 transition-all p-1 pl-3.5">
                 <span class="text-[#667085] mr-2 flex-shrink-0">
                   ${icons.search ? icons.search(18) : ''}
                 </span>
@@ -120,7 +120,7 @@ window.Header = (() => {
                   class="w-full bg-transparent text-sm text-[#17212B] placeholder-[#667085] outline-none pr-3"
                   autocomplete="off"
                 />
-                <button id="search-submit-btn" class="h-9 px-4 bg-[#FF7A18] hover:bg-[#EA680C] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs active:scale-98 flex-shrink-0" title="Search">
+                <button id="search-submit-btn" class="h-9 px-4 bg-[#007d83] hover:bg-[#006065] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs active:scale-98 flex-shrink-0" title="Search">
                   <span>Search</span>
                 </button>
               </div>
@@ -132,31 +132,31 @@ window.Header = (() => {
           <!-- Right Utility Actions (Account, Wishlist, Cart) -->
           <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
             <!-- Account -->
-            <a href="${user ? '#/account' : '#/login'}" class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors group" title="My Account">
-              <span class="text-[#667085] group-hover:text-[#087F5B] transition-colors">
+            <a href="${user ? '#/account' : '#/login'}" class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg text-[#17212B] hover:bg-[#eefbfc] hover:text-[#007d83] transition-colors group" title="My Account">
+              <span class="text-[#667085] group-hover:text-[#007d83] transition-colors">
                 ${icons.user ? icons.user(20) : ''}
               </span>
               <div class="text-left hidden lg:block">
                 <div class="text-[11px] text-[#667085] leading-tight">Account</div>
-                <div class="text-xs font-semibold text-[#17212B] leading-tight group-hover:text-[#087F5B]">${user ? (user.name || 'User').split(' ')[0] : 'Sign In'}</div>
+                <div class="text-xs font-semibold text-[#17212B] leading-tight group-hover:text-[#007d83]">${user ? (user.name || 'User').split(' ')[0] : 'Sign In'}</div>
               </div>
             </a>
 
             <!-- Wishlist -->
-            <a href="#/wishlist" class="flex items-center gap-2 px-2.5 sm:px-3 py-2 rounded-lg text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors group" title="Wishlist">
+            <a href="#/wishlist" class="flex items-center gap-2 px-2.5 sm:px-3 py-2 rounded-lg text-[#17212B] hover:bg-[#eefbfc] hover:text-[#007d83] transition-colors group" title="Wishlist">
               <span class="text-[#667085] group-hover:text-[#E5484D] transition-colors">
                 ${icons.heart ? icons.heart(20) : ''}
               </span>
               <div class="text-left hidden lg:block">
                 <div class="text-[11px] text-[#667085] leading-tight">Favorite</div>
-                <div class="text-xs font-semibold text-[#17212B] leading-tight group-hover:text-[#087F5B]">Wishlist</div>
+                <div class="text-xs font-semibold text-[#17212B] leading-tight group-hover:text-[#007d83]">Wishlist</div>
               </div>
             </a>
 
             <!-- Cart Trigger -->
-            <button id="cart-toggle-btn" class="relative flex items-center gap-2.5 px-3 py-2 rounded-lg bg-[#E8F7F1] hover:bg-[#d5f3e7] text-[#087F5B] font-semibold transition-colors active:scale-98 border border-[#087F5B]/20" aria-label="Open Cart">
+            <button id="cart-toggle-btn" class="relative flex items-center gap-2.5 px-3 py-2 rounded-lg bg-[#eefbfc] hover:bg-[#d8f6f7] text-[#007d83] font-semibold transition-colors active:scale-98 border border-[#007d83]/20" aria-label="Open Cart">
               <div class="relative flex items-center">
-                ${icons.cart ? icons.cart(20, 'text-[#087F5B]') : ''}
+                ${icons.cart ? icons.cart(20, 'text-[#007d83]') : ''}
                 ${cartCount > 0 ? `
                   <span id="cart-badge" class="cart-badge absolute -top-2.5 -right-2.5 bg-[#E5484D] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
                     ${cartCount > 9 ? '9+' : cartCount}
@@ -164,8 +164,8 @@ window.Header = (() => {
                   <span id="cart-badge" class="hidden"></span>`}
               </div>
               <div class="text-left hidden sm:block">
-                <div class="text-[10px] text-[#056B4D] leading-tight">Total Cart</div>
-                <div class="text-xs font-bold text-[#087F5B] leading-tight">Cart (${cartCount})</div>
+                <div class="text-[10px] text-[#006065] leading-tight">Total Cart</div>
+                <div class="text-xs font-bold text-[#007d83] leading-tight">Cart (${cartCount})</div>
               </div>
             </button>
           </div>
@@ -175,7 +175,7 @@ window.Header = (() => {
         <!-- Mobile Search Bar (Directly below main row) -->
         <div class="md:hidden mt-2.5 pt-1">
           <div class="relative" id="mobile-search-wrapper">
-            <div class="relative flex items-center bg-white rounded-lg border border-[#E5E7EB] focus-within:border-[#087F5B] focus-within:ring-2 focus-within:ring-[#087F5B]/15 transition-all p-1 pl-3">
+            <div class="relative flex items-center bg-white rounded-lg border border-[#E5E7EB] focus-within:border-[#007d83] focus-within:ring-2 focus-within:ring-[#007d83]/15 transition-all p-1 pl-3">
               <span class="text-[#667085] mr-2 flex-shrink-0">
                 ${icons.search ? icons.search(16) : ''}
               </span>
@@ -186,7 +186,7 @@ window.Header = (() => {
                 class="w-full bg-transparent text-xs text-[#17212B] placeholder-[#667085] outline-none pr-2"
                 autocomplete="off"
               />
-              <button id="mobile-search-submit-btn" class="h-7 px-3 bg-[#FF7A18] hover:bg-[#EA680C] active:scale-95 text-white rounded text-[11px] font-semibold flex items-center justify-center transition-colors shadow-xs" title="Search">
+              <button id="mobile-search-submit-btn" class="h-7 px-3 bg-[#007d83] hover:bg-[#006065] active:scale-95 text-white rounded text-[11px] font-semibold flex items-center justify-center transition-colors shadow-xs" title="Search">
                 Search
               </button>
             </div>
@@ -198,7 +198,7 @@ window.Header = (() => {
       </div>
 
       <!-- 3. Desktop Subnavigation Bar -->
-      <nav class="border-t border-[#E5E7EB] bg-[#F8FAF9] hidden md:block">
+      <nav class="border-t border-[#E5E7EB] bg-[#f4fdfe] hidden md:block">
         <div class="max-w-7xl mx-auto px-4">
           <ul class="flex items-center gap-1 py-1.5" id="main-nav">
             ${[
@@ -209,9 +209,9 @@ window.Header = (() => {
               { label: 'Add Product', path: '/admin', isAccent: true },
             ].map(({ label, path, badge, isAccent }) => `
               <li>
-                <a href="#${path}" data-path="${path}" class="nav-link px-3.5 py-1.5 text-xs font-semibold text-[#17212B] hover:text-[#087F5B] hover:bg-white rounded-md transition-colors inline-flex items-center gap-1.5 ${isAccent ? 'text-[#087F5B] font-bold' : ''}">
+                <a href="#${path}" data-path="${path}" class="nav-link px-3.5 py-1.5 text-xs font-semibold text-[#17212B] hover:text-[#007d83] hover:bg-white rounded-md transition-colors inline-flex items-center gap-1.5 ${isAccent ? 'text-[#007d83] font-bold' : ''}">
                   <span>${label}</span>
-                  ${badge ? `<span class="bg-[#FF7A18] text-white text-[9px] font-bold px-1.5 py-0.2 rounded-full">${badge}</span>` : ''}
+                  ${badge ? `<span class="bg-[#007d83] text-white text-[9px] font-bold px-1.5 py-0.2 rounded-full">${badge}</span>` : ''}
                 </a>
               </li>
             `).join('')}
@@ -230,9 +230,9 @@ window.Header = (() => {
         <div class="pointer-events-auto h-full w-full bg-white text-[#17212B] rounded-r-2xl shadow-xl flex flex-col overflow-hidden border-r border-[#E5E7EB]">
           
           <!-- Drawer Header -->
-          <div class="p-4 sm:p-5 flex items-center justify-between border-b border-[#E5E7EB] bg-[#F8FAF9]">
+          <div class="p-4 sm:p-5 flex items-center justify-between border-b border-[#E5E7EB] bg-[#f4fdfe]">
             <div class="flex items-center gap-2.5">
-              <div class="w-8 h-8 bg-[#087F5B] rounded-lg flex items-center justify-center">
+              <div class="w-8 h-8 bg-[#007d83] rounded-lg flex items-center justify-center">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
                   <path d="M11 20A7 7 0 0 1 4 13c0-4 3-8 8-11 5 3 8 7 8 11a7 7 0 0 1-7 7Z"></path>
                   <path d="M12 2v20"></path>
@@ -240,7 +240,7 @@ window.Header = (() => {
               </div>
               <div class="flex items-center gap-1">
                 <span class="font-bold text-lg text-[#17212B]">DailyMart</span>
-                <span class="bg-[#FF7A18] text-white text-[10px] font-bold px-1 py-0.5 rounded">BD</span>
+                <span class="bg-[#007d83] text-white text-[10px] font-bold px-1 py-0.5 rounded">BD</span>
               </div>
             </div>
 
@@ -263,7 +263,7 @@ window.Header = (() => {
                 type="text"
                 id="sidebar-search"
                 placeholder="Search fresh products..."
-                class="w-full bg-[#F8FAF9] hover:bg-white focus:bg-white text-xs text-[#17212B] placeholder-[#667085] rounded-lg pl-9 pr-3 py-2 outline-none border border-[#E5E7EB] focus:border-[#087F5B] focus:ring-1 focus:ring-[#087F5B] transition-all"
+                class="w-full bg-[#f4fdfe] hover:bg-white focus:bg-white text-xs text-[#17212B] placeholder-[#667085] rounded-lg pl-9 pr-3 py-2 outline-none border border-[#E5E7EB] focus:border-[#007d83] focus:ring-1 focus:ring-[#007d83] transition-all"
               />
             </div>
           </div>
@@ -274,10 +274,10 @@ window.Header = (() => {
             <!-- Home -->
             <a
               href="#/"
-              class="sidebar-nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors"
+              class="sidebar-nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#eefbfc] hover:text-[#007d83] transition-colors"
               data-path="/"
             >
-              <span class="text-[#087F5B]">${icons.home ? icons.home(18) : ''}</span>
+              <span class="text-[#007d83]">${icons.home ? icons.home(18) : ''}</span>
               <span>Home</span>
             </a>
 
@@ -285,10 +285,10 @@ window.Header = (() => {
             <div class="rounded-lg overflow-hidden" id="sidebar-categories-container">
               <button
                 id="sidebar-categories-toggle"
-                class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors"
+                class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#eefbfc] hover:text-[#007d83] transition-colors"
               >
                 <div class="flex items-center gap-3">
-                  <span class="text-[#087F5B]">${icons.grid ? icons.grid(18) : ''}</span>
+                  <span class="text-[#007d83]">${icons.grid ? icons.grid(18) : ''}</span>
                   <span>Categories</span>
                 </div>
                 <span id="sidebar-categories-chevron" class="text-[#667085] transform transition-transform duration-200">
@@ -296,26 +296,26 @@ window.Header = (() => {
                 </span>
               </button>
 
-              <div id="sidebar-categories-list" class="hidden space-y-0.5 pl-8 pr-2 py-1.5 bg-[#F8FAF9] rounded-lg mt-1">
-                <a href="#/categories" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs font-semibold text-[#087F5B] hover:bg-white transition-colors">
+              <div id="sidebar-categories-list" class="hidden space-y-0.5 pl-8 pr-2 py-1.5 bg-[#f4fdfe] rounded-lg mt-1">
+                <a href="#/categories" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs font-semibold text-[#007d83] hover:bg-white transition-colors">
                   <span>All Categories</span>
                 </a>
-                <a href="#/category/vegetables" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                <a href="#/category/vegetables" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#007d83] hover:bg-white transition-colors">
                   <span>Vegetables</span>
                 </a>
-                <a href="#/category/fruits" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                <a href="#/category/fruits" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#007d83] hover:bg-white transition-colors">
                   <span>Fruits</span>
                 </a>
-                <a href="#/category/fish" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                <a href="#/category/fish" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#007d83] hover:bg-white transition-colors">
                   <span>Fish & Seafood</span>
                 </a>
-                <a href="#/category/meat" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                <a href="#/category/meat" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#007d83] hover:bg-white transition-colors">
                   <span>Meat & Poultry</span>
                 </a>
-                <a href="#/category/grocery" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                <a href="#/category/grocery" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#007d83] hover:bg-white transition-colors">
                   <span>Grocery Essentials</span>
                 </a>
-                <a href="#/category/household" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                <a href="#/category/household" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#007d83] hover:bg-white transition-colors">
                   <span>Household</span>
                 </a>
               </div>
@@ -324,30 +324,30 @@ window.Header = (() => {
             <!-- Deals -->
             <a
               href="#/deals"
-              class="sidebar-nav-item flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors"
+              class="sidebar-nav-item flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#eefbfc] hover:text-[#007d83] transition-colors"
               data-path="/deals"
             >
               <div class="flex items-center gap-3">
-                <span class="text-[#FF7A18]">${icons.tag ? icons.tag(18) : ''}</span>
+                <span class="text-[#007d83]">${icons.tag ? icons.tag(18) : ''}</span>
                 <span>Today's Deals</span>
               </div>
-              <span class="bg-[#FF7A18] text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">Hot</span>
+              <span class="bg-[#007d83] text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">Hot</span>
             </a>
 
             <!-- Accounts -->
             <a
               href="#/account"
-              class="sidebar-nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors"
+              class="sidebar-nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#eefbfc] hover:text-[#007d83] transition-colors"
               data-path="/account"
             >
-              <span class="text-[#087F5B]">${icons.user ? icons.user(18) : ''}</span>
+              <span class="text-[#007d83]">${icons.user ? icons.user(18) : ''}</span>
               <span>My Account</span>
             </a>
 
             <!-- Wishlist -->
             <a
               href="#/wishlist"
-              class="sidebar-nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors"
+              class="sidebar-nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#eefbfc] hover:text-[#007d83] transition-colors"
               data-path="/wishlist"
             >
               <span class="text-[#E5484D]">${icons.heart ? icons.heart(18) : ''}</span>
@@ -358,7 +358,7 @@ window.Header = (() => {
             <div class="pt-3">
               <a
                 href="#/admin"
-                class="sidebar-nav-item flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-white bg-[#087F5B] hover:bg-[#056B4D] font-semibold text-xs transition-colors shadow-xs"
+                class="sidebar-nav-item flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-white bg-[#007d83] hover:bg-[#006065] font-semibold text-xs transition-colors shadow-xs"
                 data-path="/admin"
               >
                 <span>${icons.plus ? icons.plus(16) : '+'}</span>
@@ -369,7 +369,7 @@ window.Header = (() => {
           </div>
 
           <!-- Drawer Footer -->
-          <div class="p-3.5 border-t border-[#E5E7EB] bg-[#F8FAF9] flex items-center justify-between text-xs text-[#667085]">
+          <div class="p-3.5 border-t border-[#E5E7EB] bg-[#f4fdfe] flex items-center justify-between text-xs text-[#667085]">
             <span class="flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
               <span class="font-medium">Online Service Active</span>
@@ -443,17 +443,17 @@ window.Header = (() => {
           const results = window.searchProducts ? window.searchProducts(q).slice(0, 6) : [];
           if (results.length) {
             dropdown.innerHTML = results.map(p => `
-              <div class="autocomplete-item flex items-center gap-3 px-3.5 py-2.5 cursor-pointer border-b border-[#E5E7EB] last:border-0 hover:bg-[#F8FAF9] transition-colors" data-slug="${p.slug}">
+              <div class="autocomplete-item flex items-center gap-3 px-3.5 py-2.5 cursor-pointer border-b border-[#E5E7EB] last:border-0 hover:bg-[#f4fdfe] transition-colors" data-slug="${p.slug}">
                 <img src="${p.image}" alt="${p.name}" class="w-10 h-10 object-contain rounded-md border border-[#E5E7EB] p-1 bg-white flex-shrink-0" onerror="this.src='images/potatoes/potato-deshi.jpg'" />
                 <div class="min-w-0 flex-1 text-left">
                   <div class="text-xs sm:text-sm font-semibold text-[#17212B] truncate">${p.name}</div>
-                  <div class="text-xs text-[#087F5B] font-bold">${window.Utils.formatPrice(p.variants[0].price)} <span class="text-[#667085] font-normal text-[11px]">/${p.variants[0].unit || '1kg'}</span></div>
+                  <div class="text-xs text-[#007d83] font-bold">${window.Utils.formatPrice(p.variants[0].price)} <span class="text-[#667085] font-normal text-[11px]">/${p.variants[0].unit || '1kg'}</span></div>
                 </div>
-                <span class="text-[10px] bg-[#E8F7F1] text-[#087F5B] font-medium px-2 py-0.5 rounded capitalize">${p.category}</span>
+                <span class="text-[10px] bg-[#eefbfc] text-[#007d83] font-medium px-2 py-0.5 rounded capitalize">${p.category}</span>
               </div>
             `).join('') + `
-              <div class="p-2.5 bg-[#F8FAF9] text-center border-t border-[#E5E7EB]">
-                <button class="see-all-btn text-xs font-semibold text-[#087F5B] hover:underline">See all results for "${q}" →</button>
+              <div class="p-2.5 bg-[#f4fdfe] text-center border-t border-[#E5E7EB]">
+                <button class="see-all-btn text-xs font-semibold text-[#007d83] hover:underline">See all results for "${q}" →</button>
               </div>
             `;
             dropdown.classList.remove('hidden');
@@ -524,10 +524,10 @@ window.Header = (() => {
     document.querySelectorAll('.nav-link').forEach(link => {
       const linkPath = link.getAttribute('data-path');
       if (linkPath === path || (path.startsWith('/category/') && linkPath === path)) {
-        link.classList.add('text-[#087F5B]', 'font-bold', 'bg-white');
+        link.classList.add('text-[#007d83]', 'font-bold', 'bg-white');
         link.classList.remove('text-[#17212B]');
       } else {
-        link.classList.remove('text-[#087F5B]', 'font-bold', 'bg-white');
+        link.classList.remove('text-[#007d83]', 'font-bold', 'bg-white');
         link.classList.add('text-[#17212B]');
       }
     });

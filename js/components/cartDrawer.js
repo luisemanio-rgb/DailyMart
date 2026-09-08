@@ -27,7 +27,7 @@ window.CartDrawer = (() => {
       </div>
 
       <!-- Cart Summary -->
-      <div class="border-t border-[#E5E7EB] p-5 bg-[#F8FAF9]" id="cart-summary-section"></div>
+      <div class="border-t border-[#E5E7EB] p-5 bg-[#f4fdfe]" id="cart-summary-section"></div>
     </div>
     `;
 
@@ -47,12 +47,12 @@ window.CartDrawer = (() => {
     if (cart.length === 0) {
       listEl.innerHTML = `
         <div class="flex flex-col items-center justify-center py-16 text-center">
-          <div class="w-16 h-16 rounded-full bg-[#E8F7F1] flex items-center justify-center text-[#087F5B] mb-3">
+          <div class="w-16 h-16 rounded-full bg-[#eefbfc] flex items-center justify-center text-[#007d83] mb-3">
             ${window.Icons ? window.Icons.render('cart', 'w-8 h-8') : '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>'}
           </div>
           <h3 class="font-bold text-[#17212B] text-sm mb-1">Your cart is empty</h3>
           <p class="text-xs text-[#667085] mb-5">Browse our fresh grocery collection to add items</p>
-          <button onclick="window.CartDrawer.close(); window.Router.navigate('/categories')" class="bg-[#087F5B] text-white text-xs font-semibold px-5 py-2.5 rounded-lg hover:bg-[#056B4D] transition-colors">
+          <button onclick="window.CartDrawer.close(); window.Router.navigate('/categories')" class="bg-[#007d83] text-white text-xs font-semibold px-5 py-2.5 rounded-lg hover:bg-[#006065] transition-colors">
             Start Shopping
           </button>
         </div>
@@ -65,7 +65,7 @@ window.CartDrawer = (() => {
       return `
       <div class="bg-white border border-[#E5E7EB] rounded-lg p-3 mb-2.5 flex items-center justify-between gap-3 shadow-2xs" data-cart-key="${item.key}">
         <div class="flex items-center gap-3 min-w-0 flex-1">
-          <div class="w-12 h-12 rounded-lg bg-[#F8FAF9] border border-[#E5E7EB] p-1 flex items-center justify-center flex-shrink-0">
+          <div class="w-12 h-12 rounded-lg bg-[#f4fdfe] border border-[#E5E7EB] p-1 flex items-center justify-center flex-shrink-0">
             <img
               src="${item.image}"
               alt="${item.productName}"
@@ -76,7 +76,7 @@ window.CartDrawer = (() => {
           <div class="min-w-0 flex-1">
             <h4 class="text-xs sm:text-sm font-semibold text-[#17212B] truncate mb-0.5">${item.productName}</h4>
             <div class="text-[11px] text-[#667085] font-medium mb-1">${item.selectedWeight || item.variantName || ''}</div>
-            <div class="text-xs sm:text-sm font-bold text-[#087F5B]">${window.Utils.formatPrice(item.price)}</div>
+            <div class="text-xs sm:text-sm font-bold text-[#007d83]">${window.Utils.formatPrice(item.price)}</div>
           </div>
         </div>
 
@@ -88,7 +88,7 @@ window.CartDrawer = (() => {
           >
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
-          <div class="flex items-center bg-[#F8FAF9] rounded-md border border-[#E5E7EB]">
+          <div class="flex items-center bg-[#f4fdfe] rounded-md border border-[#E5E7EB]">
             <button class="w-6 h-6 hover:bg-gray-200 text-[#17212B] font-bold flex items-center justify-center text-xs transition-colors"
               onclick="window.CartDrawer.updateQty('${item.key}', ${item.quantity - 1})">−</button>
             <span class="w-6 text-center text-xs font-bold text-[#17212B]">${item.quantity}</span>
@@ -115,23 +115,23 @@ window.CartDrawer = (() => {
             <span>Delivery Fee</span>
             <span class="font-bold ${delivery === 0 ? 'text-[#16A34A]' : 'text-[#17212B]'}">${delivery === 0 ? 'FREE' : window.Utils.formatPrice(delivery)}</span>
           </div>
-          ${delivery > 0 ? `<p class="text-[11px] text-[#087F5B] font-medium">Add ৳${1000 - subtotal} more for free delivery</p>` : ''}
+          ${delivery > 0 ? `<p class="text-[11px] text-[#007d83] font-medium">Add ৳${1000 - subtotal} more for free delivery</p>` : ''}
           <div class="border-t border-[#E5E7EB] pt-2 flex items-baseline justify-between">
             <span class="font-bold text-[#17212B] text-sm">Estimated Total:</span>
-            <span class="font-black text-lg text-[#087F5B]">${window.Utils.formatPrice(total)}</span>
+            <span class="font-black text-lg text-[#007d83]">${window.Utils.formatPrice(total)}</span>
           </div>
         </div>
         <div class="space-y-2">
           <button
             onclick="window.CartDrawer.close(); window.Router.navigate('/checkout')"
-            class="w-full bg-[#FF7A18] hover:bg-[#E56A10] active:scale-98 text-white font-bold py-3 rounded-lg shadow-xs transition-all flex items-center justify-center gap-2 text-xs sm:text-sm"
+            class="w-full bg-[#007d83] hover:bg-[#006065] active:scale-98 text-white font-bold py-3 rounded-lg shadow-xs transition-all flex items-center justify-center gap-2 text-xs sm:text-sm"
           >
             <span>Proceed to Checkout</span>
             ${window.Icons ? window.Icons.render('arrowRight', 'w-4 h-4') : ''}
           </button>
           <button
             onclick="window.CartDrawer.close(); window.Router.navigate('/cart')"
-            class="w-full bg-white border border-[#E5E7EB] hover:bg-gray-50 text-[#17212B] font-semibold py-2 rounded-lg transition-colors text-xs text-center"
+            class="w-full bg-white border border-[#E5E7EB] hover:bg-[#eefbfc] text-[#007d83] border-[#93e2e4] font-semibold py-2 rounded-lg transition-colors text-xs text-center"
           >
             View Cart
           </button>

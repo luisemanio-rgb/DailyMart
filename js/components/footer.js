@@ -4,7 +4,7 @@ window.Footer = {
     const root = document.getElementById('footer-root');
     if (!root) return;
     root.innerHTML = `
-    <footer class="bg-[#17212B] text-[#94A3B8] pt-14 pb-10 border-t border-gray-800">
+    <footer class="bg-[#17212B] text-[#94A3B8] pt-14 pb-10 border-t-2 border-[#93e2e4]">
       <div class="max-w-7xl mx-auto px-4">
         <!-- Top grid -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
@@ -12,7 +12,7 @@ window.Footer = {
           <!-- Brand column -->
           <div class="col-span-2 md:col-span-1">
             <a href="#/" class="flex items-center gap-2.5 mb-4">
-              <div class="w-9 h-9 rounded-lg bg-[#087F5B] flex items-center justify-center text-white shadow-xs">
+              <div class="w-9 h-9 rounded-lg bg-[#007d83] flex items-center justify-center text-white shadow-xs">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                   <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -21,7 +21,7 @@ window.Footer = {
               </div>
               <div class="flex items-center">
                 <span class="text-xl font-extrabold text-white tracking-tight">DailyMart</span>
-                <span class="ml-1 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-wider bg-[#FF7A18] text-white rounded">BD</span>
+                <span class="ml-1 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-wider bg-[#007d83] text-white rounded">BD</span>
               </div>
             </a>
             <p class="text-xs sm:text-sm text-gray-400 mb-5 leading-relaxed">
@@ -34,7 +34,7 @@ window.Footer = {
                 { name: 'twitter', icon: '<path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>' },
                 { name: 'youtube', icon: '<path d="M22.54 6.42a2.78 2.78 0 00-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 1.96A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 001.94-1.95 29 29 0 00.46-5.25 29 29 0 00-.46-5.38z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"/>' }
               ].map(p => `
-                <a href="#" aria-label="${p.name}" class="w-8 h-8 bg-gray-800/90 hover:bg-[#087F5B] text-gray-400 hover:text-white rounded-lg flex items-center justify-center transition-colors">
+                <a href="#" aria-label="${p.name}" class="w-8 h-8 bg-gray-800/90 hover:bg-[#007d83] text-gray-400 hover:text-white rounded-lg flex items-center justify-center transition-colors">
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">${p.icon}</svg>
                 </a>
               `).join('')}
@@ -94,22 +94,22 @@ window.Footer = {
         </div>
 
         <!-- Contact & Payment -->
-        <div class="border-t border-gray-800/80 pt-8 mb-8">
+        <div class="border-t-2 border-[#93e2e4]/80 pt-8 mb-8">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <!-- Contact info -->
             <div>
               <h4 class="text-white font-semibold mb-3 text-xs sm:text-sm">Direct Hotline</h4>
               <div class="space-y-2.5">
                 <div class="flex items-center gap-2.5 text-xs sm:text-sm text-gray-400">
-                  <svg class="w-4 h-4 text-[#087F5B] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  <svg class="w-4 h-4 text-[#007d83] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                   <span>+880 1700-000000 (Available 24/7)</span>
                 </div>
                 <div class="flex items-center gap-2.5 text-xs sm:text-sm text-gray-400">
-                  <svg class="w-4 h-4 text-[#087F5B] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <svg class="w-4 h-4 text-[#007d83] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                   <span>support@dailymartbd.com</span>
                 </div>
                 <div class="flex items-center gap-2.5 text-xs sm:text-sm text-gray-400">
-                  <svg class="w-4 h-4 text-[#087F5B] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  <svg class="w-4 h-4 text-[#007d83] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                   <span>House 45, Road 11, Banani, Dhaka-1213</span>
                 </div>
               </div>
@@ -123,7 +123,7 @@ window.Footer = {
                   { text: 'bKash', color: 'bg-[#D12053]' },
                   { text: 'Nagad', color: 'bg-[#E35925]' },
                   { text: 'Rocket', color: 'bg-[#8A2387]' },
-                  { text: 'Cash on Delivery', color: 'bg-[#087F5B]' },
+                  { text: 'Cash on Delivery', color: 'bg-[#007d83]' },
                   { text: 'Visa Card', color: 'bg-[#1A1F71]' },
                   { text: 'Mastercard', color: 'bg-[#EB001B]' },
                 ].map(p => `
@@ -135,7 +135,7 @@ window.Footer = {
         </div>
 
         <!-- Bottom bar -->
-        <div class="border-t border-gray-800/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="border-t-2 border-[#93e2e4]/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p class="text-xs text-gray-500">© 2025 DailyMart BD. All rights reserved.</p>
           <div class="flex gap-4">
             <a href="#/privacy" class="text-xs text-gray-500 hover:text-white transition-colors">Privacy Policy</a>

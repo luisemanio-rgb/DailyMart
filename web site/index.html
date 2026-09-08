@@ -12,20 +12,43 @@
         extend: {
           colors: {
             primary: {
-              DEFAULT: '#087F5B',
-              dark: '#056B4D',
-              light: '#E8F7F1',
-              50: '#E8F7F1',
-              600: '#087F5B',
-              700: '#056B4D',
-              800: '#04523B'
+              DEFAULT: '#007d83',
+              dark: '#006065',
+              light: '#e6f9fa',
+              50: '#e6f9fa',
+              100: '#c8f2f4',
+              200: '#93e2e4',
+              300: '#5ecfd2',
+              400: '#2fb7bb',
+              500: '#007d83',
+              600: '#007d83',
+              700: '#006065',
+              800: '#004c50',
+              900: '#003639'
+            },
+            secondary: {
+              DEFAULT: '#93e2e4',
+              light: '#dcf6f7',
+              dark: '#58c7ca'
             },
             accent: {
-              DEFAULT: '#FF7A18',
-              hover: '#EA680C',
-              light: '#FFF4EB'
+              DEFAULT: '#007d83',
+              hover: '#006065',
+              light: '#e6f9fa'
             },
-            canvas: '#F8FAF9',
+            emerald: {
+              50: '#e6f9fa',
+              100: '#c8f2f4',
+              200: '#93e2e4',
+              300: '#5ecfd2',
+              400: '#2fb7bb',
+              500: '#007d83',
+              600: '#007d83',
+              700: '#006065',
+              800: '#004c50',
+              900: '#003639'
+            },
+            canvas: '#FFFFFF',
             surface: '#FFFFFF',
             textmain: '#17212B',
             textmuted: '#667085',
@@ -37,9 +60,9 @@
             sans: ['"Plus Jakarta Sans"', '"Noto Sans Bengali"', 'Inter', 'system-ui', 'sans-serif']
           },
           boxShadow: {
-            card: '0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03)',
-            'card-hover': '0 6px 16px rgba(0,0,0,0.07)',
-            subtle: '0 1px 2px rgba(0,0,0,0.04)'
+            card: '0 2px 8px -1px rgba(0, 0, 0, 0.08), 0 1px 4px -1px rgba(0, 0, 0, 0.04)',
+            'card-hover': '0 12px 28px -4px rgba(0, 0, 0, 0.13), 0 4px 12px -2px rgba(0, 0, 0, 0.06)',
+            subtle: '0 1px 2px rgba(0, 0, 0, 0.04)'
           },
           borderRadius: {
             control: '8px',
@@ -53,10 +76,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=7.1" />
+  <link rel="stylesheet" href="css/styles.css?v=8.0" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>" />
 </head>
-<body class="font-sans bg-[#F8FAF9] text-[#17212B] antialiased">
+<body class="font-sans bg-[#FFFFFF] text-[#17212B] antialiased">
   <!-- App Root -->
   <div id="app">
     <!-- Header -->
@@ -78,38 +101,38 @@
   </div>
 
   <!-- Core data and utilities -->
-  <script src="js/data/categories.js?v=7.1"></script>
-  <script src="js/data/products.js?v=7.1"></script>
-  <script src="js/data/districts.js?v=7.1"></script>
-  <script src="js/core/store.js?v=7.1"></script>
-  <script src="js/core/router.js?v=7.1"></script>
-  <script src="js/core/utils.js?v=7.1"></script>
-  <script src="js/core/icons.js?v=7.1"></script>
+  <script src="js/data/categories.js?v=8.0"></script>
+  <script src="js/data/products.js?v=8.0"></script>
+  <script src="js/data/districts.js?v=8.0"></script>
+  <script src="js/core/store.js?v=8.0"></script>
+  <script src="js/core/router.js?v=8.0"></script>
+  <script src="js/core/utils.js?v=8.0"></script>
+  <script src="js/core/icons.js?v=8.0"></script>
   <!-- Components -->
-  <script src="js/components/toast.js?v=7.1"></script>
-  <script src="js/components/header.js?v=7.1"></script>
-  <script src="js/components/footer.js?v=7.1"></script>
-  <script src="js/components/mobileNav.js?v=7.1"></script>
-  <script src="js/components/categoryCard.js?v=7.1"></script>
-  <script src="js/components/productCard.js?v=7.1"></script>
-  <script src="js/components/productFilters.js?v=7.1"></script>
-  <script src="js/components/cartDrawer.js?v=7.1"></script>
-  <script src="js/components/searchOverlay.js?v=7.1"></script>
+  <script src="js/components/toast.js?v=8.0"></script>
+  <script src="js/components/header.js?v=8.0"></script>
+  <script src="js/components/footer.js?v=8.0"></script>
+  <script src="js/components/mobileNav.js?v=8.0"></script>
+  <script src="js/components/categoryCard.js?v=8.0"></script>
+  <script src="js/components/productCard.js?v=8.0"></script>
+  <script src="js/components/productFilters.js?v=8.0"></script>
+  <script src="js/components/cartDrawer.js?v=8.0"></script>
+  <script src="js/components/searchOverlay.js?v=8.0"></script>
   <!-- Pages -->
-  <script src="js/pages/home.js?v=7.1"></script>
-  <script src="js/pages/category.js?v=7.1"></script>
-  <script src="js/pages/productType.js?v=7.1"></script>
-  <script src="js/pages/productDetail.js?v=7.1"></script>
-  <script src="js/pages/cart.js?v=7.1"></script>
-  <script src="js/pages/checkout.js?v=7.1"></script>
-  <script src="js/pages/orderConfirmation.js?v=7.1"></script>
-  <script src="js/pages/search.js?v=7.1"></script>
-  <script src="js/pages/wishlist.js?v=7.1"></script>
-  <script src="js/pages/account.js?v=7.1"></script>
-  <script src="js/pages/auth.js?v=7.1"></script>
-  <script src="js/pages/admin.js?v=7.1"></script>
-  <script src="js/pages/notFound.js?v=7.1"></script>
+  <script src="js/pages/home.js?v=8.0"></script>
+  <script src="js/pages/category.js?v=8.0"></script>
+  <script src="js/pages/productType.js?v=8.0"></script>
+  <script src="js/pages/productDetail.js?v=8.0"></script>
+  <script src="js/pages/cart.js?v=8.0"></script>
+  <script src="js/pages/checkout.js?v=8.0"></script>
+  <script src="js/pages/orderConfirmation.js?v=8.0"></script>
+  <script src="js/pages/search.js?v=8.0"></script>
+  <script src="js/pages/wishlist.js?v=8.0"></script>
+  <script src="js/pages/account.js?v=8.0"></script>
+  <script src="js/pages/auth.js?v=8.0"></script>
+  <script src="js/pages/admin.js?v=8.0"></script>
+  <script src="js/pages/notFound.js?v=8.0"></script>
   <!-- App Bootstrap -->
-  <script src="js/app.js?v=7.1"></script>
+  <script src="js/app.js?v=8.0"></script>
 </body>
 </html>

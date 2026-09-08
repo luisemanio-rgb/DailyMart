@@ -19,17 +19,17 @@ window.ProductFilters = {
     <div class="bg-white rounded-2xl shadow-card p-4" id="filter-panel">
       <div class="flex items-center justify-between mb-4">
         <h3 class="font-bold text-gray-800">Filters</h3>
-        <button class="text-xs text-emerald-600 font-medium hover:text-emerald-700" onclick="window.ProductFilters.reset()">Clear All</button>
+        <button class="text-xs text-[#007d83] font-medium hover:text-[#006065]" onclick="window.ProductFilters.reset()">Clear All</button>
       </div>
 
       <!-- Price Range -->
       <div class="mb-6">
         <h4 class="text-sm font-semibold text-gray-700 mb-3">Price Range</h4>
         <div class="space-y-2">
-          <input type="range" id="filter-price-max" min="0" max="${maxPrice}" value="${maxPrice}" step="10" class="w-full accent-emerald-600" oninput="window.ProductFilters.updatePriceLabel(this.value)" />
+          <input type="range" id="filter-price-max" min="0" max="${maxPrice}" value="${maxPrice}" step="10" class="w-full accent-[#007d83]" oninput="window.ProductFilters.updatePriceLabel(this.value)" />
           <div class="flex justify-between text-xs text-gray-500">
             <span>৳0</span>
-            <span id="price-max-label" class="font-semibold text-emerald-600">৳${maxPrice}</span>
+            <span id="price-max-label" class="font-semibold text-[#007d83]">৳${maxPrice}</span>
           </div>
         </div>
       </div>
@@ -38,11 +38,11 @@ window.ProductFilters = {
       <div class="mb-6">
         <h4 class="text-sm font-semibold text-gray-700 mb-3">Availability</h4>
         <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" id="filter-in-stock" class="w-4 h-4 accent-emerald-600" />
+          <input type="checkbox" id="filter-in-stock" class="w-4 h-4 accent-[#007d83]" />
           <span class="text-sm text-gray-600">In Stock Only</span>
         </label>
         <label class="flex items-center gap-2 cursor-pointer mt-2">
-          <input type="checkbox" id="filter-organic" class="w-4 h-4 accent-emerald-600" />
+          <input type="checkbox" id="filter-organic" class="w-4 h-4 accent-[#007d83]" />
           <span class="text-sm text-gray-600">Organic Only</span>
         </label>
       </div>
@@ -54,7 +54,7 @@ window.ProductFilters = {
         <div class="space-y-2">
           ${allGrades.map(grade => `
             <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" class="w-4 h-4 accent-emerald-600 filter-grade" value="${grade}" />
+              <input type="checkbox" class="w-4 h-4 accent-[#007d83] filter-grade" value="${grade}" />
               <span class="text-sm text-gray-600">Grade ${grade}</span>
             </label>
           `).join('')}
@@ -69,7 +69,7 @@ window.ProductFilters = {
         <div class="space-y-2 max-h-40 overflow-y-auto">
           ${allBrands.slice(0, 8).map(brand => `
             <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" class="w-4 h-4 accent-emerald-600 filter-brand" value="${brand}" />
+              <input type="checkbox" class="w-4 h-4 accent-[#007d83] filter-brand" value="${brand}" />
               <span class="text-sm text-gray-600 truncate">${brand}</span>
             </label>
           `).join('')}
@@ -79,7 +79,7 @@ window.ProductFilters = {
 
       <!-- Apply Button -->
       <button
-        class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl transition-colors text-sm"
+        class="w-full bg-[#007d83] hover:bg-[#006065] text-white font-semibold py-2.5 rounded-xl transition-colors text-sm"
         onclick="window.ProductFilters.apply()"
       >
         Apply Filters

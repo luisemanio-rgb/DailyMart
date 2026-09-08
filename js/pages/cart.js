@@ -34,14 +34,14 @@ window.Pages.cart = () => {
 
       ${cart.length === 0 ? `
         <div class="bg-white rounded-xl p-12 text-center shadow-card border border-gray-100 max-w-lg mx-auto">
-          <div class="w-16 h-16 rounded-full bg-[#E8F7F1] flex items-center justify-center text-[#087F5B] mb-4 mx-auto">
+          <div class="w-16 h-16 rounded-full bg-[#eefbfc] flex items-center justify-center text-[#007d83] mb-4 mx-auto">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
           </div>
           <h2 class="text-2xl font-bold text-gray-800 mb-2">Your cart is empty</h2>
           <p class="text-gray-400 text-sm mb-6">Looks like you haven't added any fresh groceries yet.</p>
           <button 
             onclick="window.Router.navigate('/categories')" 
-            class="bg-[#FF7A18] hover:bg-[#E56A10] text-white font-bold px-8 py-3.5 rounded-2xl transition-all shadow-md hover:shadow-lg text-sm"
+            class="bg-[#007d83] hover:bg-[#006065] text-white font-bold px-8 py-3.5 rounded-2xl transition-all shadow-md hover:shadow-lg text-sm"
           >
             Start Shopping
           </button>
@@ -170,7 +170,7 @@ window.Pages.cart = () => {
               <!-- Big Pill Confirm Order Button -->
               <button 
                 onclick="window.Router.navigate('/checkout')" 
-                class="w-full py-4 bg-[#FF7A18] hover:bg-[#E56A10] active:scale-98 text-white font-black text-base rounded-2xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                class="w-full py-4 bg-[#007d83] hover:bg-[#006065] active:scale-98 text-white font-black text-base rounded-2xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
               >
                 <span>Confirm Order</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

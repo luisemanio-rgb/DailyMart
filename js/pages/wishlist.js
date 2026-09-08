@@ -9,7 +9,7 @@ window.Pages.wishlist = () => {
     content.innerHTML = `
     <div class="page-enter max-w-7xl mx-auto px-4 py-8 pb-24 sm:pb-12">
       <nav class="flex items-center text-xs text-[#667085] mb-4 gap-1.5">
-        <a href="#/" class="hover:text-[#087F5B]">Home</a>
+        <a href="#/" class="hover:text-[#007d83]">Home</a>
         <span>/</span>
         <span class="text-[#17212B] font-medium">Wishlist</span>
       </nav>
@@ -20,7 +20,7 @@ window.Pages.wishlist = () => {
           <p class="text-xs text-[#667085] mt-0.5">${products.length} saved ${products.length === 1 ? 'item' : 'items'}</p>
         </div>
         ${products.length > 0 ? `
-          <button onclick="window.Pages.addAllToCart()" class="bg-[#087F5B] hover:bg-[#056B4D] text-white font-semibold px-4 py-2 rounded-lg transition-colors text-xs sm:text-sm shadow-xs">
+          <button onclick="window.Pages.addAllToCart()" class="bg-[#007d83] hover:bg-[#006065] text-white font-semibold px-4 py-2 rounded-lg transition-colors text-xs sm:text-sm shadow-xs">
             Add All to Cart
           </button>
         ` : ''}
@@ -33,7 +33,7 @@ window.Pages.wishlist = () => {
           </div>
           <h2 class="text-base font-bold text-[#17212B] mb-1">Your wishlist is empty</h2>
           <p class="text-xs text-[#667085] mb-6">Explore our catalog and click the heart icon on any product to save it for later.</p>
-          <button onclick="window.Router.navigate('/categories')" class="bg-[#087F5B] hover:bg-[#056B4D] text-white font-semibold px-6 py-2.5 rounded-lg transition-colors text-xs sm:text-sm">
+          <button onclick="window.Router.navigate('/categories')" class="bg-[#007d83] hover:bg-[#006065] text-white font-semibold px-6 py-2.5 rounded-lg transition-colors text-xs sm:text-sm">
             Browse Groceries
           </button>
         </div>

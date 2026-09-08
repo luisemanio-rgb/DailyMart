@@ -8,12 +8,12 @@ window.Pages.productDetail = (params) => {
   if (!product) {
     content.innerHTML = `
     <div class="max-w-7xl mx-auto px-4 py-20 text-center page-enter">
-      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#E8F7F1] flex items-center justify-center text-[#087F5B]">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#eefbfc] flex items-center justify-center text-[#007d83]">
         ${window.Icons ? window.Icons.render('search', 'w-8 h-8') : ''}
       </div>
       <h2 class="text-2xl font-bold text-[#17212B] mb-2">Product Not Found</h2>
       <p class="text-[#667085] mb-6 text-sm">The product you're looking for doesn't exist or has been removed.</p>
-      <button onclick="window.Router.navigate('/')" class="bg-[#087F5B] text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-[#056B4D] transition-colors text-sm">Back to Home</button>
+      <button onclick="window.Router.navigate('/')" class="bg-[#007d83] text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-[#006065] transition-colors text-sm">Back to Home</button>
     </div>
     `;
     return;
@@ -50,11 +50,11 @@ window.Pages.productDetail = (params) => {
 
         <!-- Clean Breadcrumb -->
         <nav class="flex items-center text-xs sm:text-sm text-[#667085] mb-6 flex-wrap gap-1.5">
-          <a href="#/" class="hover:text-[#087F5B] transition-colors">Home</a>
+          <a href="#/" class="hover:text-[#007d83] transition-colors">Home</a>
           <span class="text-gray-300">/</span>
-          <a href="#/category/${product.category}" class="hover:text-[#087F5B] capitalize transition-colors">${category?.name || product.category}</a>
+          <a href="#/category/${product.category}" class="hover:text-[#007d83] capitalize transition-colors">${category?.name || product.category}</a>
           <span class="text-gray-300">/</span>
-          <a href="#/category/${product.category}/${product.subcategory}" class="hover:text-[#087F5B] capitalize transition-colors">${product.subcategory.replace(/-/g,' ')}</a>
+          <a href="#/category/${product.category}/${product.subcategory}" class="hover:text-[#007d83] capitalize transition-colors">${product.subcategory.replace(/-/g,' ')}</a>
           <span class="text-gray-300">/</span>
           <span class="text-[#17212B] font-semibold">${product.name}</span>
         </nav>
@@ -74,12 +74,12 @@ window.Pages.productDetail = (params) => {
                 onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&q=60'"
               />
               ${discountPct > 0 ? `<div class="absolute top-4 left-4 bg-[#E5484D] text-white text-xs font-bold px-2.5 py-1 rounded-md shadow-xs">-${discountPct}% OFF</div>` : ''}
-              ${product.organic ? `<div class="absolute top-4 right-4 bg-[#087F5B] text-white text-xs font-semibold px-2.5 py-1 rounded-md">Organic</div>` : ''}
+              ${product.organic ? `<div class="absolute top-4 right-4 bg-[#007d83] text-white text-xs font-semibold px-2.5 py-1 rounded-md">Organic</div>` : ''}
             </div>
             <!-- Thumbnails -->
             <div class="flex gap-3 overflow-x-auto pb-1" id="thumbnails">
               ${(product.images || [product.image]).map((img, i) => `
-                <button class="thumb-btn flex-shrink-0 w-18 h-18 rounded-lg overflow-hidden border-2 p-1.5 bg-white ${i === selectedImageIdx ? 'border-[#087F5B]' : 'border-[#E5E7EB]'} hover:border-[#087F5B]/50 transition-colors"
+                <button class="thumb-btn flex-shrink-0 w-18 h-18 rounded-lg overflow-hidden border-2 p-1.5 bg-white ${i === selectedImageIdx ? 'border-[#007d83]' : 'border-[#E5E7EB]'} hover:border-[#007d83]/50 transition-colors"
                   onclick="window.Pages.selectImage(${i})">
                   <img src="${img}" alt="" class="w-full h-full object-contain" onerror="this.parentElement.style.display='none'" />
                 </button>
@@ -97,7 +97,7 @@ window.Pages.productDetail = (params) => {
               <span class="text-sm font-bold text-[#17212B]">${product.rating}</span>
               <span class="text-xs text-[#667085]">(${product.reviewCount} customer reviews)</span>
               <span class="text-xs text-gray-300">|</span>
-              <span class="text-xs font-medium text-[#087F5B] bg-[#E8F7F1] px-2 py-0.5 rounded">Brand: ${product.brand}</span>
+              <span class="text-xs font-medium text-[#007d83] bg-[#eefbfc] px-2 py-0.5 rounded">Brand: ${product.brand}</span>
             </div>
 
             <!-- Grade & tags -->
@@ -107,14 +107,14 @@ window.Pages.productDetail = (params) => {
                   Grade ${selectedVariant.grade} · Quality Checked
                 </span>
               ` : ''}
-              ${product.organic ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-[#E8F7F1] text-[#087F5B]">100% Organic</span>` : ''}
+              ${product.organic ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-[#eefbfc] text-[#007d83]">100% Organic</span>` : ''}
               ${product.bestSeller ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200">Best Seller</span>` : ''}
             </div>
 
             <!-- Price Container -->
-            <div class="bg-[#F8FAF9] rounded-xl p-5 mb-6 border border-[#E5E7EB]">
+            <div class="bg-[#f4fdfe] rounded-xl p-5 mb-6 border border-[#E5E7EB]">
               <div class="flex items-baseline gap-3 mb-1">
-                <span class="text-3xl font-black text-[#087F5B]" id="current-price">${window.Utils.formatPrice(price)}</span>
+                <span class="text-3xl font-black text-[#007d83]" id="current-price">${window.Utils.formatPrice(price)}</span>
                 ${oldPrice ? `<span class="text-base text-[#667085] line-through" id="old-price">${window.Utils.formatPrice(oldPrice)}</span>` : '<span id="old-price"></span>'}
                 ${discountPct > 0 ? `<span class="bg-red-50 text-[#E5484D] text-xs font-bold px-2 py-0.5 rounded border border-red-100">Save ${discountPct}%</span>` : ''}
               </div>
@@ -133,12 +133,12 @@ window.Pages.productDetail = (params) => {
               <div class="flex flex-wrap gap-2" id="variant-selector">
                 ${product.variants.map((v, i) => `
                   <button
-                    class="variant-btn px-3.5 py-2 rounded-lg border text-xs sm:text-sm font-semibold transition-all ${i === 0 ? 'border-[#087F5B] bg-[#E8F7F1] text-[#087F5B]' : 'border-[#E5E7EB] bg-white text-[#17212B] hover:border-[#087F5B]/50'}"
+                    class="variant-btn px-3.5 py-2 rounded-lg border text-xs sm:text-sm font-semibold transition-all ${i === 0 ? 'border-[#007d83] bg-[#eefbfc] text-[#007d83]' : 'border-[#E5E7EB] bg-white text-[#17212B] hover:border-[#007d83]/50'}"
                     onclick="window.Pages.selectVariant(${i})"
                     data-variant-idx="${i}"
                   >
                     ${v.variantName}
-                    <span class="block text-[11px] font-normal ${i === 0 ? 'text-[#087F5B]' : 'text-[#667085]'}">${window.Utils.formatPrice(v.price)}/${v.unit}</span>
+                    <span class="block text-[11px] font-normal ${i === 0 ? 'text-[#007d83]' : 'text-[#667085]'}">${window.Utils.formatPrice(v.price)}/${v.unit}</span>
                   </button>
                 `).join('')}
               </div>
@@ -152,7 +152,7 @@ window.Pages.productDetail = (params) => {
               <div class="flex flex-wrap gap-2" id="weight-selector">
                 ${selectedVariant.weights.map((w, i) => `
                   <button
-                    class="weight-btn px-3.5 py-2 rounded-lg border text-xs sm:text-sm font-semibold transition-all ${i === 0 ? 'border-[#087F5B] bg-[#E8F7F1] text-[#087F5B]' : 'border-[#E5E7EB] bg-white text-[#17212B] hover:border-[#087F5B]/50'}"
+                    class="weight-btn px-3.5 py-2 rounded-lg border text-xs sm:text-sm font-semibold transition-all ${i === 0 ? 'border-[#007d83] bg-[#eefbfc] text-[#007d83]' : 'border-[#E5E7EB] bg-white text-[#17212B] hover:border-[#007d83]/50'}"
                     onclick="window.Pages.selectWeight('${w}')"
                   >
                     ${w}
@@ -179,11 +179,11 @@ window.Pages.productDetail = (params) => {
             <!-- CTA Buttons -->
             <div class="flex items-center gap-3 mb-6">
               ${stock.available ? `
-                <button id="buy-now-btn" onclick="window.Pages.buyNow()" class="flex-1 bg-[#FF7A18] hover:bg-[#E56A10] active:scale-98 text-white font-bold py-3 px-4 rounded-lg shadow-xs transition-all flex items-center justify-center gap-2 text-sm">
+                <button id="buy-now-btn" onclick="window.Pages.buyNow()" class="flex-1 bg-[#007d83] hover:bg-[#006065] active:scale-98 text-white font-bold py-3 px-4 rounded-lg shadow-xs transition-all flex items-center justify-center gap-2 text-sm">
                   <span>Buy Now</span>
                 </button>
-                <button id="add-to-cart-detail" onclick="window.Pages.addToCartDetail()" class="add-to-cart-btn flex-1 bg-[#087F5B] hover:bg-[#056B4D] active:scale-98 text-white font-bold py-3 px-4 rounded-lg shadow-xs transition-all flex items-center justify-center gap-2 text-sm">
-                  ${window.Icons ? window.Icons.render('cart', 'w-4 h-4') : ''}
+                <button id="add-to-cart-detail" onclick="window.Pages.addToCartDetail()" class="add-to-cart-btn flex-1 bg-[#93e2e4]/25 hover:bg-[#93e2e4]/45 text-[#007d83] border-2 border-[#93e2e4] hover:border-[#007d83] active:scale-98 font-bold py-3 px-4 rounded-lg shadow-xs transition-all flex items-center justify-center gap-2 text-sm">
+                  ${window.Icons ? window.Icons.render('cart', 'w-4 h-4 text-[#007d83]') : ''}
                   <span>Add to Cart</span>
                 </button>
               ` : `
@@ -195,9 +195,9 @@ window.Pages.productDetail = (params) => {
             </div>
 
             <!-- Delivery info cards -->
-            <div class="bg-[#F8FAF9] rounded-xl p-4 border border-[#E5E7EB] space-y-3">
+            <div class="bg-[#f4fdfe] rounded-xl p-4 border border-[#E5E7EB] space-y-3">
               <div class="flex items-start gap-3">
-                <div class="w-8 h-8 rounded-lg bg-[#E8F7F1] flex items-center justify-center text-[#087F5B] flex-shrink-0">
+                <div class="w-8 h-8 rounded-lg bg-[#eefbfc] flex items-center justify-center text-[#007d83] flex-shrink-0">
                   ${window.Icons ? window.Icons.render('truck', 'w-4 h-4') : ''}
                 </div>
                 <div>
@@ -206,7 +206,7 @@ window.Pages.productDetail = (params) => {
                 </div>
               </div>
               <div class="flex items-start gap-3">
-                <div class="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-[#FF7A18] flex-shrink-0">
+                <div class="w-8 h-8 rounded-lg bg-[#eefbfc] flex items-center justify-center text-[#007d83] flex-shrink-0">
                   ${window.Icons ? window.Icons.render('zap', 'w-4 h-4') : ''}
                 </div>
                 <div>
@@ -220,9 +220,9 @@ window.Pages.productDetail = (params) => {
 
         <!-- Product Tabs -->
         <div class="bg-white rounded-xl border border-[#E5E7EB] mb-12 overflow-hidden">
-          <div class="flex border-b border-[#E5E7EB] overflow-x-auto bg-[#F8FAF9]">
+          <div class="flex border-b border-[#E5E7EB] overflow-x-auto bg-[#f4fdfe]">
             ${['description', 'information', 'nutrition', 'delivery', 'reviews'].map(tab => `
-              <button class="tab-btn flex-shrink-0 px-5 py-3.5 text-xs sm:text-sm font-semibold transition-colors ${tab === activeTab ? 'active text-[#087F5B] border-b-2 border-[#087F5B] bg-white' : 'text-[#667085] hover:text-[#17212B]'} capitalize"
+              <button class="tab-btn flex-shrink-0 px-5 py-3.5 text-xs sm:text-sm font-semibold transition-colors ${tab === activeTab ? 'active text-[#007d83] border-b-2 border-[#007d83] bg-white' : 'text-[#667085] hover:text-[#17212B]'} capitalize"
                 onclick="window.Pages.switchTab('${tab}')">
                 ${tab === 'reviews' ? `Reviews (${product.reviewCount})` : tab === 'information' ? 'Product Info' : tab}
               </button>
@@ -241,7 +241,7 @@ window.Pages.productDetail = (params) => {
               <h2 class="text-lg sm:text-xl font-bold text-[#17212B]">Related Products</h2>
               <p class="text-[#667085] text-xs mt-0.5">Customers who viewed this also bought</p>
             </div>
-            <a href="#/category/${product.category}" class="text-xs font-semibold text-[#087F5B] hover:underline flex items-center gap-1">
+            <a href="#/category/${product.category}" class="text-xs font-semibold text-[#007d83] hover:underline flex items-center gap-1">
               <span>View Category</span>
               ${window.Icons ? window.Icons.render('chevronRight', 'w-3.5 h-3.5') : ''}
             </a>
@@ -264,7 +264,7 @@ window.Pages.productDetail = (params) => {
           <h3 class="font-bold text-[#17212B] text-base mb-2">${product.name}</h3>
           <p class="text-[#667085] text-sm leading-relaxed mb-4">${product.description}</p>
           <div class="flex flex-wrap gap-2 mt-4">
-            ${product.tags.map(tag => `<span class="px-2.5 py-1 bg-[#F8FAF9] border border-[#E5E7EB] text-[#667085] text-xs rounded-md">#${tag}</span>`).join('')}
+            ${product.tags.map(tag => `<span class="px-2.5 py-1 bg-[#f4fdfe] border border-[#E5E7EB] text-[#667085] text-xs rounded-md">#${tag}</span>`).join('')}
           </div>
         `;
       case 'information':
@@ -295,8 +295,8 @@ window.Pages.productDetail = (params) => {
           <h3 class="font-bold text-[#17212B] text-sm mb-3">Nutrition Facts (per 100g)</h3>
           <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
             ${Object.entries(product.nutrition).map(([key, val]) => `
-              <div class="text-center bg-[#F8FAF9] border border-[#E5E7EB] rounded-lg p-3">
-                <div class="text-lg font-bold text-[#087F5B]">${val}</div>
+              <div class="text-center bg-[#f4fdfe] border border-[#E5E7EB] rounded-lg p-3">
+                <div class="text-lg font-bold text-[#007d83]">${val}</div>
                 <div class="text-xs text-[#667085] capitalize mt-0.5">${key}</div>
               </div>
             `).join('')}
@@ -311,8 +311,8 @@ window.Pages.productDetail = (params) => {
               { iconName: 'mapPin', title: 'Delivery Coverage', detail: 'All 64 districts of Bangladesh supported' },
               { iconName: 'rotateCcw', title: 'Hassle-Free Returns', detail: 'Immediate exchange or full refund on delivery doorstep inspection' },
             ].map(({ iconName, title, detail }) => `
-              <div class="flex items-start gap-3.5 p-3.5 bg-[#F8FAF9] rounded-lg border border-[#E5E7EB]">
-                <div class="w-8 h-8 rounded-md bg-[#E8F7F1] text-[#087F5B] flex items-center justify-center flex-shrink-0">
+              <div class="flex items-start gap-3.5 p-3.5 bg-[#f4fdfe] rounded-lg border border-[#E5E7EB]">
+                <div class="w-8 h-8 rounded-md bg-[#eefbfc] text-[#007d83] flex items-center justify-center flex-shrink-0">
                   ${window.Icons ? window.Icons.render(iconName, 'w-4 h-4') : ''}
                 </div>
                 <div>
@@ -341,7 +341,7 @@ window.Pages.productDetail = (params) => {
                     <div class="flex items-center gap-2">
                       <span class="text-xs text-[#667085] w-3">${star}</span>
                       <div class="flex-1 bg-gray-100 rounded-full h-1.5">
-                        <div class="h-1.5 rounded-full bg-[#087F5B]" style="width:${pct}%"></div>
+                        <div class="h-1.5 rounded-full bg-[#007d83]" style="width:${pct}%"></div>
                       </div>
                       <span class="text-xs text-[#667085] w-7 text-right">${pct}%</span>
                     </div>
@@ -354,7 +354,7 @@ window.Pages.productDetail = (params) => {
               ${reviews.map(r => `
                 <div class="border-b border-[#E5E7EB] pb-4 last:border-0">
                   <div class="flex items-center gap-3 mb-1.5">
-                    <div class="w-8 h-8 bg-[#E8F7F1] text-[#087F5B] font-bold rounded-full flex items-center justify-center text-xs">${r.name.charAt(0)}</div>
+                    <div class="w-8 h-8 bg-[#eefbfc] text-[#007d83] font-bold rounded-full flex items-center justify-center text-xs">${r.name.charAt(0)}</div>
                     <div>
                       <div class="font-semibold text-xs sm:text-sm text-[#17212B]">${r.name}</div>
                       <div class="flex items-center gap-2">
@@ -380,7 +380,7 @@ window.Pages.productDetail = (params) => {
     const mainImg = document.getElementById('main-product-img');
     if (mainImg) mainImg.src = product.images?.[idx] || product.image;
     document.querySelectorAll('.thumb-btn').forEach((btn, i) => {
-      btn.classList.toggle('border-[#087F5B]', i === idx);
+      btn.classList.toggle('border-[#007d83]', i === idx);
       btn.classList.toggle('border-[#E5E7EB]', i !== idx);
     });
   };
@@ -389,9 +389,9 @@ window.Pages.productDetail = (params) => {
     selectedVariant = product.variants[idx];
     selectedWeight = selectedVariant.weights ? selectedVariant.weights[0] : selectedVariant.weight;
     document.querySelectorAll('.variant-btn').forEach((btn, i) => {
-      btn.classList.toggle('border-[#087F5B]', i === idx);
-      btn.classList.toggle('bg-[#E8F7F1]', i === idx);
-      btn.classList.toggle('text-[#087F5B]', i === idx);
+      btn.classList.toggle('border-[#007d83]', i === idx);
+      btn.classList.toggle('bg-[#eefbfc]', i === idx);
+      btn.classList.toggle('text-[#007d83]', i === idx);
       btn.classList.toggle('border-[#E5E7EB]', i !== idx);
       btn.classList.toggle('bg-white', i !== idx);
       btn.classList.toggle('text-[#17212B]', i !== idx);
@@ -404,7 +404,7 @@ window.Pages.productDetail = (params) => {
         <label class="text-xs font-bold uppercase tracking-wider text-[#667085] block mb-2">Select Package Size:</label>
         <div class="flex flex-wrap gap-2">
           ${selectedVariant.weights.map((w, i) => `
-            <button class="weight-btn px-3.5 py-2 rounded-lg border text-xs sm:text-sm font-semibold transition-all ${i === 0 ? 'border-[#087F5B] bg-[#E8F7F1] text-[#087F5B]' : 'border-[#E5E7EB] bg-white text-[#17212B]'}" onclick="window.Pages.selectWeight('${w}')">
+            <button class="weight-btn px-3.5 py-2 rounded-lg border text-xs sm:text-sm font-semibold transition-all ${i === 0 ? 'border-[#007d83] bg-[#eefbfc] text-[#007d83]' : 'border-[#E5E7EB] bg-white text-[#17212B]'}" onclick="window.Pages.selectWeight('${w}')">
               ${w}
               <span class="block text-[11px] font-normal text-[#667085]">${window.Utils.formatPrice(selectedVariant.prices?.[w] || 0)}</span>
             </button>
@@ -418,9 +418,9 @@ window.Pages.productDetail = (params) => {
     selectedWeight = weight;
     document.querySelectorAll('.weight-btn').forEach(btn => {
       const isActive = btn.textContent.trim().startsWith(weight);
-      btn.classList.toggle('border-[#087F5B]', isActive);
-      btn.classList.toggle('bg-[#E8F7F1]', isActive);
-      btn.classList.toggle('text-[#087F5B]', isActive);
+      btn.classList.toggle('border-[#007d83]', isActive);
+      btn.classList.toggle('bg-[#eefbfc]', isActive);
+      btn.classList.toggle('text-[#007d83]', isActive);
       btn.classList.toggle('border-[#E5E7EB]', !isActive);
       btn.classList.toggle('bg-white', !isActive);
       btn.classList.toggle('text-[#17212B]', !isActive);
@@ -491,9 +491,9 @@ window.Pages.productDetail = (params) => {
     document.querySelectorAll('.tab-btn').forEach(btn => {
       const isActive = btn.getAttribute('onclick').includes(`'${tab}'`);
       btn.classList.toggle('active', isActive);
-      btn.classList.toggle('text-[#087F5B]', isActive);
+      btn.classList.toggle('text-[#007d83]', isActive);
       btn.classList.toggle('border-b-2', isActive);
-      btn.classList.toggle('border-[#087F5B]', isActive);
+      btn.classList.toggle('border-[#007d83]', isActive);
       btn.classList.toggle('bg-white', isActive);
       btn.classList.toggle('text-[#667085]', !isActive);
     });

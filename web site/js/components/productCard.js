@@ -13,13 +13,13 @@ window.ProductCard = {
 
     return `
     <div 
-      class="product-card bg-white rounded-xl border border-[#E5E7EB] hover:border-[#087F5B]/30 hover:shadow-md transition-all duration-200 flex flex-col justify-between group overflow-hidden relative cursor-pointer" 
+      class="product-card bg-white rounded-xl border border-[#93e2e4]/50 hover:border-[#007d83] hover:shadow-md transition-all duration-200 flex flex-col justify-between group overflow-hidden relative cursor-pointer" 
       data-product-id="${product.id}" 
       data-variant-id="${v.variantId}"
       onclick="window.Router.navigate('/product/${product.slug}')"
     >
       <!-- Top Badges & Wishlist -->
-      <div class="product-img-wrapper relative w-full aspect-[4/3] bg-[#F8FAF9] overflow-hidden">
+      <div class="product-img-wrapper relative w-full aspect-[4/3] bg-[#f4fdfe] overflow-hidden">
         <!-- Top-Left: Discrete Discount Badge -->
         ${discountPct > 0 ? `
           <span class="absolute top-2 left-2 z-10 bg-[#E5484D] text-white text-[10px] sm:text-[11px] font-bold px-1.5 sm:px-2 py-0.5 rounded shadow-2xs pointer-events-none">
@@ -52,13 +52,13 @@ window.ProductCard = {
       <div class="p-3.5 flex flex-col justify-between flex-1 bg-white">
         <div>
           <!-- Category / Short Info -->
-          <div class="text-[11px] font-medium text-[#087F5B] capitalize mb-1">
+          <div class="text-[11px] font-medium text-[#007d83] capitalize mb-1">
             ${product.subcategory ? product.subcategory.replace(/-/g, ' ') : product.category}
           </div>
 
           <!-- Product Title -->
           <h3 
-            class="text-[14px] sm:text-[15px] font-semibold text-[#17212B] group-hover:text-[#087F5B] transition-colors line-clamp-2 leading-snug mb-1.5" 
+            class="text-[14px] sm:text-[15px] font-semibold text-[#17212B] group-hover:text-[#007d83] transition-colors line-clamp-2 leading-snug mb-1.5" 
             title="${cleanName}"
           >
             ${cleanName}
@@ -66,7 +66,7 @@ window.ProductCard = {
 
           <!-- Price Row (20px bold price tightly paired with unit & strike old price) -->
           <div class="flex items-baseline gap-1.5 mb-1.5 flex-wrap">
-            <span class="text-base sm:text-[18px] font-bold text-[#17212B] tracking-tight">
+            <span class="text-base sm:text-[18px] font-bold text-[#007d83] tracking-tight">
               ${window.Utils.formatPrice(v.price)}
             </span>
             <span class="text-xs text-[#667085] font-normal">
@@ -89,7 +89,7 @@ window.ProductCard = {
         <div class="flex items-center gap-1.5 sm:gap-2 pt-2 sm:pt-2.5 border-t border-[#E5E7EB] mt-auto">
           <!-- Buy Now (Primary CTA) -->
           <button
-            class="btn-buy-now flex-1 h-8 sm:h-9 bg-[#FF7A18] hover:bg-[#EA680C] active:scale-98 text-white font-semibold text-[11px] sm:text-xs px-2 rounded-lg transition-colors flex items-center justify-center gap-1 shadow-2xs whitespace-nowrap"
+            class="btn-buy-now flex-1 h-8 sm:h-9 bg-[#007d83] hover:bg-[#006065] active:scale-98 text-white font-semibold text-[11px] sm:text-xs px-2 rounded-lg transition-colors flex items-center justify-center gap-1 shadow-2xs whitespace-nowrap"
             onclick="event.stopPropagation(); window.ProductCard.buyNow(this, '${product.id}', '${v.variantId}')"
             title="Buy Now"
           >
@@ -99,7 +99,7 @@ window.ProductCard = {
 
           <!-- Cart Button (Compact secondary) -->
           <button
-            class="w-8 sm:w-9 h-8 sm:h-9 bg-[#F8FAF9] hover:bg-[#E8F7F1] text-[#17212B] hover:text-[#087F5B] border border-[#E5E7EB] hover:border-[#087F5B]/30 rounded-lg flex items-center justify-center transition-colors active:scale-95 flex-shrink-0"
+            class="w-8 sm:w-9 h-8 sm:h-9 bg-[#93e2e4]/20 hover:bg-[#93e2e4]/45 text-[#007d83] border border-[#93e2e4]/80 hover:border-[#007d83] rounded-lg flex items-center justify-center transition-colors active:scale-95 flex-shrink-0"
             onclick="event.stopPropagation(); window.ProductCard.quickAdd(this, '${product.id}', '${v.variantId}')"
             title="Add to Cart"
             aria-label="Add to Cart"
@@ -123,11 +123,11 @@ window.ProductCard = {
 
     // Subtle button feedback
     const originalContent = btn.innerHTML;
-    btn.innerHTML = window.Icons ? window.Icons.check(18, 'text-[#087F5B]') : '✓';
-    btn.classList.add('bg-[#E8F7F1]', 'border-[#087F5B]');
+    btn.innerHTML = window.Icons ? window.Icons.check(18, 'text-[#007d83]') : '✓';
+    btn.classList.add('bg-[#eefbfc]', 'border-[#007d83]');
     setTimeout(() => {
       btn.innerHTML = originalContent;
-      btn.classList.remove('bg-[#E8F7F1]', 'border-[#087F5B]');
+      btn.classList.remove('bg-[#eefbfc]', 'border-[#007d83]');
     }, 900);
 
     if (window.Toast) {

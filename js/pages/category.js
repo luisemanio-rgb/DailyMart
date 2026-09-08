@@ -25,19 +25,19 @@ window.Pages.category = (params) => {
         <div class="max-w-7xl mx-auto px-4 py-4 sm:py-5">
           <div class="flex items-center justify-between gap-4">
             <div class="flex items-center gap-3.5">
-              <button onclick="window.history.back()" class="w-9 h-9 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center text-[#667085] hover:text-[#087F5B] hover:border-[#087F5B] transition-colors" title="Back">
+              <button onclick="window.history.back()" class="w-9 h-9 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center text-[#667085] hover:text-[#007d83] hover:border-[#007d83] transition-colors" title="Back">
                 ${window.Icons ? window.Icons.render('arrowLeft', 'w-4 h-4') : '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>'}
               </button>
               <div>
                 <nav class="flex items-center gap-1.5 text-xs text-[#667085] mb-0.5">
-                  <a href="#/" class="hover:text-[#087F5B]">Home</a>
+                  <a href="#/" class="hover:text-[#007d83]">Home</a>
                   <span>/</span>
                   <span class="text-[#17212B] font-medium">Categories</span>
                 </nav>
                 <h1 class="text-xl sm:text-2xl font-bold text-[#17212B] leading-tight">${category.name}</h1>
               </div>
             </div>
-            <div class="text-xs text-[#087F5B] bg-[#E8F7F1] border border-[#087F5B]/20 rounded-md px-3 py-1 font-semibold hidden xs:block">
+            <div class="text-xs text-[#007d83] bg-[#eefbfc] border border-[#007d83]/20 rounded-md px-3 py-1 font-semibold hidden xs:block">
               ${products.length} Products
             </div>
           </div>
@@ -49,9 +49,9 @@ window.Pages.category = (params) => {
         <!-- Subcategory chips -->
         ${category.subcategories && category.subcategories.length > 0 ? `
         <div class="flex gap-2 overflow-x-auto pb-3 mb-6 scrollbar-hide">
-          <button onclick="window.Router.navigate('/category/${slug}')" class="flex-shrink-0 px-3.5 py-1.5 bg-[#087F5B] text-white text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap shadow-xs">All ${category.name}</button>
+          <button onclick="window.Router.navigate('/category/${slug}')" class="flex-shrink-0 px-3.5 py-1.5 bg-[#007d83] text-white text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap shadow-xs">All ${category.name}</button>
           ${category.subcategories.map(sub => `
-            <button class="subcategory-chip flex-shrink-0 px-3.5 py-1.5 bg-white border border-[#E5E7EB] text-[#667085] hover:text-[#17212B] hover:border-[#087F5B]/50 text-xs sm:text-sm font-medium rounded-lg whitespace-nowrap transition-colors" onclick="window.Router.navigate('/category/${slug}/${sub.slug}')">
+            <button class="subcategory-chip flex-shrink-0 px-3.5 py-1.5 bg-white border border-[#E5E7EB] text-[#667085] hover:text-[#17212B] hover:border-[#007d83]/50 text-xs sm:text-sm font-medium rounded-lg whitespace-nowrap transition-colors" onclick="window.Router.navigate('/category/${slug}/${sub.slug}')">
               ${sub.name}
             </button>
           `).join('')}
@@ -61,15 +61,15 @@ window.Pages.category = (params) => {
         <!-- Sort & Filter Bar -->
         <div class="flex items-center justify-between gap-4 mb-6 bg-white p-3 rounded-xl border border-[#E5E7EB]">
           <div class="flex items-center gap-3">
-            <button id="toggle-filters-btn" class="flex items-center gap-2 px-3 py-1.5 bg-[#F8FAF9] border border-[#E5E7EB] rounded-lg text-xs sm:text-sm font-semibold text-[#17212B] hover:bg-gray-100 transition-colors md:hidden" onclick="window.toggleCategoryFilters()">
-              ${window.Icons ? window.Icons.render('filter', 'w-3.5 h-3.5 text-[#087F5B]') : ''}
+            <button id="toggle-filters-btn" class="flex items-center gap-2 px-3 py-1.5 bg-[#f4fdfe] border border-[#E5E7EB] rounded-lg text-xs sm:text-sm font-semibold text-[#17212B] hover:bg-gray-100 transition-colors md:hidden" onclick="window.toggleCategoryFilters()">
+              ${window.Icons ? window.Icons.render('filter', 'w-3.5 h-3.5 text-[#007d83]') : ''}
               <span>Filters</span>
             </button>
             <span class="text-xs sm:text-sm font-medium text-[#667085]" id="result-count">Showing <strong class="text-[#17212B]">${filteredProducts.length}</strong> products</span>
           </div>
           <div class="flex items-center gap-2">
             <label class="text-xs sm:text-sm text-[#667085] font-medium hidden sm:block">Sort by:</label>
-            <select id="sort-select" class="bg-white border border-[#E5E7EB] text-[#17212B] text-xs sm:text-sm font-medium rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#087F5B]" onchange="window.sortCategory(this.value)">
+            <select id="sort-select" class="bg-white border border-[#E5E7EB] text-[#17212B] text-xs sm:text-sm font-medium rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#007d83]" onchange="window.sortCategory(this.value)">
               <option value="popular">Popularity</option>
               <option value="newest">New Arrivals</option>
               <option value="price-asc">Price: Low to High</option>
@@ -103,7 +103,7 @@ window.Pages.category = (params) => {
               ${filteredProducts.length > 0
                 ? filteredProducts.map(p => window.ProductCard.render(p)).join('')
                 : `<div class="col-span-full bg-white rounded-xl border border-[#E5E7EB] text-center py-16 px-4">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#E8F7F1] flex items-center justify-center text-[#087F5B]">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#eefbfc] flex items-center justify-center text-[#007d83]">
                       ${window.Icons ? window.Icons.render('search', 'w-6 h-6') : ''}
                     </div>
                     <h3 class="font-bold text-[#17212B] text-base">No products match your criteria</h3>
@@ -131,7 +131,7 @@ window.Pages.category = (params) => {
     if (grid) {
       grid.innerHTML = filteredProducts.length > 0
         ? filteredProducts.map(p => window.ProductCard.render(p)).join('')
-        : `<div class="col-span-full bg-white rounded-xl border border-[#E5E7EB] text-center py-16 px-4"><div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#E8F7F1] flex items-center justify-center text-[#087F5B]">${window.Icons ? window.Icons.render('search', 'w-6 h-6') : ''}</div><h3 class="font-bold text-[#17212B] text-base">No matching products</h3><p class="text-[#667085] text-xs sm:text-sm mt-1">Try adjusting your filters</p></div>`;
+        : `<div class="col-span-full bg-white rounded-xl border border-[#E5E7EB] text-center py-16 px-4"><div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#eefbfc] flex items-center justify-center text-[#007d83]">${window.Icons ? window.Icons.render('search', 'w-6 h-6') : ''}</div><h3 class="font-bold text-[#17212B] text-base">No matching products</h3><p class="text-[#667085] text-xs sm:text-sm mt-1">Try adjusting your filters</p></div>`;
     }
   };
 
@@ -193,21 +193,21 @@ window.Pages.subcategory = (params) => {
         <div class="max-w-7xl mx-auto px-4 py-4 sm:py-5">
           <div class="flex items-center justify-between gap-4">
             <div class="flex items-center gap-3.5">
-              <button onclick="window.history.back()" class="w-9 h-9 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center text-[#667085] hover:text-[#087F5B] hover:border-[#087F5B] transition-colors" title="Back">
+              <button onclick="window.history.back()" class="w-9 h-9 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center text-[#667085] hover:text-[#007d83] hover:border-[#007d83] transition-colors" title="Back">
                 ${window.Icons ? window.Icons.render('arrowLeft', 'w-4 h-4') : '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>'}
               </button>
               <div>
                 <nav class="flex items-center gap-1.5 text-xs text-[#667085] mb-0.5">
-                  <a href="#/" class="hover:text-[#087F5B]">Home</a>
+                  <a href="#/" class="hover:text-[#007d83]">Home</a>
                   <span>/</span>
-                  <a href="#/category/${slug}" class="hover:text-[#087F5B]">${category.name}</a>
+                  <a href="#/category/${slug}" class="hover:text-[#007d83]">${category.name}</a>
                   <span>/</span>
                   <span class="text-[#17212B] font-medium">${subcategory.name}</span>
                 </nav>
                 <h1 class="text-xl sm:text-2xl font-bold text-[#17212B] leading-tight">${subcategory.name} Varieties</h1>
               </div>
             </div>
-            <div class="text-xs text-[#087F5B] bg-[#E8F7F1] border border-[#087F5B]/20 rounded-md px-3 py-1 font-semibold hidden xs:block">
+            <div class="text-xs text-[#007d83] bg-[#eefbfc] border border-[#007d83]/20 rounded-md px-3 py-1 font-semibold hidden xs:block">
               ${products.length} Products
             </div>
           </div>
@@ -223,7 +223,7 @@ window.Pages.subcategory = (params) => {
           <div class="flex flex-wrap gap-2">
             ${origins.map(orig => `
               <button
-                class="origin-chip px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${orig === activeOrigin ? 'bg-[#087F5B] text-white shadow-xs' : 'bg-[#F8FAF9] text-[#17212B] hover:bg-gray-100 border border-[#E5E7EB]'}"
+                class="origin-chip px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${orig === activeOrigin ? 'bg-[#007d83] text-white shadow-xs' : 'bg-[#f4fdfe] text-[#17212B] hover:bg-gray-100 border border-[#E5E7EB]'}"
                 onclick="window.filterSubByOrigin('${orig}')"
               >
                 ${getOriginLabel(orig)}
@@ -238,7 +238,7 @@ window.Pages.subcategory = (params) => {
           <span class="text-xs sm:text-sm font-medium text-[#667085]" id="sub-result-count">Showing <strong class="text-[#17212B]">${filteredProducts.length}</strong> items</span>
           <div class="flex items-center gap-2">
             <label class="text-xs sm:text-sm text-[#667085] hidden sm:inline font-medium">Sort by:</label>
-            <select id="sub-sort-select" class="bg-white border border-[#E5E7EB] text-[#17212B] text-xs sm:text-sm font-medium rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#087F5B]" onchange="window.sortSubcategory(this.value)">
+            <select id="sub-sort-select" class="bg-white border border-[#E5E7EB] text-[#17212B] text-xs sm:text-sm font-medium rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#007d83]" onchange="window.sortSubcategory(this.value)">
               <option value="popular">Popularity</option>
               <option value="price-asc">Price: Low to High</option>
               <option value="price-desc">Price: High to Low</option>
@@ -256,11 +256,11 @@ window.Pages.subcategory = (params) => {
               ${filteredProducts.length > 0
                 ? filteredProducts.map(p => window.ProductCard.render(p)).join('')
                 : `<div class="col-span-full bg-white rounded-xl border border-[#E5E7EB] text-center py-16 px-4">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#E8F7F1] flex items-center justify-center text-[#087F5B]">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#eefbfc] flex items-center justify-center text-[#007d83]">
                       ${window.Icons ? window.Icons.render('search', 'w-6 h-6') : ''}
                     </div>
                     <h3 class="font-bold text-[#17212B]">No products found for this selection</h3>
-                    <button onclick="window.filterSubByOrigin('all')" class="mt-4 bg-[#087F5B] hover:bg-[#056B4D] text-white px-5 py-2 rounded-lg text-xs font-semibold">Show All Varieties</button>
+                    <button onclick="window.filterSubByOrigin('all')" class="mt-4 bg-[#007d83] hover:bg-[#006065] text-white px-5 py-2 rounded-lg text-xs font-semibold">Show All Varieties</button>
                   </div>`
               }
             </div>
@@ -288,7 +288,7 @@ window.Pages.subcategory = (params) => {
     }
     document.querySelectorAll('.origin-chip').forEach(btn => {
       const isSelected = btn.getAttribute('onclick')?.includes(`'${origin}'`);
-      btn.className = `origin-chip px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${isSelected ? 'bg-[#087F5B] text-white shadow-xs' : 'bg-[#F8FAF9] text-[#17212B] hover:bg-gray-100 border border-[#E5E7EB]'}`;
+      btn.className = `origin-chip px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${isSelected ? 'bg-[#007d83] text-white shadow-xs' : 'bg-[#f4fdfe] text-[#17212B] hover:bg-gray-100 border border-[#E5E7EB]'}`;
     });
   };
 

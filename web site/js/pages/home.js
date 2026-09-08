@@ -16,20 +16,20 @@ window.Pages.home = () => {
   <div class="page-enter pb-16">
 
     <!-- 1. HERO BANNER (Clean & Professional Composition) -->
-    <section class="bg-gradient-to-b from-[#E8F7F1]/60 via-white to-white border-b border-[#E5E7EB]/60 py-10 sm:py-16">
+    <section class="bg-gradient-to-b from-[#eefbfc] via-white to-white border-b border-[#E5E7EB]/60 py-10 sm:py-16">
       <div class="max-w-7xl mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           <!-- Hero Left Content -->
           <div class="lg:col-span-7 text-left">
-            <div class="inline-flex items-center gap-2 bg-[#E8F7F1] border border-[#087F5B]/20 rounded-full px-3 py-1 text-xs font-semibold text-[#087F5B] mb-5">
+            <div class="inline-flex items-center gap-2 bg-[#eefbfc] border border-[#93e2e4] rounded-full px-3 py-1 text-xs font-semibold text-[#007d83] mb-5">
               <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
               <span>Same-day express delivery across Bangladesh</span>
             </div>
 
             <h1 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#17212B] leading-[1.15] tracking-tight mb-4">
               Fresh Groceries,<br/>
-              <span class="text-[#087F5B]">Delivered to Your Door</span>
+              <span class="text-[#007d83]">Delivered to Your Door</span>
             </h1>
 
             <p class="text-sm sm:text-base text-[#667085] mb-8 max-w-xl leading-relaxed">
@@ -39,7 +39,7 @@ window.Pages.home = () => {
             <div class="flex flex-wrap items-center gap-3">
               <button 
                 onclick="window.Router.navigate('/categories')" 
-                class="bg-[#087F5B] hover:bg-[#056B4D] active:scale-98 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm"
+                class="bg-[#007d83] hover:bg-[#006065] active:scale-98 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm"
               >
                 <span>Shop Now</span>
                 <span>${icons.arrowRight ? icons.arrowRight(16) : '→'}</span>
@@ -47,7 +47,7 @@ window.Pages.home = () => {
 
               <button 
                 onclick="window.Router.navigate('/categories')" 
-                class="bg-white hover:bg-[#F8FAF9] active:scale-98 text-[#17212B] border border-[#E5E7EB] hover:border-[#087F5B]/40 font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2"
+                class="bg-white hover:bg-[#f4fdfe] active:scale-98 text-[#17212B] border border-[#E5E7EB] hover:border-[#007d83] font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2"
               >
                 <span>Explore Categories</span>
               </button>
@@ -73,7 +73,7 @@ window.Pages.home = () => {
           <!-- Hero Right Showcase Imagery -->
           <div class="lg:col-span-5">
             <div class="relative grid grid-cols-2 gap-3 p-3 bg-white rounded-2xl border border-[#E5E7EB] shadow-card">
-              <div class="rounded-xl overflow-hidden h-40 sm:h-48 bg-[#F8FAF9]">
+              <div class="rounded-xl overflow-hidden h-40 sm:h-48 bg-[#f4fdfe]">
                 <img 
                   src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80" 
                   alt="Fresh Vegetables" 
@@ -81,7 +81,7 @@ window.Pages.home = () => {
                   loading="lazy"
                 />
               </div>
-              <div class="rounded-xl overflow-hidden h-40 sm:h-48 bg-[#F8FAF9]">
+              <div class="rounded-xl overflow-hidden h-40 sm:h-48 bg-[#f4fdfe]">
                 <img 
                   src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=500&q=80" 
                   alt="Fresh Fruits" 
@@ -89,7 +89,7 @@ window.Pages.home = () => {
                   loading="lazy"
                 />
               </div>
-              <div class="col-span-2 rounded-xl overflow-hidden h-36 sm:h-44 bg-[#F8FAF9] relative">
+              <div class="col-span-2 rounded-xl overflow-hidden h-36 sm:h-44 bg-[#f4fdfe] relative">
                 <img 
                   src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=700&q=80" 
                   alt="Grocery Marketplace" 
@@ -111,13 +111,13 @@ window.Pages.home = () => {
     <section class="max-w-7xl mx-auto px-4 py-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         ${[
-          { icon: icons.truck ? icons.truck(24, 'text-[#087F5B]') : '', title: 'Free Delivery', desc: 'On orders over ৳1000' },
-          { icon: icons.checkCircle ? icons.checkCircle(24, 'text-[#087F5B]') : '', title: 'Quality Assured', desc: '100% fresh, farm sourced' },
-          { icon: icons.rotateCcw ? icons.rotateCcw(24, 'text-[#087F5B]') : '', title: '24-Hour Return', desc: 'Easy instant replacement' },
-          { icon: icons.shield ? icons.shield(24, 'text-[#087F5B]') : '', title: 'Secure Payments', desc: 'bKash, Nagad, Card & COD' },
+          { icon: icons.truck ? icons.truck(24, 'text-[#007d83]') : '', title: 'Free Delivery', desc: 'On orders over ৳1000' },
+          { icon: icons.checkCircle ? icons.checkCircle(24, 'text-[#007d83]') : '', title: 'Quality Assured', desc: '100% fresh, farm sourced' },
+          { icon: icons.rotateCcw ? icons.rotateCcw(24, 'text-[#007d83]') : '', title: '24-Hour Return', desc: 'Easy instant replacement' },
+          { icon: icons.shield ? icons.shield(24, 'text-[#007d83]') : '', title: 'Secure Payments', desc: 'bKash, Nagad, Card & COD' },
         ].map(item => `
-          <div class="bg-white rounded-xl p-4 border border-[#E5E7EB] shadow-subtle flex items-center gap-3.5 hover:border-[#087F5B]/30 transition-colors">
-            <div class="w-11 h-11 rounded-lg bg-[#E8F7F1] flex items-center justify-center flex-shrink-0">
+          <div class="bg-white rounded-xl p-4 border border-[#E5E7EB] shadow-subtle flex items-center gap-3.5 hover:border-[#007d83] transition-colors">
+            <div class="w-11 h-11 rounded-lg bg-[#eefbfc] flex items-center justify-center flex-shrink-0">
               ${item.icon}
             </div>
             <div>
@@ -138,7 +138,7 @@ window.Pages.home = () => {
         </div>
         <button 
           onclick="window.Router.navigate('/categories')" 
-          class="text-xs sm:text-sm font-semibold text-[#087F5B] hover:text-[#056B4D] flex items-center gap-1 transition-colors"
+          class="text-xs sm:text-sm font-semibold text-[#007d83] hover:text-[#006065] flex items-center gap-1 transition-colors"
         >
           <span>View All</span>
           <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
@@ -155,7 +155,7 @@ window.Pages.home = () => {
       <div class="bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-card">
         <div class="flex items-end justify-between mb-6 pb-2 border-b border-[#E5E7EB]">
           <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg bg-[#FFF4EB] flex items-center justify-center text-[#FF7A18]">
+            <div class="w-8 h-8 rounded-lg bg-[#eefbfc] flex items-center justify-center text-[#007d83]">
               ${icons.tag ? icons.tag(18) : '🏷️'}
             </div>
             <div>
@@ -165,7 +165,7 @@ window.Pages.home = () => {
           </div>
           <button 
             onclick="window.Router.navigate('/deals')" 
-            class="text-xs sm:text-sm font-semibold text-[#FF7A18] hover:text-[#EA680C] flex items-center gap-1 transition-colors"
+            class="text-xs sm:text-sm font-semibold text-[#007d83] hover:text-[#006065] flex items-center gap-1 transition-colors"
           >
             <span>All Deals</span>
             <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
@@ -187,7 +187,7 @@ window.Pages.home = () => {
         </div>
         <button 
           onclick="window.Router.navigate('/categories')" 
-          class="text-xs sm:text-sm font-semibold text-[#087F5B] hover:text-[#056B4D] flex items-center gap-1 transition-colors"
+          class="text-xs sm:text-sm font-semibold text-[#007d83] hover:text-[#006065] flex items-center gap-1 transition-colors"
         >
           <span>Explore All</span>
           <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
@@ -208,7 +208,7 @@ window.Pages.home = () => {
         </div>
         <button 
           onclick="window.Router.navigate('/category/vegetables')" 
-          class="text-xs sm:text-sm font-semibold text-[#087F5B] hover:text-[#056B4D] flex items-center gap-1 transition-colors"
+          class="text-xs sm:text-sm font-semibold text-[#007d83] hover:text-[#006065] flex items-center gap-1 transition-colors"
         >
           <span>View Vegetables</span>
           <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
@@ -229,7 +229,7 @@ window.Pages.home = () => {
         </div>
         <button 
           onclick="window.Router.navigate('/category/fruits')" 
-          class="text-xs sm:text-sm font-semibold text-[#087F5B] hover:text-[#056B4D] flex items-center gap-1 transition-colors"
+          class="text-xs sm:text-sm font-semibold text-[#007d83] hover:text-[#006065] flex items-center gap-1 transition-colors"
         >
           <span>View Fruits</span>
           <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
@@ -250,7 +250,7 @@ window.Pages.home = () => {
         </div>
         <button 
           onclick="window.Router.navigate('/category/grocery')" 
-          class="text-xs sm:text-sm font-semibold text-[#087F5B] hover:text-[#056B4D] flex items-center gap-1 transition-colors"
+          class="text-xs sm:text-sm font-semibold text-[#007d83] hover:text-[#006065] flex items-center gap-1 transition-colors"
         >
           <span>View Grocery</span>
           <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
@@ -264,7 +264,7 @@ window.Pages.home = () => {
 
     <!-- 9. PROMOTIONAL EXPRESS BANNER (Restrained & Trustworthy) -->
     <section class="max-w-7xl mx-auto px-4 py-8">
-      <div class="bg-[#087F5B] text-white rounded-2xl p-6 sm:p-10 relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+      <div class="bg-[#007d83] text-white rounded-2xl p-6 sm:p-10 relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
         <div class="max-w-xl z-10 text-left">
           <span class="text-xs font-semibold text-emerald-200 tracking-wider uppercase">Order by 2:00 PM</span>
           <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-2 leading-tight">Same-Day Express Grocery Delivery</h3>
@@ -274,7 +274,7 @@ window.Pages.home = () => {
         </div>
         <button 
           onclick="window.Router.navigate('/categories')" 
-          class="z-10 bg-[#FF7A18] hover:bg-[#EA680C] active:scale-98 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm flex-shrink-0"
+          class="z-10 bg-white text-[#007d83] hover:bg-gray-100 active:scale-98 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm flex-shrink-0"
         >
           <span>Order Fresh Today</span>
           <span>${icons.arrowRight ? icons.arrowRight(16) : '→'}</span>
@@ -291,13 +291,13 @@ window.Pages.home = () => {
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         ${[
-          { icon: icons.checkCircle ? icons.checkCircle(26, 'text-[#087F5B]') : '', title: '100% Quality Checked', desc: 'Every piece of fruit and vegetable is manually inspected before packaging.' },
-          { icon: icons.truck ? icons.truck(26, 'text-[#087F5B]') : '', title: 'Fresh Daily Logistics', desc: 'Same-day delivery in insulated bags to preserve optimal freshness.' },
-          { icon: icons.tag ? icons.tag(26, 'text-[#087F5B]') : '', title: 'Fair Market Pricing', desc: 'Direct sourcing removes middlemen, ensuring fair rates for you and farmers.' },
-          { icon: icons.headset ? icons.headset(26, 'text-[#087F5B]') : '', title: 'Dedicated BD Support', desc: 'Friendly customer service available via call and WhatsApp 24/7.' }
+          { icon: icons.checkCircle ? icons.checkCircle(26, 'text-[#007d83]') : '', title: '100% Quality Checked', desc: 'Every piece of fruit and vegetable is manually inspected before packaging.' },
+          { icon: icons.truck ? icons.truck(26, 'text-[#007d83]') : '', title: 'Fresh Daily Logistics', desc: 'Same-day delivery in insulated bags to preserve optimal freshness.' },
+          { icon: icons.tag ? icons.tag(26, 'text-[#007d83]') : '', title: 'Fair Market Pricing', desc: 'Direct sourcing removes middlemen, ensuring fair rates for you and farmers.' },
+          { icon: icons.headset ? icons.headset(26, 'text-[#007d83]') : '', title: 'Dedicated BD Support', desc: 'Friendly customer service available via call and WhatsApp 24/7.' }
         ].map(pillar => `
           <div class="bg-white rounded-xl p-5 border border-[#E5E7EB] shadow-subtle text-left">
-            <div class="w-12 h-12 rounded-lg bg-[#E8F7F1] flex items-center justify-center mb-4">
+            <div class="w-12 h-12 rounded-lg bg-[#eefbfc] flex items-center justify-center mb-4">
               ${pillar.icon}
             </div>
             <h4 class="font-bold text-[#17212B] text-base mb-1.5">${pillar.title}</h4>
