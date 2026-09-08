@@ -8,8 +8,10 @@ window.Pages.orderConfirmation = (params) => {
   if (!order) {
     content.innerHTML = `
     <div class="max-w-7xl mx-auto px-4 py-20 text-center page-enter">
-      <div class="text-8xl mb-6">❌</div>
-      <h2 class="text-2xl font-bold text-gray-700 mb-3">Order Not Found</h2>
+      <div class="w-16 h-16 rounded-full bg-red-50 flex items-center justify-center text-[#E5484D] mb-3 mx-auto">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </div>
+      <h2 class="text-xl font-bold text-[#17212B] mb-2">Order Not Found</h2>
       <button onclick="window.Router.navigate('/')" class="bg-emerald-600 text-white px-8 py-3 rounded-xl font-semibold">Back to Home</button>
     </div>
     `;
@@ -23,7 +25,7 @@ window.Pages.orderConfirmation = (params) => {
   <div class="page-enter max-w-4xl mx-auto px-4 py-10">
 
     <!-- Success Banner -->
-    <div class="bg-gradient-to-br from-emerald-600 to-green-700 rounded-2xl p-8 text-center text-white mb-8 shadow-xl">
+    <div class="bg-[#087F5B] rounded-xl p-8 text-center text-white mb-8 shadow-xl">
       <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
         <span class="text-4xl">✓</span>
       </div>
@@ -36,7 +38,7 @@ window.Pages.orderConfirmation = (params) => {
     </div>
 
     <!-- Order Tracking -->
-    <div class="bg-white rounded-2xl shadow-card p-6 mb-6">
+    <div class="bg-white rounded-xl shadow-card p-6 mb-6">
       <h2 class="font-bold text-gray-800 text-lg mb-6">Order Tracking</h2>
       <div class="relative">
         <div class="absolute top-5 left-5 right-5 h-0.5 bg-gray-100 hidden sm:block"></div>
@@ -61,7 +63,7 @@ window.Pages.orderConfirmation = (params) => {
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
       <!-- Delivery Details -->
-      <div class="bg-white rounded-2xl shadow-card p-6">
+      <div class="bg-white rounded-xl shadow-card p-6">
         <h3 class="font-bold text-gray-800 mb-4">Delivery Details</h3>
         <div class="space-y-2 text-sm">
           <div class="flex gap-2">
@@ -88,7 +90,7 @@ window.Pages.orderConfirmation = (params) => {
       </div>
 
       <!-- Order Summary -->
-      <div class="bg-white rounded-2xl shadow-card p-6">
+      <div class="bg-white rounded-xl shadow-card p-6">
         <h3 class="font-bold text-gray-800 mb-4">Order Summary</h3>
         <div class="space-y-3 max-h-48 overflow-y-auto mb-4">
           ${order.cart.map(item => `
@@ -121,7 +123,7 @@ window.Pages.orderConfirmation = (params) => {
 
     <!-- Actions -->
     <div class="flex flex-wrap gap-4 justify-center">
-      <button onclick="window.Router.navigate('/')" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3 rounded-xl transition-colors">
+      <button onclick="window.Router.navigate('/')" class="flex items-center gap-2 bg-[#087F5B] hover:bg-[#056B4D] text-white font-bold px-8 py-3 rounded-xl transition-colors">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
         Continue Shopping
       </button>

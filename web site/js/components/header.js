@@ -1,7 +1,5 @@
-// DailyMart BD — Header Component
+// DailyMart BD — Production Header Component
 window.Header = (() => {
-  let mobileMenuOpen = false;
-
   const openSidebar = () => {
     const sidebarDrawer = document.getElementById('sidebar-drawer');
     const sidebarBackdrop = document.getElementById('sidebar-drawer-backdrop');
@@ -25,7 +23,7 @@ window.Header = (() => {
     setTimeout(() => {
       sidebarBackdrop.classList.add('hidden');
       document.body.style.overflow = '';
-    }, 300);
+    }, 280);
   };
 
   const render = () => {
@@ -33,147 +31,187 @@ window.Header = (() => {
     if (!root) return;
     const cartCount = window.Store.getCartCount();
     const user = window.Store.getUser();
+    const icons = window.Icons || {};
 
     root.innerHTML = `
-    <header id="site-header" class="bg-white shadow-sm">
-      <!-- Top bar -->
-      <div class="bg-emerald-800 text-white text-xs py-2 px-4">
+    <header id="site-header" class="bg-white border-b border-[#E5E7EB] sticky top-0 z-50">
+      
+      <!-- 1. Top Utility Bar (Desktop) -->
+      <div class="bg-[#056B4D] text-white text-xs py-1.5 px-4 hidden sm:block border-b border-emerald-900/20">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div class="flex items-center gap-4">
-            <span class="flex items-center gap-1.5">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              Delivering across Bangladesh
+          <div class="flex items-center gap-5 text-[12px]">
+            <span class="flex items-center gap-1.5 text-emerald-100">
+              ${icons.mapPin ? icons.mapPin(14, 'text-[#FF7A18]') : ''}
+              <span>Delivering across Bangladesh</span>
             </span>
-            <span class="hidden sm:flex items-center gap-1.5">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-              +880 1700-000000
+            <span class="text-emerald-300/40">•</span>
+            <span class="flex items-center gap-1.5 text-emerald-100">
+              ${icons.phone ? icons.phone(13, 'text-emerald-200') : ''}
+              <span>+880 1700-000000</span>
             </span>
+            <span class="text-emerald-300/40">•</span>
+            <span class="text-emerald-100">Free delivery on orders over ৳1000</span>
           </div>
-          <div class="flex items-center gap-3">
-            <span class="hidden sm:inline">Free delivery on orders over ৳1000</span>
-            <a href="#/admin" class="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1 shadow-sm">
-              <span>➕</span> Add Product
+
+          <div class="flex items-center gap-4 text-[12px]">
+            <a href="#/admin" class="inline-flex items-center gap-1 text-emerald-100 hover:text-white font-medium transition-colors">
+              ${icons.plus ? icons.plus(13, 'text-[#FF7A18]') : ''}
+              <span>Add Product</span>
             </a>
+            <span class="text-emerald-300/40">•</span>
             ${user ? `
-              <div class="hidden sm:flex items-center gap-2">
-                <a href="#/account" class="text-emerald-200 hover:text-white font-semibold transition-colors flex items-center gap-1 text-xs">
-                  <span>👤</span> Hi, ${(user.name || 'User').split(' ')[0]}
+              <div class="flex items-center gap-2">
+                <a href="#/account" class="text-emerald-100 hover:text-white font-medium transition-colors flex items-center gap-1">
+                  ${icons.user ? icons.user(13, 'text-emerald-200') : ''}
+                  <span>Hi, ${(user.name || 'User').split(' ')[0]}</span>
                 </a>
-                <span class="text-emerald-400">•</span>
-                <button onclick="window.Header.logout()" class="text-xs text-emerald-300 hover:text-white transition-colors underline">Sign Out</button>
+                <span class="text-emerald-300/40">•</span>
+                <button onclick="window.Header.logout()" class="text-emerald-200 hover:text-white underline text-[11px] transition-colors">Sign Out</button>
               </div>
             ` : `
-              <a href="#/login" class="hover:text-emerald-200 transition-colors hidden sm:inline font-semibold text-xs">🔑 Login / Register</a>
+              <a href="#/login" class="text-emerald-100 hover:text-white font-medium transition-colors flex items-center gap-1">
+                ${icons.user ? icons.user(13, 'text-emerald-200') : ''}
+                <span>Login / Register</span>
+              </a>
             `}
           </div>
         </div>
       </div>
 
-      <!-- Main header -->
-      <div class="max-w-7xl mx-auto px-4 py-2.5 sm:py-3">
-        <div class="flex items-center justify-between gap-3 md:gap-6">
+      <!-- 2. Main Header Row -->
+      <div class="max-w-7xl mx-auto px-4 py-3 sm:py-3.5">
+        <div class="flex items-center justify-between gap-4 lg:gap-8">
           
-          <!-- Left: Hamburger & Brand Logo -->
-          <div class="flex items-center gap-2 sm:gap-3">
-            <button id="mobile-menu-btn" class="p-2 -ml-1.5 rounded-xl hover:bg-emerald-50 text-gray-700 hover:text-emerald-700 transition-colors flex items-center gap-1.5" aria-label="Main Menu" title="Open Menu">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <!-- Brand Logo & Mobile Menu Toggle -->
+          <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            <button id="mobile-menu-btn" class="p-2 -ml-1.5 rounded-lg text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors flex items-center justify-center active:scale-95" aria-label="Main Menu" title="Open Navigation Menu">
+              ${icons.menu ? icons.menu(22) : '☰'}
             </button>
 
-            <a href="#/" class="flex items-center gap-2.5 flex-shrink-0 group">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-                <span class="text-white font-black text-lg sm:text-xl">D</span>
+            <!-- Production Logo -->
+            <a href="#/" class="flex items-center gap-2 group flex-shrink-0">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 bg-[#087F5B] rounded-lg flex items-center justify-center shadow-xs group-hover:bg-[#056B4D] transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 20A7 7 0 0 1 4 13c0-4 3-8 8-11 5 3 8 7 8 11a7 7 0 0 1-7 7Z"></path>
+                  <path d="M12 2v20"></path>
+                </svg>
               </div>
-              <div>
-                <div class="font-black text-gray-900 text-base sm:text-lg leading-tight tracking-tight">DailyMart <span class="text-emerald-600">BD</span></div>
-                <div class="text-[10px] text-gray-400 font-medium leading-tight hidden xs:block">Fresh. Fair. Daily.</div>
+              <div class="flex flex-col">
+                <div class="flex items-center gap-1">
+                  <span class="font-extrabold text-xl sm:text-[22px] text-[#17212B] tracking-tight leading-none">DailyMart</span>
+                  <span class="bg-[#FF7A18] text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none">BD</span>
+                </div>
+                <span class="text-[10px] font-medium text-[#667085] tracking-wider leading-tight hidden xs:block mt-0.5">Fresh. Fair. Daily.</span>
               </div>
             </a>
           </div>
 
-          <!-- Center: Desktop Search Bar (60-30-10 Golden Harmony) -->
-          <div class="hidden md:block flex-1 max-w-xl mx-2">
+          <!-- Desktop Search Bar (Large & Elegant) -->
+          <div class="hidden md:block flex-1 max-w-2xl mx-2">
             <div class="relative" id="search-wrapper">
-              <div class="relative flex items-center bg-white rounded-full shadow-sm border border-gray-200/90 hover:border-emerald-400 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-100 transition-all p-1 pl-5">
+              <div class="relative flex items-center bg-white rounded-lg border border-[#E5E7EB] focus-within:border-[#087F5B] focus-within:ring-2 focus-within:ring-[#087F5B]/15 transition-all p-1 pl-3.5">
+                <span class="text-[#667085] mr-2 flex-shrink-0">
+                  ${icons.search ? icons.search(18) : ''}
+                </span>
                 <input
                   type="text"
                   id="header-search"
-                  placeholder="Search fresh vegetables, fruits, groceries..."
-                  class="w-full bg-transparent text-xs sm:text-sm text-gray-800 placeholder-gray-400 outline-none pr-3"
+                  placeholder="Search vegetables, fruits, groceries..."
+                  class="w-full bg-transparent text-sm text-[#17212B] placeholder-[#667085] outline-none pr-3"
                   autocomplete="off"
                 />
-                <button id="search-submit-btn" class="w-9 h-9 flex-shrink-0 bg-gradient-to-r from-orange-500 to-[#ff5722] hover:from-orange-600 hover:to-[#f4511e] active:scale-95 text-white rounded-full transition-all flex items-center justify-center shadow-xs" title="Search">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                  </svg>
+                <button id="search-submit-btn" class="h-9 px-4 bg-[#FF7A18] hover:bg-[#EA680C] text-white rounded-md text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs active:scale-98 flex-shrink-0" title="Search">
+                  <span>Search</span>
                 </button>
               </div>
               <!-- Autocomplete dropdown -->
-              <div id="search-autocomplete" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-100 rounded-2xl shadow-2xl mt-2 z-50 overflow-hidden max-h-72 overflow-y-auto"></div>
+              <div id="search-autocomplete" class="hidden absolute top-full left-0 right-0 bg-white border border-[#E5E7EB] rounded-xl shadow-lg mt-2 z-50 overflow-hidden max-h-72 overflow-y-auto"></div>
             </div>
           </div>
 
-          <!-- Right Actions -->
-          <div class="flex items-center gap-1 sm:gap-3">
+          <!-- Right Utility Actions (Account, Wishlist, Cart) -->
+          <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
             <!-- Account -->
-            <a href="${user ? '#/account' : '#/login'}" class="hidden sm:flex flex-col items-center p-2 rounded-xl hover:bg-gray-50 transition-colors group">
-              <svg class="w-5 h-5 ${user ? 'text-emerald-600' : 'text-gray-600'} group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-              <span class="text-[10px] ${user ? 'text-emerald-700 font-bold' : 'text-gray-500'} group-hover:text-emerald-600">${user ? (user.name || 'Account').split(' ')[0] : 'Sign In'}</span>
+            <a href="${user ? '#/account' : '#/login'}" class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors group" title="My Account">
+              <span class="text-[#667085] group-hover:text-[#087F5B] transition-colors">
+                ${icons.user ? icons.user(20) : ''}
+              </span>
+              <div class="text-left hidden lg:block">
+                <div class="text-[11px] text-[#667085] leading-tight">Account</div>
+                <div class="text-xs font-semibold text-[#17212B] leading-tight group-hover:text-[#087F5B]">${user ? (user.name || 'User').split(' ')[0] : 'Sign In'}</div>
+              </div>
             </a>
 
             <!-- Wishlist -->
-            <a href="#/wishlist" class="hidden sm:flex flex-col items-center p-2 rounded-xl hover:bg-gray-50 transition-colors group">
-              <svg class="w-5 h-5 text-gray-600 group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-              <span class="text-[10px] text-gray-500 group-hover:text-red-500">Wishlist</span>
+            <a href="#/wishlist" class="flex items-center gap-2 px-2.5 sm:px-3 py-2 rounded-lg text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors group" title="Wishlist">
+              <span class="text-[#667085] group-hover:text-[#E5484D] transition-colors">
+                ${icons.heart ? icons.heart(20) : ''}
+              </span>
+              <div class="text-left hidden lg:block">
+                <div class="text-[11px] text-[#667085] leading-tight">Favorite</div>
+                <div class="text-xs font-semibold text-[#17212B] leading-tight group-hover:text-[#087F5B]">Wishlist</div>
+              </div>
             </a>
 
-            <!-- Cart Toggle -->
-            <button id="cart-toggle-btn" class="relative flex items-center gap-2 p-2 sm:px-3 sm:py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 transition-all group active:scale-95 shadow-2xs" aria-label="Cart">
-              <div class="relative">
-                <svg class="w-5 h-5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                ${cartCount > 0 ? `<span id="cart-badge" class="cart-badge absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">${cartCount > 9 ? '9+' : cartCount}</span>` : `<span id="cart-badge" class="hidden"></span>`}
+            <!-- Cart Trigger -->
+            <button id="cart-toggle-btn" class="relative flex items-center gap-2.5 px-3 py-2 rounded-lg bg-[#E8F7F1] hover:bg-[#d5f3e7] text-[#087F5B] font-semibold transition-colors active:scale-98 border border-[#087F5B]/20" aria-label="Open Cart">
+              <div class="relative flex items-center">
+                ${icons.cart ? icons.cart(20, 'text-[#087F5B]') : ''}
+                ${cartCount > 0 ? `
+                  <span id="cart-badge" class="cart-badge absolute -top-2.5 -right-2.5 bg-[#E5484D] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
+                    ${cartCount > 9 ? '9+' : cartCount}
+                  </span>` : `
+                  <span id="cart-badge" class="hidden"></span>`}
               </div>
-              <span class="hidden sm:inline text-xs font-bold text-emerald-900">Cart</span>
+              <div class="text-left hidden sm:block">
+                <div class="text-[10px] text-[#056B4D] leading-tight">Total Cart</div>
+                <div class="text-xs font-bold text-[#087F5B] leading-tight">Cart (${cartCount})</div>
+              </div>
             </button>
           </div>
+
         </div>
 
-        <!-- Mobile Search Bar (Restored with 60-30-10 Polish) -->
-        <div class="md:hidden mt-2.5">
+        <!-- Mobile Search Bar (Directly below main row) -->
+        <div class="md:hidden mt-2.5 pt-1">
           <div class="relative" id="mobile-search-wrapper">
-            <div class="relative flex items-center bg-white rounded-full shadow-xs border border-gray-200 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-100 transition-all p-1 pl-4">
+            <div class="relative flex items-center bg-white rounded-lg border border-[#E5E7EB] focus-within:border-[#087F5B] focus-within:ring-2 focus-within:ring-[#087F5B]/15 transition-all p-1 pl-3">
+              <span class="text-[#667085] mr-2 flex-shrink-0">
+                ${icons.search ? icons.search(16) : ''}
+              </span>
               <input
                 type="text"
                 id="mobile-header-search"
-                placeholder="Search fresh vegetables, grocery..."
-                class="w-full bg-transparent text-xs sm:text-sm text-gray-800 placeholder-gray-400 outline-none pr-2"
+                placeholder="Search vegetables, fruits, groceries..."
+                class="w-full bg-transparent text-xs text-[#17212B] placeholder-[#667085] outline-none pr-2"
                 autocomplete="off"
               />
-              <button id="mobile-search-submit-btn" class="w-8 h-8 flex-shrink-0 bg-gradient-to-r from-orange-500 to-[#ff5722] hover:from-orange-600 hover:to-[#f4511e] active:scale-95 text-white rounded-full transition-all flex items-center justify-center shadow-xs" title="Search">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
+              <button id="mobile-search-submit-btn" class="h-7 px-3 bg-[#FF7A18] hover:bg-[#EA680C] active:scale-95 text-white rounded text-[11px] font-semibold flex items-center justify-center transition-colors shadow-xs" title="Search">
+                Search
               </button>
             </div>
             <!-- Mobile Autocomplete dropdown -->
-            <div id="mobile-search-autocomplete" class="hidden absolute top-full left-0 right-0 bg-white border border-gray-100 rounded-2xl shadow-xl mt-1.5 z-50 overflow-hidden max-h-64 overflow-y-auto"></div>
+            <div id="mobile-search-autocomplete" class="hidden absolute top-full left-0 right-0 bg-white border border-[#E5E7EB] rounded-xl shadow-lg mt-1.5 z-50 overflow-hidden max-h-64 overflow-y-auto"></div>
           </div>
         </div>
+
       </div>
 
-      <!-- Navigation -->
-      <nav class="border-t border-gray-100 bg-white hidden md:block">
+      <!-- 3. Desktop Subnavigation Bar -->
+      <nav class="border-t border-[#E5E7EB] bg-[#F8FAF9] hidden md:block">
         <div class="max-w-7xl mx-auto px-4">
-          <ul class="flex items-center gap-0" id="main-nav">
+          <ul class="flex items-center gap-1 py-1.5" id="main-nav">
             ${[
               { label: 'Home', path: '/' },
               { label: 'Categories', path: '/categories' },
-              { label: '🔥 Deals', path: '/deals' },
-              { label: '📞 Contact', path: '/contact' },
-              { label: '⚙️ Add Product', path: '/admin' },
-            ].map(({ label, path }) => `
+              { label: "Today's Deals", path: '/deals', badge: 'Hot' },
+              { label: 'Contact Us', path: '/contact' },
+              { label: 'Add Product', path: '/admin', isAccent: true },
+            ].map(({ label, path, badge, isAccent }) => `
               <li>
-                <a href="#${path}" data-path="${path}" class="nav-link px-4 py-3 text-sm font-medium ${path === '/admin' ? 'text-emerald-700 font-bold bg-emerald-50/70' : 'text-gray-700'} hover:text-emerald-600 hover:bg-emerald-50 inline-block transition-colors border-b-2 border-transparent hover:border-emerald-500">
-                  ${label}
+                <a href="#${path}" data-path="${path}" class="nav-link px-3.5 py-1.5 text-xs font-semibold text-[#17212B] hover:text-[#087F5B] hover:bg-white rounded-md transition-colors inline-flex items-center gap-1.5 ${isAccent ? 'text-[#087F5B] font-bold' : ''}">
+                  <span>${label}</span>
+                  ${badge ? `<span class="bg-[#FF7A18] text-white text-[9px] font-bold px-1.5 py-0.2 rounded-full">${badge}</span>` : ''}
                 </a>
               </li>
             `).join('')}
@@ -181,165 +219,162 @@ window.Header = (() => {
         </div>
       </nav>
 
-      <!-- Sleek 40% Sidebar Drawer (Flow UI ES6 Style: Left, Top, Bottom completely filled) -->
-      <div id="sidebar-drawer-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-[99] hidden transition-opacity duration-300 opacity-0"></div>
+      <!-- 4. Production Sidebar Drawer (40% Desktop / 85% Mobile) -->
+      <div id="sidebar-drawer-backdrop" class="fixed inset-0 bg-[#17212B]/50 backdrop-blur-xs z-[99] hidden transition-opacity duration-250 opacity-0"></div>
 
       <aside
         id="sidebar-drawer"
-        class="fixed top-0 bottom-0 left-0 z-[100] w-[80vw] sm:w-[50vw] md:w-[40vw] max-w-[390px] h-full transform -translate-x-full transition-transform duration-300 ease-out flex flex-col pointer-events-none"
+        class="fixed top-0 bottom-0 left-0 z-[100] w-[85vw] sm:w-[50vw] md:w-[40vw] max-w-[380px] h-full transform -translate-x-full transition-transform duration-280 ease-out flex flex-col pointer-events-none"
         aria-label="Main Navigation Sidebar"
       >
-        <div class="pointer-events-auto h-full w-full bg-[#0f172a]/98 backdrop-blur-xl border-r border-white/10 text-white rounded-r-3xl shadow-2xl flex flex-col overflow-hidden">
+        <div class="pointer-events-auto h-full w-full bg-white text-[#17212B] rounded-r-2xl shadow-xl flex flex-col overflow-hidden border-r border-[#E5E7EB]">
           
-          <!-- Sidebar Header: Flow UI Style (Matching Reference Image) -->
-          <div class="p-4 sm:p-5 flex items-center justify-between border-b border-white/10">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-md">
-                <span class="text-white font-black text-sm">D</span>
+          <!-- Drawer Header -->
+          <div class="p-4 sm:p-5 flex items-center justify-between border-b border-[#E5E7EB] bg-[#F8FAF9]">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 bg-[#087F5B] rounded-lg flex items-center justify-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
+                  <path d="M11 20A7 7 0 0 1 4 13c0-4 3-8 8-11 5 3 8 7 8 11a7 7 0 0 1-7 7Z"></path>
+                  <path d="M12 2v20"></path>
+                </svg>
               </div>
-              <div>
-                <div class="font-black text-white text-base tracking-tight leading-tight">DailyMart <span class="text-emerald-400">BD</span></div>
-                <div class="text-[10px] text-gray-400 font-medium">Fresh. Fair. Daily.</div>
+              <div class="flex items-center gap-1">
+                <span class="font-bold text-lg text-[#17212B]">DailyMart</span>
+                <span class="bg-[#FF7A18] text-white text-[10px] font-bold px-1 py-0.5 rounded">BD</span>
               </div>
             </div>
 
             <button
               id="sidebar-close-btn"
-              class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white flex items-center justify-center transition-colors active:scale-95"
+              class="w-8 h-8 rounded-lg bg-gray-100 hover:bg-gray-200 text-[#667085] hover:text-[#17212B] flex items-center justify-center transition-colors active:scale-95"
               aria-label="Close menu"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
-              </svg>
+              ${icons.x ? icons.x(18) : '✕'}
             </button>
           </div>
 
-          <!-- Sidebar Search Input (Flow UI Style) -->
-          <div class="px-3.5 pt-3 pb-1">
+          <!-- Drawer Search Input -->
+          <div class="p-3.5 pb-2 border-b border-[#E5E7EB]">
             <div class="relative">
+              <span class="absolute left-3 top-2.5 text-[#667085]">
+                ${icons.search ? icons.search(16) : ''}
+              </span>
               <input
                 type="text"
                 id="sidebar-search"
-                placeholder="Search products..."
-                class="w-full bg-white/10 hover:bg-white/15 focus:bg-white/20 text-white placeholder-slate-400 text-xs rounded-xl px-3 py-2.5 pl-8 outline-none focus:ring-2 focus:ring-emerald-400 border border-white/10 transition-all"
+                placeholder="Search fresh products..."
+                class="w-full bg-[#F8FAF9] hover:bg-white focus:bg-white text-xs text-[#17212B] placeholder-[#667085] rounded-lg pl-9 pr-3 py-2 outline-none border border-[#E5E7EB] focus:border-[#087F5B] focus:ring-1 focus:ring-[#087F5B] transition-all"
               />
-              <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-              </svg>
             </div>
           </div>
 
-          <!-- Navigation Links Scrollable Area -->
-          <div class="flex-1 overflow-y-auto px-3 py-4 space-y-1.5 custom-scrollbar">
+          <!-- Drawer Navigation Links -->
+          <div class="flex-1 overflow-y-auto p-3 space-y-1 custom-scrollbar">
             
-            <!-- 1. Home -->
+            <!-- Home -->
             <a
               href="#/"
-              class="sidebar-nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-gray-200 hover:text-white hover:bg-white/10 font-medium text-sm transition-all"
+              class="sidebar-nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors"
               data-path="/"
             >
-              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-              </svg>
+              <span class="text-[#087F5B]">${icons.home ? icons.home(18) : ''}</span>
               <span>Home</span>
             </a>
 
-            <!-- 2. Categories (Accordion Collapsible, exactly like Settings in Reference Image) -->
-            <div class="rounded-xl overflow-hidden transition-colors" id="sidebar-categories-container">
+            <!-- Categories Accordion -->
+            <div class="rounded-lg overflow-hidden" id="sidebar-categories-container">
               <button
                 id="sidebar-categories-toggle"
-                class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-gray-200 hover:text-white hover:bg-white/10 font-medium text-sm transition-all"
+                class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors"
               >
                 <div class="flex items-center gap-3">
-                  <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
-                  </svg>
+                  <span class="text-[#087F5B]">${icons.grid ? icons.grid(18) : ''}</span>
                   <span>Categories</span>
                 </div>
-                <svg id="sidebar-categories-chevron" class="w-4 h-4 text-gray-400 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
+                <span id="sidebar-categories-chevron" class="text-[#667085] transform transition-transform duration-200">
+                  ${icons.chevronDown ? icons.chevronDown(16) : '▼'}
+                </span>
               </button>
 
-              <!-- Subcategories List (Inside Categories as requested: 'baki gula catagoeies maje diye diba') -->
-              <div id="sidebar-categories-list" class="hidden space-y-1 pl-9 pr-2 py-2">
-                <a href="#/categories" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-lg text-xs font-semibold text-emerald-300 hover:text-white hover:bg-white/5 transition-colors">
-                  <span>• All Categories</span>
+              <div id="sidebar-categories-list" class="hidden space-y-0.5 pl-8 pr-2 py-1.5 bg-[#F8FAF9] rounded-lg mt-1">
+                <a href="#/categories" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs font-semibold text-[#087F5B] hover:bg-white transition-colors">
+                  <span>All Categories</span>
                 </a>
-                <a href="#/category/vegetables" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                  <span>• Vegetables</span>
+                <a href="#/category/vegetables" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                  <span>Vegetables</span>
                 </a>
-                <a href="#/category/fruits" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                  <span>• Fruits</span>
+                <a href="#/category/fruits" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                  <span>Fruits</span>
                 </a>
-                <a href="#/category/fish" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                  <span>• Fish & Seafood</span>
+                <a href="#/category/fish" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                  <span>Fish & Seafood</span>
                 </a>
-                <a href="#/category/meat" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                  <span>• Meat & Poultry</span>
+                <a href="#/category/meat" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                  <span>Meat & Poultry</span>
                 </a>
-                <a href="#/category/grocery" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                  <span>• Grocery</span>
+                <a href="#/category/grocery" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                  <span>Grocery Essentials</span>
                 </a>
-                <a href="#/category/household" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
-                  <span>• Household</span>
+                <a href="#/category/household" class="sidebar-nav-item flex items-center gap-2 py-1.5 px-2 rounded-md text-xs text-[#667085] hover:text-[#087F5B] hover:bg-white transition-colors">
+                  <span>Household</span>
                 </a>
               </div>
             </div>
 
-            <!-- 3. Deals -->
+            <!-- Deals -->
             <a
               href="#/deals"
-              class="sidebar-nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-gray-200 hover:text-white hover:bg-white/10 font-medium text-sm transition-all"
+              class="sidebar-nav-item flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors"
               data-path="/deals"
             >
-              <span class="text-base flex-shrink-0">🔥</span>
-              <span>Deals & Offers</span>
+              <div class="flex items-center gap-3">
+                <span class="text-[#FF7A18]">${icons.tag ? icons.tag(18) : ''}</span>
+                <span>Today's Deals</span>
+              </div>
+              <span class="bg-[#FF7A18] text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">Hot</span>
             </a>
 
-            <!-- 4. Accounts -->
+            <!-- Accounts -->
             <a
               href="#/account"
-              class="sidebar-nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-gray-200 hover:text-white hover:bg-white/10 font-medium text-sm transition-all"
+              class="sidebar-nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors"
               data-path="/account"
             >
-              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-              </svg>
-              <span>Accounts</span>
+              <span class="text-[#087F5B]">${icons.user ? icons.user(18) : ''}</span>
+              <span>My Account</span>
             </a>
 
-            <!-- 5. Wishlist -->
+            <!-- Wishlist -->
             <a
               href="#/wishlist"
-              class="sidebar-nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-gray-200 hover:text-white hover:bg-white/10 font-medium text-sm transition-all"
+              class="sidebar-nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#17212B] hover:bg-[#E8F7F1] hover:text-[#087F5B] transition-colors"
               data-path="/wishlist"
             >
-              <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-              </svg>
+              <span class="text-[#E5484D]">${icons.heart ? icons.heart(18) : ''}</span>
               <span>Wishlist</span>
             </a>
 
-            <!-- 6. Add Product (10% CTA Highlight) -->
-            <a
-              href="#/admin"
-              class="sidebar-nav-item flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-white bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 shadow-lg shadow-emerald-950/40 font-bold text-sm transition-all active:scale-98 mt-3"
-              data-path="/admin"
-            >
-              <span class="text-white text-base font-black flex-shrink-0">➕</span>
-              <span>Add Product (Admin)</span>
-            </a>
+            <!-- Add Product CTA -->
+            <div class="pt-3">
+              <a
+                href="#/admin"
+                class="sidebar-nav-item flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-white bg-[#087F5B] hover:bg-[#056B4D] font-semibold text-xs transition-colors shadow-xs"
+                data-path="/admin"
+              >
+                <span>${icons.plus ? icons.plus(16) : '+'}</span>
+                <span>Add Product (Admin)</span>
+              </a>
+            </div>
 
           </div>
 
-          <!-- Sidebar Footer -->
-          <div class="p-3.5 border-t border-white/10 bg-white/5 flex items-center justify-between text-xs text-gray-400">
+          <!-- Drawer Footer -->
+          <div class="p-3.5 border-t border-[#E5E7EB] bg-[#F8FAF9] flex items-center justify-between text-xs text-[#667085]">
             <span class="flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>DailyMart Online</span>
+              <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
+              <span class="font-medium">Online Service Active</span>
             </span>
-            <span class="text-[11px] text-gray-500">v4.3</span>
+            <span class="text-[11px]">DailyMart BD</span>
           </div>
 
         </div>
@@ -351,7 +386,7 @@ window.Header = (() => {
   };
 
   const attachHeaderEvents = () => {
-    // 40% Sidebar Drawer controls
+    // Sidebar drawer controls
     const closeBtn = document.getElementById('sidebar-close-btn');
     const menuBtn = document.getElementById('mobile-menu-btn');
     const sidebarBackdrop = document.getElementById('sidebar-drawer-backdrop');
@@ -360,21 +395,18 @@ window.Header = (() => {
     closeBtn?.addEventListener('click', closeSidebar);
     sidebarBackdrop?.addEventListener('click', closeSidebar);
 
-    // ESC key closes sidebar
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeSidebar();
     });
 
-    // Accordion toggle for Categories
+    // Categories accordion in sidebar
     const catToggle = document.getElementById('sidebar-categories-toggle');
     const catList = document.getElementById('sidebar-categories-list');
     const catChevron = document.getElementById('sidebar-categories-chevron');
     catToggle?.addEventListener('click', () => {
       const isHidden = catList.classList.contains('hidden');
       catList.classList.toggle('hidden');
-      catChevron.classList.toggle('rotate-180', isHidden);
-      catToggle.classList.toggle('bg-white/10', isHidden);
-      catToggle.classList.toggle('text-white', isHidden);
+      catChevron?.classList.toggle('rotate-180', isHidden);
     });
 
     // Close on any link click inside sidebar
@@ -399,12 +431,7 @@ window.Header = (() => {
       window.CartDrawer.open();
     });
 
-    // Mobile search
-    document.getElementById('mobile-search-btn')?.addEventListener('click', () => {
-      window.SearchOverlay.open();
-    });
-
-    // Unified search handler (Desktop & Mobile)
+    // Unified search handler with live autocomplete
     const bindSearchInput = (inputId, dropdownId, wrapperId) => {
       const input = document.getElementById(inputId);
       const dropdown = document.getElementById(dropdownId);
@@ -413,20 +440,20 @@ window.Header = (() => {
       const runSearch = () => {
         const q = input.value.trim();
         if (q.length >= 2) {
-          const results = window.searchProducts(q).slice(0, 6);
+          const results = window.searchProducts ? window.searchProducts(q).slice(0, 6) : [];
           if (results.length) {
             dropdown.innerHTML = results.map(p => `
-              <div class="autocomplete-item flex items-center gap-3 px-4 py-2.5 cursor-pointer border-b border-gray-50 last:border-0 hover:bg-emerald-50/50 transition-colors" data-slug="${p.slug}">
-                <img src="${p.image}" alt="${p.name}" class="w-10 h-10 object-cover rounded-xl border border-gray-100 flex-shrink-0" onerror="this.src='images/potatoes/potato-deshi.jpg'" />
-                <div class="min-w-0 flex-1">
-                  <div class="text-xs sm:text-sm font-semibold text-gray-900 truncate">${p.name}</div>
-                  <div class="text-xs text-emerald-700 font-bold">${window.Utils.formatPrice(p.variants[0].price)} <span class="text-gray-400 font-normal text-[11px]">/${p.variants[0].unit || '1kg'}</span></div>
+              <div class="autocomplete-item flex items-center gap-3 px-3.5 py-2.5 cursor-pointer border-b border-[#E5E7EB] last:border-0 hover:bg-[#F8FAF9] transition-colors" data-slug="${p.slug}">
+                <img src="${p.image}" alt="${p.name}" class="w-10 h-10 object-contain rounded-md border border-[#E5E7EB] p-1 bg-white flex-shrink-0" onerror="this.src='images/potatoes/potato-deshi.jpg'" />
+                <div class="min-w-0 flex-1 text-left">
+                  <div class="text-xs sm:text-sm font-semibold text-[#17212B] truncate">${p.name}</div>
+                  <div class="text-xs text-[#087F5B] font-bold">${window.Utils.formatPrice(p.variants[0].price)} <span class="text-[#667085] font-normal text-[11px]">/${p.variants[0].unit || '1kg'}</span></div>
                 </div>
-                <span class="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full capitalize">${p.category}</span>
+                <span class="text-[10px] bg-[#E8F7F1] text-[#087F5B] font-medium px-2 py-0.5 rounded capitalize">${p.category}</span>
               </div>
             `).join('') + `
-              <div class="p-2.5 bg-gray-50 text-center border-t border-gray-100">
-                <button class="see-all-btn text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors">See all results for "${q}" →</button>
+              <div class="p-2.5 bg-[#F8FAF9] text-center border-t border-[#E5E7EB]">
+                <button class="see-all-btn text-xs font-semibold text-[#087F5B] hover:underline">See all results for "${q}" →</button>
               </div>
             `;
             dropdown.classList.remove('hidden');
@@ -445,7 +472,7 @@ window.Header = (() => {
               input.value = '';
             });
           } else {
-            dropdown.innerHTML = `<div class="px-4 py-6 text-center text-xs text-gray-400">No products found for "${q}"</div>`;
+            dropdown.innerHTML = `<div class="px-4 py-5 text-center text-xs text-[#667085]">No products found for "${q}"</div>`;
             dropdown.classList.remove('hidden');
           }
         } else {
@@ -497,11 +524,11 @@ window.Header = (() => {
     document.querySelectorAll('.nav-link').forEach(link => {
       const linkPath = link.getAttribute('data-path');
       if (linkPath === path || (path.startsWith('/category/') && linkPath === path)) {
-        link.classList.add('border-emerald-500', 'text-emerald-600');
-        link.classList.remove('border-transparent', 'text-gray-700');
+        link.classList.add('text-[#087F5B]', 'font-bold', 'bg-white');
+        link.classList.remove('text-[#17212B]');
       } else {
-        link.classList.remove('border-emerald-500', 'text-emerald-600');
-        link.classList.add('border-transparent', 'text-gray-700');
+        link.classList.remove('text-[#087F5B]', 'font-bold', 'bg-white');
+        link.classList.add('text-[#17212B]');
       }
     });
   };
@@ -511,13 +538,13 @@ window.Header = (() => {
     if (!badge) return;
     const count = window.Store.getCartCount();
     badge.textContent = count > 9 ? '9+' : count;
-    badge.className = count > 0 ? 'cart-badge absolute -top-2 -right-2 bg-emerald-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center' : 'hidden';
+    badge.className = count > 0 ? 'cart-badge absolute -top-2.5 -right-2.5 bg-[#E5484D] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs' : 'hidden';
   };
 
   const logout = () => {
     if (confirm('Are you sure you want to sign out of DailyMart BD?')) {
       window.Store.logout();
-      if (window.Toast) window.Toast.info('Signed out');
+      if (window.Toast) window.Toast.info('Signed out successfully');
       window.Router.navigate('/login');
     }
   };

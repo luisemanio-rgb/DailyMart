@@ -14,11 +14,11 @@ window.Utils = {
     const full = Math.floor(rating);
     const half = rating % 1 >= 0.5;
     const empty = 5 - full - (half ? 1 : 0);
-    const s = size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-xl' : 'text-base';
-    let html = `<span class="${s} inline-flex gap-0.5">`;
-    for (let i = 0; i < full; i++) html += '<span class="star-filled">★</span>';
-    if (half) html += '<span class="star-filled">★</span>';
-    for (let i = 0; i < empty; i++) html += '<span class="star-empty">★</span>';
+    const px = size === 'sm' ? 13 : size === 'lg' ? 18 : 15;
+    let html = `<span class="inline-flex items-center gap-0.5 text-amber-400">`;
+    for (let i = 0; i < full; i++) html += `<svg width="${px}" height="${px}" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+    if (half) html += `<svg width="${px}" height="${px}" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+    for (let i = 0; i < empty; i++) html += `<svg width="${px}" height="${px}" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
     html += '</span>';
     return html;
   },

@@ -7,8 +7,10 @@ window.Pages.checkout = () => {
   if (cart.length === 0) {
     content.innerHTML = `
     <div class="max-w-7xl mx-auto px-4 py-20 text-center page-enter">
-      <div class="text-8xl mb-6">🛒</div>
-      <h2 class="text-2xl font-bold text-gray-700 mb-3">Your cart is empty</h2>
+      <div class="w-16 h-16 rounded-full bg-[#E8F7F1] flex items-center justify-center text-[#087F5B] mb-3 mx-auto">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+      </div>
+      <h2 class="text-xl font-bold text-[#17212B] mb-2">Your cart is empty</h2>
       <p class="text-gray-400 mb-6">Add some products first!</p>
       <button onclick="window.Router.navigate('/categories')" class="bg-emerald-600 text-white px-8 py-3 rounded-xl font-semibold">Shop Now</button>
     </div>
@@ -134,12 +136,12 @@ window.Pages.checkout = () => {
           </h3>
           <div class="space-y-3">
             ${[
-              { id: 'standard', icon: '🚚', title: 'Standard Delivery', detail: '1-2 business days', price: delivery === 0 ? 'FREE' : window.Utils.formatPrice(60) },
-              { id: 'express', icon: '⚡', title: 'Express Delivery', detail: 'Same day (Dhaka area only)', price: window.Utils.formatPrice(120) },
-            ].map(({ id, icon, title, detail, price }) => `
-              <label class="payment-card ${id === selectedDelivery ? 'selected' : ''} flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all" id="delivery-${id}">
-                <input type="radio" name="delivery" value="${id}" ${id === selectedDelivery ? 'checked' : ''} class="accent-emerald-600" onchange="window.Pages.selectDelivery('${id}')" />
-                <span class="text-2xl">${icon}</span>
+              { id: 'standard', iconSvg: (window.Icons ? window.Icons.render('truck', 'w-5 h-5 text-[#087F5B]') : ''), title: 'Standard Delivery', detail: '1-2 business days · Across Bangladesh', price: delivery === 0 ? 'FREE' : window.Utils.formatPrice(60) },
+              { id: 'express', iconSvg: (window.Icons ? window.Icons.render('zap', 'w-5 h-5 text-[#FF7A18]') : ''), title: 'Express Same-Day Delivery', detail: 'Order before 12PM · Dhaka, Gazipur, Narayanganj', price: window.Utils.formatPrice(120) },
+            ].map(({ id, iconSvg, title, detail, price }) => `
+              <label class="payment-card ${id === selectedDelivery ? 'selected' : ''} flex items-center gap-4 p-3.5 rounded-lg border border-[#E5E7EB] cursor-pointer transition-all bg-white" id="delivery-${id}">
+                <input type="radio" name="delivery" value="${id}" ${id === selectedDelivery ? 'checked' : ''} class="accent-[#087F5B]" onchange="window.Pages.selectDelivery('${id}')" />
+                <div class="w-9 h-9 rounded-lg bg-[#F8FAF9] flex items-center justify-center flex-shrink-0">${iconSvg}</div>
                 <div class="flex-1">
                   <div class="font-semibold text-gray-800 text-sm">${title}</div>
                   <div class="text-xs text-gray-400">${detail}</div>
@@ -158,14 +160,14 @@ window.Pages.checkout = () => {
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             ${[
-              { id: 'cod', icon: '💵', title: 'Cash on Delivery', detail: 'Pay when you receive', color: 'emerald' },
-              { id: 'bkash', icon: '📱', title: 'bKash', detail: 'Mobile banking payment', color: 'pink' },
-              { id: 'nagad', icon: '💳', title: 'Nagad', detail: 'Digital payment', color: 'orange' },
-              { id: 'card', icon: '💳', title: 'Credit/Debit Card', detail: 'Visa, Mastercard', color: 'blue' },
-            ].map(({ id, icon, title, detail }) => `
-              <label class="payment-card ${id === selectedPayment ? 'selected' : ''} flex items-center gap-3 p-4 rounded-xl cursor-pointer" id="payment-${id}">
-                <input type="radio" name="payment" value="${id}" ${id === selectedPayment ? 'checked' : ''} class="accent-emerald-600" onchange="window.Pages.selectPayment('${id}')" />
-                <span class="text-2xl">${icon}</span>
+              { id: 'cod', badgeText: 'COD', badgeBg: 'bg-[#087F5B]', title: 'Cash on Delivery', detail: 'Pay cash upon delivery' },
+              { id: 'bkash', badgeText: 'bKash', badgeBg: 'bg-[#D12053]', title: 'bKash Mobile Payment', detail: 'Direct bKash transfer' },
+              { id: 'nagad', badgeText: 'Nagad', badgeBg: 'bg-[#E35925]', title: 'Nagad Wallet', detail: 'Instant payment' },
+              { id: 'card', badgeText: 'Cards', badgeBg: 'bg-[#1A1F71]', title: 'Visa / MasterCard', detail: 'All major cards accepted' },
+            ].map(({ id, badgeText, badgeBg, title, detail }) => `
+              <label class="payment-card ${id === selectedPayment ? 'selected' : ''} flex items-center gap-3 p-3.5 rounded-lg border border-[#E5E7EB] cursor-pointer bg-white" id="payment-${id}">
+                <input type="radio" name="payment" value="${id}" ${id === selectedPayment ? 'checked' : ''} class="accent-[#087F5B]" onchange="window.Pages.selectPayment('${id}')" />
+                <span class="px-2 py-1 rounded text-white text-[10px] font-extrabold ${badgeBg} flex-shrink-0">${badgeText}</span>
                 <div>
                   <div class="font-semibold text-gray-800 text-sm">${title}</div>
                   <div class="text-xs text-gray-400">${detail}</div>
@@ -219,7 +221,7 @@ window.Pages.checkout = () => {
           <button
             onclick="window.Pages.placeOrder()"
             id="place-order-btn"
-            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-4 rounded-xl transition-colors text-base flex items-center justify-center gap-2"
+            class="w-full bg-[#FF7A18] hover:bg-[#E56A10] active:scale-98 text-white font-bold py-3.5 rounded-lg transition-colors text-sm flex items-center justify-center gap-2 shadow-xs"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             Place Order

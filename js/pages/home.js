@@ -1,223 +1,312 @@
-// DailyMart BD — Home Page
+// DailyMart BD — Production Home Page
 window.Pages = window.Pages || {};
 window.Pages.home = () => {
   const content = document.getElementById('page-content');
-  const featured = window.getFeaturedProducts();
-  const bestSellers = window.getBestSellers();
-  const deals = window.getDealsProducts();
+  if (!content) return;
+
+  const deals = window.getDealsProducts ? window.getDealsProducts().slice(0, 4) : [];
+  const bestSellers = window.getBestSellers ? window.getBestSellers().slice(0, 8) : [];
+  const vegetables = window.getProductsByCategory ? window.getProductsByCategory('vegetables').slice(0, 4) : [];
+  const fruits = window.getProductsByCategory ? window.getProductsByCategory('fruits').slice(0, 4) : [];
+  const grocery = window.getProductsByCategory ? window.getProductsByCategory('grocery').slice(0, 4) : [];
+  const categories = window.CATEGORIES ? window.CATEGORIES.slice(0, 8) : [];
+  const icons = window.Icons || {};
 
   content.innerHTML = `
-  <div class="page-enter">
+  <div class="page-enter pb-16">
 
-    <!-- HERO SECTION -->
-    <section class="hero-section relative py-16 px-4 overflow-hidden">
-      <div class="absolute inset-0 z-0 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1400&q=80" alt="Fresh groceries" class="w-full h-full object-cover opacity-20" loading="lazy" onerror="this.style.display='none'" />
-      </div>
-      <div class="relative z-10 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div class="text-white">
-            <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 text-sm mb-6 backdrop-blur-sm border border-white/20">
-              <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-              Same-day delivery available
+    <!-- 1. HERO BANNER (Clean & Professional Composition) -->
+    <section class="bg-gradient-to-b from-[#E8F7F1]/60 via-white to-white border-b border-[#E5E7EB]/60 py-10 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <!-- Hero Left Content -->
+          <div class="lg:col-span-7 text-left">
+            <div class="inline-flex items-center gap-2 bg-[#E8F7F1] border border-[#087F5B]/20 rounded-full px-3 py-1 text-xs font-semibold text-[#087F5B] mb-5">
+              <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
+              <span>Same-day express delivery across Bangladesh</span>
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
-              Freshness<br/>
-              <span class="text-emerald-300">Delivered</span><br/>
-              to Your Door
+
+            <h1 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#17212B] leading-[1.15] tracking-tight mb-4">
+              Fresh Groceries,<br/>
+              <span class="text-[#087F5B]">Delivered to Your Door</span>
             </h1>
-            <p class="text-lg text-white/80 mb-8 max-w-lg leading-relaxed">
-              Shop fresh vegetables, fish, meat, groceries and everyday essentials. Premium quality, fair prices — delivered daily across Bangladesh.
+
+            <p class="text-sm sm:text-base text-[#667085] mb-8 max-w-xl leading-relaxed">
+              Shop farm-fresh vegetables, seasonal fruits, local river fish, meat, and everyday pantry essentials. Verified quality at fair, transparent market prices.
             </p>
-            <div class="flex flex-wrap gap-4">
-              <button onclick="window.Router.navigate('/categories')" class="bg-white text-emerald-700 font-bold px-8 py-3.5 rounded-xl hover:bg-emerald-50 transition-all hover:shadow-lg flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                Shop Now
+
+            <div class="flex flex-wrap items-center gap-3">
+              <button 
+                onclick="window.Router.navigate('/categories')" 
+                class="bg-[#087F5B] hover:bg-[#056B4D] active:scale-98 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm"
+              >
+                <span>Shop Now</span>
+                <span>${icons.arrowRight ? icons.arrowRight(16) : '→'}</span>
               </button>
-              <button onclick="window.Router.navigate('/categories')" class="border-2 border-white/50 text-white font-bold px-8 py-3.5 rounded-xl hover:bg-white/10 transition-all flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-                Explore Categories
+
+              <button 
+                onclick="window.Router.navigate('/categories')" 
+                class="bg-white hover:bg-[#F8FAF9] active:scale-98 text-[#17212B] border border-[#E5E7EB] hover:border-[#087F5B]/40 font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2"
+              >
+                <span>Explore Categories</span>
               </button>
             </div>
-            <!-- Stats -->
-            <div class="flex gap-8 mt-10 pt-8 border-t border-white/20">
-              ${[
-                { num: '10,000+', label: 'Happy Customers' },
-                { num: '500+', label: 'Products' },
-                { num: '24/7', label: 'Support' },
-              ].map(({ num, label }) => `
-                <div>
-                  <div class="text-2xl font-black text-white">${num}</div>
-                  <div class="text-sm text-white/60">${label}</div>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-          <!-- Hero image grid -->
-          <div class="hidden lg:grid grid-cols-2 gap-3">
-            ${[
-              'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80',
-              'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400&q=80',
-              'https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=400&q=80',
-              'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=400&q=80',
-            ].map((src, i) => `
-              <div class="rounded-2xl overflow-hidden ${i === 0 ? 'row-span-2' : ''} h-48 shadow-xl">
-                <img src="${src}" alt="Fresh product" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.parentElement.style.display='none'" loading="lazy" />
+
+            <!-- Customer Trust Metrics -->
+            <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-[#E5E7EB]">
+              <div>
+                <div class="text-xl sm:text-2xl font-bold text-[#17212B]">10,000+</div>
+                <div class="text-xs text-[#667085]">Happy Customers</div>
               </div>
-            `).join('')}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROMO BANNERS -->
-    <section class="max-w-7xl mx-auto px-4 py-8">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="promo-gradient rounded-2xl p-5 text-white flex items-center gap-4 cursor-pointer hover:scale-[1.02] transition-transform shadow-lg" onclick="window.Router.navigate('/deals')">
-          <span class="text-4xl">🔥</span>
-          <div>
-            <div class="font-black text-lg">Today's Deals</div>
-            <div class="text-sm opacity-80">Up to 30% off</div>
-          </div>
-        </div>
-        <div class="promo-gradient-2 rounded-2xl p-5 text-white flex items-center gap-4 cursor-pointer hover:scale-[1.02] transition-transform shadow-lg" onclick="window.Router.navigate('/category/fish')">
-          <span class="text-4xl">🐟</span>
-          <div>
-            <div class="font-black text-lg">Fresh Fish</div>
-            <div class="text-sm opacity-80">Delivered same day</div>
-          </div>
-        </div>
-        <div class="promo-gradient-3 rounded-2xl p-5 text-white flex items-center gap-4 cursor-pointer hover:scale-[1.02] transition-transform shadow-lg" onclick="window.Router.navigate('/category/vegetables')">
-          <span class="text-4xl">🥦</span>
-          <div>
-            <div class="font-black text-lg">Farm Fresh Veggies</div>
-            <div class="text-sm opacity-80">Straight from the farm</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- POPULAR CATEGORIES -->
-    <section class="max-w-7xl mx-auto px-4 py-8">
-      <div class="flex items-end justify-between mb-6">
-        <div>
-          <h2 class="text-2xl font-black text-gray-900 section-header">Popular Categories</h2>
-          <p class="text-gray-500 mt-1 text-sm">Browse by category to find what you need</p>
-        </div>
-        <button onclick="window.Router.navigate('/categories')" class="text-emerald-600 font-semibold text-sm hover:text-emerald-700 flex items-center gap-1">
-          View All <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-3">
-        ${window.CATEGORIES.map(cat => `
-          <div class="category-card bg-white rounded-2xl shadow-card overflow-hidden cursor-pointer" onclick="window.Router.navigate('/category/${cat.slug}')">
-            <div class="overflow-hidden h-20 sm:h-24">
-              <img src="${cat.image}" alt="${cat.name}" class="cat-img w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?w=200&q=60'" loading="lazy" />
+              <div>
+                <div class="text-xl sm:text-2xl font-bold text-[#17212B]">100%</div>
+                <div class="text-xs text-[#667085]">Fresh Guaranteed</div>
+              </div>
+              <div>
+                <div class="text-xl sm:text-2xl font-bold text-[#17212B]">30 Mins</div>
+                <div class="text-xs text-[#667085]">Express Packing</div>
+              </div>
             </div>
-            <div class="p-2 text-center">
-              <div class="text-lg">${cat.icon}</div>
-              <div class="text-xs font-semibold text-gray-700 leading-tight">${cat.name}</div>
+          </div>
+
+          <!-- Hero Right Showcase Imagery -->
+          <div class="lg:col-span-5">
+            <div class="relative grid grid-cols-2 gap-3 p-3 bg-white rounded-2xl border border-[#E5E7EB] shadow-card">
+              <div class="rounded-xl overflow-hidden h-40 sm:h-48 bg-[#F8FAF9]">
+                <img 
+                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80" 
+                  alt="Fresh Vegetables" 
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
+                  loading="lazy"
+                />
+              </div>
+              <div class="rounded-xl overflow-hidden h-40 sm:h-48 bg-[#F8FAF9]">
+                <img 
+                  src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=500&q=80" 
+                  alt="Fresh Fruits" 
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
+                  loading="lazy"
+                />
+              </div>
+              <div class="col-span-2 rounded-xl overflow-hidden h-36 sm:h-44 bg-[#F8FAF9] relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=700&q=80" 
+                  alt="Grocery Marketplace" 
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-4">
+                  <span class="text-white text-xs font-semibold">100% Quality Checked Sourcing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. TRUST / SERVICE FEATURES (Lucide Icons) -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        ${[
+          { icon: icons.truck ? icons.truck(24, 'text-[#087F5B]') : '', title: 'Free Delivery', desc: 'On orders over ৳1000' },
+          { icon: icons.checkCircle ? icons.checkCircle(24, 'text-[#087F5B]') : '', title: 'Quality Assured', desc: '100% fresh, farm sourced' },
+          { icon: icons.rotateCcw ? icons.rotateCcw(24, 'text-[#087F5B]') : '', title: '24-Hour Return', desc: 'Easy instant replacement' },
+          { icon: icons.shield ? icons.shield(24, 'text-[#087F5B]') : '', title: 'Secure Payments', desc: 'bKash, Nagad, Card & COD' },
+        ].map(item => `
+          <div class="bg-white rounded-xl p-4 border border-[#E5E7EB] shadow-subtle flex items-center gap-3.5 hover:border-[#087F5B]/30 transition-colors">
+            <div class="w-11 h-11 rounded-lg bg-[#E8F7F1] flex items-center justify-center flex-shrink-0">
+              ${item.icon}
+            </div>
+            <div>
+              <div class="font-semibold text-[#17212B] text-sm leading-snug">${item.title}</div>
+              <div class="text-[12px] text-[#667085] leading-tight mt-0.5">${item.desc}</div>
             </div>
           </div>
         `).join('')}
       </div>
     </section>
 
-    <!-- DEALS OF THE DAY -->
-    <section class="bg-amber-50 py-10">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="flex items-end justify-between mb-6">
-          <div>
-            <h2 class="text-2xl font-black text-gray-900 section-header">🔥 Today's Deals</h2>
-            <p class="text-gray-500 mt-1 text-sm">Limited time offers — don't miss out!</p>
+    <!-- 3. FEATURED CATEGORIES (Clean Category Cards) -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+      <div class="flex items-end justify-between mb-6 pb-2 border-b border-[#E5E7EB]">
+        <div>
+          <h2 class="section-title">Shop by Category</h2>
+          <p class="section-subtitle">Browse through our farm-fresh grocery selections</p>
+        </div>
+        <button 
+          onclick="window.Router.navigate('/categories')" 
+          class="text-xs sm:text-sm font-semibold text-[#087F5B] hover:text-[#056B4D] flex items-center gap-1 transition-colors"
+        >
+          <span>View All</span>
+          <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
+        ${categories.map(cat => window.CategoryCard.render(cat, 'sm')).join('')}
+      </div>
+    </section>
+
+    <!-- 4. TODAY'S DEALS -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+      <div class="bg-white rounded-2xl p-6 border border-[#E5E7EB] shadow-card">
+        <div class="flex items-end justify-between mb-6 pb-2 border-b border-[#E5E7EB]">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-[#FFF4EB] flex items-center justify-center text-[#FF7A18]">
+              ${icons.tag ? icons.tag(18) : '🏷️'}
+            </div>
+            <div>
+              <h2 class="section-title">Today's Deals</h2>
+              <p class="section-subtitle">Special discounts on fresh grocery items for a limited time</p>
+            </div>
           </div>
-          <button onclick="window.Router.navigate('/deals')" class="text-emerald-600 font-semibold text-sm hover:text-emerald-700 flex items-center gap-1">
-            All Deals <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <button 
+            onclick="window.Router.navigate('/deals')" 
+            class="text-xs sm:text-sm font-semibold text-[#FF7A18] hover:text-[#EA680C] flex items-center gap-1 transition-colors"
+          >
+            <span>All Deals</span>
+            <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
           </button>
         </div>
+
         <div class="product-grid grid-4">
-          ${deals.slice(0, 4).map(p => window.ProductCard.render(p)).join('')}
+          ${deals.map(p => window.ProductCard.render(p)).join('')}
         </div>
       </div>
     </section>
 
-    <!-- BEST SELLERS -->
-    <section class="max-w-7xl mx-auto px-4 py-10">
-      <div class="flex items-end justify-between mb-6">
+    <!-- 5. POPULAR PRODUCTS / BEST SELLERS -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+      <div class="flex items-end justify-between mb-6 pb-2 border-b border-[#E5E7EB]">
         <div>
-          <h2 class="text-2xl font-black text-gray-900 section-header">⭐ Best Sellers</h2>
-          <p class="text-gray-500 mt-1 text-sm">Our most loved products by customers</p>
+          <h2 class="section-title">Popular Best Sellers</h2>
+          <p class="section-subtitle">Our most frequently ordered items trusted by families</p>
         </div>
+        <button 
+          onclick="window.Router.navigate('/categories')" 
+          class="text-xs sm:text-sm font-semibold text-[#087F5B] hover:text-[#056B4D] flex items-center gap-1 transition-colors"
+        >
+          <span>Explore All</span>
+          <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
+        </button>
       </div>
+
       <div class="product-grid grid-4">
-        ${bestSellers.slice(0, 8).map(p => window.ProductCard.render(p)).join('')}
+        ${bestSellers.map(p => window.ProductCard.render(p)).join('')}
       </div>
     </section>
 
-    <!-- FEATURE HIGHLIGHTS -->
-    <section class="bg-gradient-to-r from-emerald-700 to-green-800 py-12">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          ${[
-            { icon: '🚚', title: 'Free Delivery', desc: 'On orders over ৳1000' },
-            { icon: '✅', title: 'Quality Assured', desc: 'Fresh & quality checked' },
-            { icon: '🔄', title: 'Easy Returns', desc: '24-hour return policy' },
-            { icon: '🔒', title: 'Secure Payment', desc: 'bKash, Nagad, Card & COD' },
-          ].map(({ icon, title, desc }) => `
-            <div class="flex flex-col items-center text-center text-white">
-              <div class="text-4xl mb-3">${icon}</div>
-              <div class="font-bold text-white">${title}</div>
-              <div class="text-sm text-emerald-200 mt-1">${desc}</div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </section>
-
-    <!-- FRESH TODAY SECTION -->
-    <section class="max-w-7xl mx-auto px-4 py-10">
-      <div class="flex items-end justify-between mb-6">
+    <!-- 6. FRESH VEGETABLES SHOWCASE -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+      <div class="flex items-end justify-between mb-6 pb-2 border-b border-[#E5E7EB]">
         <div>
-          <h2 class="text-2xl font-black text-gray-900 section-header">🌿 Fresh Today</h2>
-          <p class="text-gray-500 mt-1 text-sm">Freshly listed products just for you</p>
+          <h2 class="section-title">Farm Fresh Vegetables</h2>
+          <p class="section-subtitle">Crisp, nutritious vegetables sourced directly from local growers</p>
         </div>
+        <button 
+          onclick="window.Router.navigate('/category/vegetables')" 
+          class="text-xs sm:text-sm font-semibold text-[#087F5B] hover:text-[#056B4D] flex items-center gap-1 transition-colors"
+        >
+          <span>View Vegetables</span>
+          <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
+        </button>
       </div>
+
       <div class="product-grid grid-4">
-        ${featured.slice(0, 8).map(p => window.ProductCard.render(p)).join('')}
+        ${vegetables.map(p => window.ProductCard.render(p)).join('')}
       </div>
     </section>
 
-    <!-- CATEGORY SPOTLIGHT -->
-    <section class="max-w-7xl mx-auto px-4 py-6 mb-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Vegetables spotlight -->
-        <div class="rounded-2xl overflow-hidden relative h-52 cursor-pointer group shadow-card" onclick="window.Router.navigate('/category/vegetables')">
-          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80" alt="Vegetables" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.style.background='linear-gradient(135deg,#064e3b,#059669)'" />
-          <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-transparent flex items-center p-8">
-            <div>
-              <div class="text-white/70 text-sm mb-1">Daily Essentials</div>
-              <div class="text-white text-2xl font-black mb-2">Fresh Vegetables</div>
-              <div class="text-white/80 text-sm mb-4">Farm-fresh, delivered daily</div>
-              <span class="bg-white text-emerald-700 font-bold px-5 py-2 rounded-xl text-sm hover:bg-emerald-50 transition-colors">Shop Now →</span>
-            </div>
-          </div>
+    <!-- 7. SEASONAL FRUITS SHOWCASE -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+      <div class="flex items-end justify-between mb-6 pb-2 border-b border-[#E5E7EB]">
+        <div>
+          <h2 class="section-title">Fresh Seasonal Fruits</h2>
+          <p class="section-subtitle">Hand-picked sweet and ripe fruits packed with natural vitamins</p>
         </div>
-        <!-- Fish spotlight -->
-        <div class="rounded-2xl overflow-hidden relative h-52 cursor-pointer group shadow-card" onclick="window.Router.navigate('/category/fish')">
-          <img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=800&q=80" alt="Fish" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.parentElement.style.background='linear-gradient(135deg,#1e3a8a,#1d4ed8)'" />
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-transparent flex items-center p-8">
-            <div>
-              <div class="text-white/70 text-sm mb-1">Fresh from the River</div>
-              <div class="text-white text-2xl font-black mb-2">Fish & Seafood</div>
-              <div class="text-white/80 text-sm mb-4">Hilsa, Rui, Shrimp & more</div>
-              <span class="bg-white text-blue-700 font-bold px-5 py-2 rounded-xl text-sm hover:bg-blue-50 transition-colors">Shop Now →</span>
-            </div>
-          </div>
+        <button 
+          onclick="window.Router.navigate('/category/fruits')" 
+          class="text-xs sm:text-sm font-semibold text-[#087F5B] hover:text-[#056B4D] flex items-center gap-1 transition-colors"
+        >
+          <span>View Fruits</span>
+          <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
+        </button>
+      </div>
+
+      <div class="product-grid grid-4">
+        ${fruits.map(p => window.ProductCard.render(p)).join('')}
+      </div>
+    </section>
+
+    <!-- 8. GROCERY ESSENTIALS SHOWCASE -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+      <div class="flex items-end justify-between mb-6 pb-2 border-b border-[#E5E7EB]">
+        <div>
+          <h2 class="section-title">Pantry & Daily Grocery</h2>
+          <p class="section-subtitle">Rice, cooking oil, lentils, flour, and spices for daily meals</p>
         </div>
+        <button 
+          onclick="window.Router.navigate('/category/grocery')" 
+          class="text-xs sm:text-sm font-semibold text-[#087F5B] hover:text-[#056B4D] flex items-center gap-1 transition-colors"
+        >
+          <span>View Grocery</span>
+          <span>${icons.chevronRight ? icons.chevronRight(16) : '›'}</span>
+        </button>
+      </div>
+
+      <div class="product-grid grid-4">
+        ${grocery.map(p => window.ProductCard.render(p)).join('')}
+      </div>
+    </section>
+
+    <!-- 9. PROMOTIONAL EXPRESS BANNER (Restrained & Trustworthy) -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+      <div class="bg-[#087F5B] text-white rounded-2xl p-6 sm:p-10 relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+        <div class="max-w-xl z-10 text-left">
+          <span class="text-xs font-semibold text-emerald-200 tracking-wider uppercase">Order by 2:00 PM</span>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-2 leading-tight">Same-Day Express Grocery Delivery</h3>
+          <p class="text-sm text-emerald-100 leading-relaxed">
+            Need urgent dinner ingredients or daily pantry refills? We pack and deliver temperature-controlled fresh groceries to your doorstep across Bangladesh.
+          </p>
+        </div>
+        <button 
+          onclick="window.Router.navigate('/categories')" 
+          class="z-10 bg-[#FF7A18] hover:bg-[#EA680C] active:scale-98 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm flex-shrink-0"
+        >
+          <span>Order Fresh Today</span>
+          <span>${icons.arrowRight ? icons.arrowRight(16) : '→'}</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 10. WHY DAILYMART BD (Trust Pillars) -->
+    <section class="max-w-7xl mx-auto px-4 py-10">
+      <div class="text-center mb-10">
+        <h2 class="section-title">Why Shop with DailyMart BD?</h2>
+        <p class="section-subtitle max-w-xl mx-auto">We connect local farmers and trusted suppliers directly with consumers for fairer prices and unmatched freshness.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        ${[
+          { icon: icons.checkCircle ? icons.checkCircle(26, 'text-[#087F5B]') : '', title: '100% Quality Checked', desc: 'Every piece of fruit and vegetable is manually inspected before packaging.' },
+          { icon: icons.truck ? icons.truck(26, 'text-[#087F5B]') : '', title: 'Fresh Daily Logistics', desc: 'Same-day delivery in insulated bags to preserve optimal freshness.' },
+          { icon: icons.tag ? icons.tag(26, 'text-[#087F5B]') : '', title: 'Fair Market Pricing', desc: 'Direct sourcing removes middlemen, ensuring fair rates for you and farmers.' },
+          { icon: icons.headset ? icons.headset(26, 'text-[#087F5B]') : '', title: 'Dedicated BD Support', desc: 'Friendly customer service available via call and WhatsApp 24/7.' }
+        ].map(pillar => `
+          <div class="bg-white rounded-xl p-5 border border-[#E5E7EB] shadow-subtle text-left">
+            <div class="w-12 h-12 rounded-lg bg-[#E8F7F1] flex items-center justify-center mb-4">
+              ${pillar.icon}
+            </div>
+            <h4 class="font-bold text-[#17212B] text-base mb-1.5">${pillar.title}</h4>
+            <p class="text-xs text-[#667085] leading-relaxed">${pillar.desc}</p>
+          </div>
+        `).join('')}
       </div>
     </section>
 
   </div>
   `;
-
 };

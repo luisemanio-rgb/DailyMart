@@ -18,32 +18,18 @@ window.Pages = window.Pages || {};
 
   window.Router.define('/categories', function() {
     const content = document.getElementById('page-content');
-    let catsHtml = '';
-    for (let i = 0; i < window.CATEGORIES.length; i++) {
-      const cat = window.CATEGORIES[i];
-      catsHtml += '<div class="category-card bg-white rounded-2xl shadow-card overflow-hidden cursor-pointer" onclick="window.Router.navigate(\'/category/' + cat.slug + '\')">' +
-        '<div class="overflow-hidden h-32">' +
-        '<img src="' + cat.image + '" alt="' + cat.name + '" class="cat-img w-full h-full object-cover" onerror="this.src=\'https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&q=60\'" loading="lazy" />' +
-        '</div>' +
-        '<div class="p-4">' +
-        '<div class="flex items-center gap-2 mb-1">' +
-        '<span class="text-xl">' + cat.icon + '</span>' +
-        '<span class="font-bold text-gray-800 text-sm">' + cat.name + '</span>' +
-        '</div>' +
-        '<p class="text-xs text-gray-400 mb-2 line-clamp-2">' + cat.description + '</p>' +
-        '<span class="text-xs text-emerald-600 font-medium">' + cat.productCount + '+ Products</span>' +
-        '</div>' +
-        '</div>';
-    }
-    content.innerHTML = '<div class="page-enter max-w-7xl mx-auto px-4 py-10">' +
-      '<nav class="flex items-center text-sm text-gray-500 mb-6">' +
-      '<a href="#/" class="hover:text-emerald-600">Home</a><span class="mx-2">&#8250;</span><span class="text-gray-800 font-medium">All Categories</span>' +
+    const catsHtml = window.CATEGORIES.map(function(cat) {
+      return window.CategoryCard.render(cat);
+    }).join('');
+    content.innerHTML = '<div class="page-enter max-w-7xl mx-auto px-4 py-8 pb-24 sm:pb-12">' +
+      '<nav class="flex items-center text-xs text-[#667085] mb-4 gap-1.5">' +
+      '<a href="#/" class="hover:text-[#087F5B]">Home</a><span>/</span><span class="text-[#17212B] font-medium">All Categories</span>' +
       '</nav>' +
-      '<div class="mb-8">' +
-      '<h1 class="text-3xl font-black text-gray-900 section-header">All Categories</h1>' +
-      '<p class="text-gray-500 mt-2">Browse all product categories available on DailyMart BD</p>' +
+      '<div class="mb-6 pb-3 border-b border-[#E5E7EB]">' +
+      '<h1 class="text-xl sm:text-2xl font-bold text-[#17212B]">Shop by Category</h1>' +
+      '<p class="text-xs sm:text-sm text-[#667085] mt-0.5">Explore our wide selection of fresh produce, meats, and daily essentials</p>' +
       '</div>' +
-      '<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">' +
+      '<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">' +
       catsHtml +
       '</div></div>';
   });
@@ -51,18 +37,19 @@ window.Pages = window.Pages || {};
   window.Router.define('/deals', function() {
     const content = document.getElementById('page-content');
     const deals = window.getDealsProducts();
-    let dealsHtml = '';
-    for (let i = 0; i < deals.length; i++) {
-      dealsHtml += window.ProductCard.render(deals[i]);
-    }
-    content.innerHTML = '<div class="page-enter max-w-7xl mx-auto px-4 py-10">' +
-      '<nav class="flex items-center text-sm text-gray-500 mb-6">' +
-      '<a href="#/" class="hover:text-emerald-600">Home</a><span class="mx-2">&#8250;</span><span class="text-gray-800 font-medium">Today Deals</span>' +
+    let dealsHtml = deals.map(function(d) {
+      return window.ProductCard.render(d);
+    }).join('');
+    content.innerHTML = '<div class="page-enter max-w-7xl mx-auto px-4 py-8 pb-24 sm:pb-12">' +
+      '<nav class="flex items-center text-xs text-[#667085] mb-4 gap-1.5">' +
+      '<a href="#/" class="hover:text-[#087F5B]">Home</a><span>/</span><span class="text-[#17212B] font-medium">Today Deals</span>' +
       '</nav>' +
-      '<div class="mb-8 text-center">' +
-      '<div class="text-5xl mb-3">&#128293;</div>' +
-      '<h1 class="text-3xl font-black text-gray-900">Today Best Deals</h1>' +
-      '<p class="text-gray-500 mt-2">Exclusive discounts for a limited time</p>' +
+      '<div class="mb-6 pb-3 border-b border-[#E5E7EB] flex items-center justify-between">' +
+      '<div>' +
+      '<h1 class="text-xl sm:text-2xl font-bold text-[#17212B]">Today\'s Special Deals</h1>' +
+      '<p class="text-xs sm:text-sm text-[#667085] mt-0.5">Special discounted prices on daily groceries and essentials</p>' +
+      '</div>' +
+      '<span class="text-xs font-semibold text-[#E5484D] bg-red-50 px-3 py-1 rounded-md border border-red-100 hidden sm:block">' + deals.length + ' Deals Active</span>' +
       '</div>' +
       '<div class="product-grid grid-4">' + dealsHtml + '</div></div>';
   });
@@ -72,15 +59,16 @@ window.Pages = window.Pages || {};
     const fresh = window.PRODUCTS.filter(function(p) {
       return ['vegetables', 'fruits', 'fish', 'meat', 'dairy'].indexOf(p.category) !== -1;
     });
-    let freshHtml = '';
-    for (let i = 0; i < fresh.length; i++) {
-      freshHtml += window.ProductCard.render(fresh[i]);
-    }
-    content.innerHTML = '<div class="page-enter max-w-7xl mx-auto px-4 py-10">' +
-      '<div class="mb-8 text-center">' +
-      '<div class="text-5xl mb-3">&#127807;</div>' +
-      '<h1 class="text-3xl font-black text-gray-900">Fresh Food</h1>' +
-      '<p class="text-gray-500 mt-2">Vegetables, fruits, fish, meat and dairy - all fresh, all daily</p>' +
+    let freshHtml = fresh.map(function(p) {
+      return window.ProductCard.render(p);
+    }).join('');
+    content.innerHTML = '<div class="page-enter max-w-7xl mx-auto px-4 py-8 pb-24 sm:pb-12">' +
+      '<nav class="flex items-center text-xs text-[#667085] mb-4 gap-1.5">' +
+      '<a href="#/" class="hover:text-[#087F5B]">Home</a><span>/</span><span class="text-[#17212B] font-medium">Fresh Produce</span>' +
+      '</nav>' +
+      '<div class="mb-6 pb-3 border-b border-[#E5E7EB]">' +
+      '<h1 class="text-xl sm:text-2xl font-bold text-[#17212B]">Fresh Market Produce</h1>' +
+      '<p class="text-xs sm:text-sm text-[#667085] mt-0.5">Farm-fresh vegetables, seasonal fruits, fish, and quality meats</p>' +
       '</div>' +
       '<div class="product-grid grid-4">' + freshHtml + '</div></div>';
   });
@@ -135,68 +123,72 @@ window.Pages = window.Pages || {};
 
   window.Router.define('/contact', function() {
     const content = document.getElementById('page-content');
-    content.innerHTML = '<div class="page-enter max-w-3xl mx-auto px-4 py-16 text-center">' +
-      '<div class="text-6xl mb-4">&#128222;</div>' +
-      '<h1 class="text-3xl font-black text-gray-900 mb-4">Contact Us</h1>' +
-      '<p class="text-gray-500 mb-8">We are here to help! Reach out through any of the following channels.</p>' +
+    content.innerHTML = '<div class="page-enter max-w-3xl mx-auto px-4 py-12 pb-24 sm:pb-12 text-center">' +
+      '<h1 class="text-2xl sm:text-3xl font-bold text-[#17212B] mb-2">Customer Support</h1>' +
+      '<p class="text-[#667085] text-sm mb-8">We are here to assist with your orders, deliveries, and queries.</p>' +
       '<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">' +
-      '<div class="bg-white rounded-2xl shadow-card p-6 text-center hover-lift">' +
-      '<div class="text-4xl mb-3">&#128222;</div>' +
-      '<div class="font-bold text-gray-800 mb-1">Phone</div>' +
-      '<div class="text-sm text-emerald-600 font-medium">+880 1700-000000</div>' +
-      '<div class="text-xs text-gray-400 mt-1">24/7 Support</div>' +
+      '<div class="bg-white rounded-xl border border-[#E5E7EB] p-6 text-center">' +
+      '<div class="w-10 h-10 rounded-lg bg-[#E8F7F1] text-[#087F5B] flex items-center justify-center mx-auto mb-3">' +
+      (window.Icons ? window.Icons.render('phone', 'w-5 h-5') : '') +
       '</div>' +
-      '<div class="bg-white rounded-2xl shadow-card p-6 text-center hover-lift">' +
-      '<div class="text-4xl mb-3">&#9993;</div>' +
-      '<div class="font-bold text-gray-800 mb-1">Email</div>' +
-      '<div class="text-sm text-emerald-600 font-medium">support@dailymartbd.com</div>' +
-      '<div class="text-xs text-gray-400 mt-1">Reply within 2 hours</div>' +
+      '<div class="font-bold text-[#17212B] text-sm mb-1">Helpline</div>' +
+      '<div class="text-xs font-semibold text-[#087F5B]">+880 1700-000000</div>' +
+      '<div class="text-[11px] text-[#667085] mt-1">24/7 Hotline</div>' +
       '</div>' +
-      '<div class="bg-white rounded-2xl shadow-card p-6 text-center hover-lift">' +
-      '<div class="text-4xl mb-3">&#128172;</div>' +
-      '<div class="font-bold text-gray-800 mb-1">WhatsApp</div>' +
-      '<div class="text-sm text-emerald-600 font-medium">+880 1700-000000</div>' +
-      '<div class="text-xs text-gray-400 mt-1">Chat instantly</div>' +
+      '<div class="bg-white rounded-xl border border-[#E5E7EB] p-6 text-center">' +
+      '<div class="w-10 h-10 rounded-lg bg-[#E8F7F1] text-[#087F5B] flex items-center justify-center mx-auto mb-3">' +
+      '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>' +
+      '</div>' +
+      '<div class="font-bold text-[#17212B] text-sm mb-1">Email</div>' +
+      '<div class="text-xs font-semibold text-[#087F5B]">support@dailymartbd.com</div>' +
+      '<div class="text-[11px] text-[#667085] mt-1">Quick responses</div>' +
+      '</div>' +
+      '<div class="bg-white rounded-xl border border-[#E5E7EB] p-6 text-center">' +
+      '<div class="w-10 h-10 rounded-lg bg-[#E8F7F1] text-[#087F5B] flex items-center justify-center mx-auto mb-3">' +
+      '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>' +
+      '</div>' +
+      '<div class="font-bold text-[#17212B] text-sm mb-1">WhatsApp</div>' +
+      '<div class="text-xs font-semibold text-[#087F5B]">+880 1700-000000</div>' +
+      '<div class="text-[11px] text-[#667085] mt-1">Instant chat</div>' +
       '</div></div></div>';
   });
 
   window.Router.define('/about', function() {
     const content = document.getElementById('page-content');
-    content.innerHTML = '<div class="page-enter max-w-4xl mx-auto px-4 py-16">' +
-      '<div class="text-center mb-10">' +
-      '<div class="text-5xl mb-3">&#127978;</div>' +
-      '<h1 class="text-3xl font-black text-gray-900 mb-3">About DailyMart BD</h1>' +
-      '<p class="text-gray-600 text-lg max-w-2xl mx-auto">Fresh Products. Fair Prices. Delivered Daily.</p>' +
+    content.innerHTML = '<div class="page-enter max-w-4xl mx-auto px-4 py-12 pb-24 sm:pb-12">' +
+      '<div class="text-center mb-8">' +
+      '<h1 class="text-2xl sm:text-3xl font-bold text-[#17212B] mb-2">About DailyMart BD</h1>' +
+      '<p class="text-[#667085] text-sm max-w-xl mx-auto">Fresh Products · Fair Prices · Guaranteed Quality · Delivered Daily</p>' +
       '</div>' +
-      '<div class="bg-white rounded-2xl p-8 shadow-card space-y-6 text-gray-700 leading-relaxed">' +
-      '<p>DailyMart BD is Bangladesh premier online grocery marketplace, dedicated to bringing fresh vegetables, fruits, fish, meat, dairy, and household essentials directly from local farms and trusted suppliers to your doorstep.</p>' +
-      '<p>Our mission is simple: provide genuine quality, transparent fair pricing, and reliable delivery across all 64 districts of Bangladesh.</p>' +
+      '<div class="bg-white rounded-xl p-8 border border-[#E5E7EB] space-y-4 text-xs sm:text-sm text-[#667085] leading-relaxed">' +
+      '<p>DailyMart BD is Bangladesh\'s premier online grocery platform, dedicated to bringing farm-fresh vegetables, fruits, fish, meat, and everyday pantry essentials straight to your home.</p>' +
+      '<p>We work directly with certified farmers and trusted local producers to ensure zero middlemen inflation and unmatched freshness for every single family we serve.</p>' +
       '</div></div>';
   });
 
   window.Router.define('/faq', function() {
     const content = document.getElementById('page-content');
-    content.innerHTML = '<div class="page-enter max-w-3xl mx-auto px-4 py-16">' +
-      '<div class="text-center mb-10">' +
-      '<div class="text-5xl mb-3">&#10067;</div>' +
-      '<h1 class="text-3xl font-black text-gray-900 mb-3">Frequently Asked Questions</h1>' +
+    content.innerHTML = '<div class="page-enter max-w-3xl mx-auto px-4 py-12 pb-24 sm:pb-12">' +
+      '<div class="text-center mb-8">' +
+      '<h1 class="text-2xl sm:text-3xl font-bold text-[#17212B] mb-2">Frequently Asked Questions</h1>' +
+      '<p class="text-xs sm:text-sm text-[#667085]">Everything you need to know about our service and orders</p>' +
       '</div>' +
-      '<div class="space-y-4">' +
-      '<div class="bg-white rounded-2xl p-6 shadow-card">' +
-      '<h3 class="font-bold text-gray-800 mb-2">How fast is delivery?</h3>' +
-      '<p class="text-gray-600 text-sm leading-relaxed">Standard delivery takes 1-2 business days. Express same-day delivery is available in Dhaka, Gazipur, and Narayanganj for orders placed before 12 PM.</p>' +
+      '<div class="space-y-3">' +
+      '<div class="bg-white rounded-xl p-5 border border-[#E5E7EB]">' +
+      '<h3 class="font-bold text-[#17212B] text-sm mb-1.5">How fast is delivery?</h3>' +
+      '<p class="text-[#667085] text-xs sm:text-sm leading-relaxed">Standard delivery takes 1-2 business days. Express same-day delivery is available in Dhaka, Gazipur, and Narayanganj for orders placed before 12 PM.</p>' +
       '</div>' +
-      '<div class="bg-white rounded-2xl p-6 shadow-card">' +
-      '<h3 class="font-bold text-gray-800 mb-2">What are the delivery charges?</h3>' +
-      '<p class="text-gray-600 text-sm leading-relaxed">Standard delivery is 60 Taka. Delivery is completely FREE for orders over 1000 Taka.</p>' +
+      '<div class="bg-white rounded-xl p-5 border border-[#E5E7EB]">' +
+      '<h3 class="font-bold text-[#17212B] text-sm mb-1.5">What are the delivery charges?</h3>' +
+      '<p class="text-[#667085] text-xs sm:text-sm leading-relaxed">Standard delivery is ৳60 flat. Orders over ৳1,000 enjoy 100% free delivery across all supported districts.</p>' +
       '</div>' +
-      '<div class="bg-white rounded-2xl p-6 shadow-card">' +
-      '<h3 class="font-bold text-gray-800 mb-2">What payment methods do you accept?</h3>' +
-      '<p class="text-gray-600 text-sm leading-relaxed">We accept Cash on Delivery (COD), bKash, Nagad, and major Visa/MasterCard debit/credit cards.</p>' +
+      '<div class="bg-white rounded-xl p-5 border border-[#E5E7EB]">' +
+      '<h3 class="font-bold text-[#17212B] text-sm mb-1.5">What payment methods do you accept?</h3>' +
+      '<p class="text-[#667085] text-xs sm:text-sm leading-relaxed">We support Cash on Delivery (COD), bKash, Nagad, Rocket, and Visa/MasterCard debit and credit cards.</p>' +
       '</div>' +
-      '<div class="bg-white rounded-2xl p-6 shadow-card">' +
-      '<h3 class="font-bold text-gray-800 mb-2">What if a product is not fresh?</h3>' +
-      '<p class="text-gray-600 text-sm leading-relaxed">We have a 24-hour return and replacement guarantee on all perishable items.</p>' +
+      '<div class="bg-white rounded-xl p-5 border border-[#E5E7EB]">' +
+      '<h3 class="font-bold text-[#17212B] text-sm mb-1.5">What is the return policy for perishables?</h3>' +
+      '<p class="text-[#667085] text-xs sm:text-sm leading-relaxed">You can inspect products right at your doorstep. If any item is damaged or not fresh, we offer immediate replacement or a full refund.</p>' +
       '</div></div></div>';
   });
 
