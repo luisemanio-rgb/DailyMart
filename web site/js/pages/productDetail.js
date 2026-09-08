@@ -89,36 +89,36 @@ window.Pages.productDetail = (params) => {
 
           <!-- RIGHT: Product Info -->
           <div>
-            <h1 class="text-2xl md:text-3xl font-bold text-[#17212B] mb-2 leading-tight">${product.name}</h1>
+            <h1 class="text-2xl md:text-3xl font-bold text-[#17212B] mb-2 leading-tight tracking-[-0.02em]">${product.name}</h1>
 
             <!-- Rating & reviews -->
             <div class="flex items-center gap-3 mb-4">
               ${window.Utils.stars(product.rating, 'base')}
               <span class="text-sm font-bold text-[#17212B]">${product.rating}</span>
-              <span class="text-xs text-[#667085]">(${product.reviewCount} customer reviews)</span>
+              <span class="text-xs font-normal text-[#667085]">(${product.reviewCount} customer reviews)</span>
               <span class="text-xs text-gray-300">|</span>
-              <span class="text-xs font-medium text-[#007d83] bg-[#eefbfc] px-2 py-0.5 rounded">Brand: ${product.brand}</span>
+              <span class="text-xs font-semibold text-[#007d83] bg-[#eefbfc] px-2.5 py-0.5 rounded tracking-[-0.01em]">Brand: ${product.brand}</span>
             </div>
 
             <!-- Grade & tags -->
             <div class="flex flex-wrap items-center gap-2 mb-5">
               ${selectedVariant.grade ? `
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-gray-100 text-[#17212B] border border-gray-200">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-gray-100 text-[#17212B] border border-gray-200 tracking-[-0.01em]">
                   Grade ${selectedVariant.grade} · Quality Checked
                 </span>
               ` : ''}
-              ${product.organic ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-[#eefbfc] text-[#007d83]">100% Organic</span>` : ''}
-              ${product.bestSeller ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200">Best Seller</span>` : ''}
+              ${product.organic ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-[#eefbfc] text-[#007d83] tracking-[-0.01em]">100% Organic</span>` : ''}
+              ${product.bestSeller ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200 tracking-[-0.01em]">Best Seller</span>` : ''}
             </div>
 
             <!-- Price Container -->
             <div class="bg-[#f4fdfe] rounded-xl p-5 mb-6 border border-[#E5E7EB]">
               <div class="flex items-baseline gap-3 mb-1">
-                <span class="text-3xl font-black text-[#007d83]" id="current-price">${window.Utils.formatPrice(price)}</span>
-                ${oldPrice ? `<span class="text-base text-[#667085] line-through" id="old-price">${window.Utils.formatPrice(oldPrice)}</span>` : '<span id="old-price"></span>'}
+                <span class="text-3xl font-bold text-[#007d83] tracking-[-0.02em]" id="current-price">${window.Utils.formatPrice(price)}</span>
+                ${oldPrice ? `<span class="text-base text-[#667085] line-through font-normal" id="old-price">${window.Utils.formatPrice(oldPrice)}</span>` : '<span id="old-price"></span>'}
                 ${discountPct > 0 ? `<span class="bg-red-50 text-[#E5484D] text-xs font-bold px-2 py-0.5 rounded border border-red-100">Save ${discountPct}%</span>` : ''}
               </div>
-              <div class="text-xs font-medium text-[#667085]">Unit size: <span id="unit-display" class="text-[#17212B] font-semibold">${selectedWeight}</span></div>
+              <div class="text-xs font-normal text-[#667085]">Unit size: <span id="unit-display" class="text-[#17212B] font-semibold">${selectedWeight}</span></div>
               <!-- Availability -->
               <div class="mt-3 flex items-center gap-2">
                 <div class="w-2 h-2 rounded-full ${stock.color === 'green' ? 'bg-[#16A34A]' : stock.color === 'yellow' ? 'bg-amber-400' : 'bg-red-500'}"></div>
@@ -129,7 +129,7 @@ window.Pages.productDetail = (params) => {
             <!-- Variant selector -->
             ${product.variants.length > 1 ? `
             <div class="mb-5">
-              <label class="text-xs font-bold uppercase tracking-wider text-[#667085] block mb-2">Select Variant:</label>
+              <label class="text-xs font-semibold uppercase tracking-wider text-[#667085] block mb-2">Select Variant:</label>
               <div class="flex flex-wrap gap-2" id="variant-selector">
                 ${product.variants.map((v, i) => `
                   <button

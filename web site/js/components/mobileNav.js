@@ -43,7 +43,7 @@ window.MobileNav = (() => {
                   ${iconSvg}
                   <span id="mobile-cart-badge" class="hidden absolute -top-1 -right-2 bg-[#007d83] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-xs leading-none"></span>
                 </div>
-                <span class="text-[10px] font-medium mt-1 leading-none text-[#667085]">Cart</span>
+                <span class="text-[10px] font-semibold mt-1 leading-none tracking-[-0.01em] text-[#667085]">Cart</span>
               </button>
             `;
           }
@@ -57,7 +57,7 @@ window.MobileNav = (() => {
               <div class="relative">
                 ${iconSvg}
               </div>
-              <span class="text-[10px] font-semibold mt-1 leading-none ${isActive ? 'text-[#007d83]' : 'text-[#667085]'}">${item.label}</span>
+              <span class="text-[10px] font-semibold mt-1 leading-none tracking-[-0.01em] ${isActive ? 'text-[#007d83]' : 'text-[#667085]'}">${item.label}</span>
             </a>
           `;
         }).join('')}

@@ -98,10 +98,10 @@ window.Header = (() => {
               </div>
               <div class="flex flex-col">
                 <div class="flex items-center gap-1">
-                  <span class="font-extrabold text-xl sm:text-[22px] text-[#17212B] tracking-tight leading-none">DailyMart</span>
-                  <span class="bg-[#007d83] text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none">BD</span>
+                  <span class="font-brand font-bold text-xl sm:text-[22px] text-[#17212B] tracking-tight leading-none">DailyMart</span>
+                  <span class="font-brand bg-[#007d83] text-white text-[10px] font-bold px-1.5 py-0.5 rounded leading-none">BD</span>
                 </div>
-                <span class="text-[10px] font-medium text-[#667085] tracking-wider leading-tight hidden xs:block mt-0.5">Fresh. Fair. Daily.</span>
+                <span class="text-[11px] font-medium text-[#667085] tracking-normal leading-tight hidden xs:block mt-0.5">Fresh. Fair. Daily.</span>
               </div>
             </a>
           </div>
@@ -239,8 +239,8 @@ window.Header = (() => {
                 </svg>
               </div>
               <div class="flex items-center gap-1">
-                <span class="font-bold text-lg text-[#17212B]">DailyMart</span>
-                <span class="bg-[#007d83] text-white text-[10px] font-bold px-1 py-0.5 rounded">BD</span>
+                <span class="font-brand font-bold text-lg text-[#17212B] tracking-tight">DailyMart</span>
+                <span class="font-brand bg-[#007d83] text-white text-[10px] font-bold px-1 py-0.5 rounded leading-none">BD</span>
               </div>
             </div>
 

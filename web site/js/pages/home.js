@@ -22,24 +22,24 @@ window.Pages.home = () => {
           
           <!-- Hero Left Content -->
           <div class="lg:col-span-7 text-left">
-            <div class="inline-flex items-center gap-2 bg-[#eefbfc] border border-[#93e2e4] rounded-full px-3 py-1 text-xs font-semibold text-[#007d83] mb-5">
+            <div class="inline-flex items-center gap-2 bg-[#eefbfc] border border-[#93e2e4] rounded-full px-3 py-1 text-xs font-semibold text-[#007d83] mb-5 tracking-[-0.01em]">
               <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
               <span>Same-day express delivery across Bangladesh</span>
             </div>
 
-            <h1 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#17212B] leading-[1.15] tracking-tight mb-4">
+            <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#17212B] leading-[1.18] tracking-[-0.025em] mb-4">
               Fresh Groceries,<br/>
               <span class="text-[#007d83]">Delivered to Your Door</span>
             </h1>
 
-            <p class="text-sm sm:text-base text-[#667085] mb-8 max-w-xl leading-relaxed">
+            <p class="text-sm sm:text-base text-[#667085] font-normal leading-relaxed mb-8 max-w-xl">
               Shop farm-fresh vegetables, seasonal fruits, local river fish, meat, and everyday pantry essentials. Verified quality at fair, transparent market prices.
             </p>
 
             <div class="flex flex-wrap items-center gap-3">
               <button 
                 onclick="window.Router.navigate('/categories')" 
-                class="bg-[#007d83] hover:bg-[#006065] active:scale-98 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm"
+                class="bg-[#007d83] hover:bg-[#006065] active:scale-98 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm tracking-[-0.01em]"
               >
                 <span>Shop Now</span>
                 <span>${icons.arrowRight ? icons.arrowRight(16) : '→'}</span>
@@ -47,7 +47,7 @@ window.Pages.home = () => {
 
               <button 
                 onclick="window.Router.navigate('/categories')" 
-                class="bg-white hover:bg-[#f4fdfe] active:scale-98 text-[#17212B] border border-[#E5E7EB] hover:border-[#007d83] font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2"
+                class="bg-white hover:bg-[#f4fdfe] active:scale-98 text-[#17212B] border border-[#E5E7EB] hover:border-[#007d83] font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 tracking-[-0.01em]"
               >
                 <span>Explore Categories</span>
               </button>
@@ -56,16 +56,16 @@ window.Pages.home = () => {
             <!-- Customer Trust Metrics -->
             <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-[#E5E7EB]">
               <div>
-                <div class="text-xl sm:text-2xl font-bold text-[#17212B]">10,000+</div>
-                <div class="text-xs text-[#667085]">Happy Customers</div>
+                <div class="text-xl sm:text-2xl font-bold tracking-tight text-[#17212B]">10,000+</div>
+                <div class="text-xs font-normal text-[#667085] mt-0.5">Happy Customers</div>
               </div>
               <div>
-                <div class="text-xl sm:text-2xl font-bold text-[#17212B]">100%</div>
-                <div class="text-xs text-[#667085]">Fresh Guaranteed</div>
+                <div class="text-xl sm:text-2xl font-bold tracking-tight text-[#17212B]">100%</div>
+                <div class="text-xs font-normal text-[#667085] mt-0.5">Fresh Guaranteed</div>
               </div>
               <div>
-                <div class="text-xl sm:text-2xl font-bold text-[#17212B]">30 Mins</div>
-                <div class="text-xs text-[#667085]">Express Packing</div>
+                <div class="text-xl sm:text-2xl font-bold tracking-tight text-[#17212B]">30 Mins</div>
+                <div class="text-xs font-normal text-[#667085] mt-0.5">Express Packing</div>
               </div>
             </div>
           </div>
@@ -266,15 +266,15 @@ window.Pages.home = () => {
     <section class="max-w-7xl mx-auto px-4 py-8">
       <div class="bg-[#007d83] text-white rounded-2xl p-6 sm:p-10 relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
         <div class="max-w-xl z-10 text-left">
-          <span class="text-xs font-semibold text-emerald-200 tracking-wider uppercase">Order by 2:00 PM</span>
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-2 leading-tight">Same-Day Express Grocery Delivery</h3>
-          <p class="text-sm text-emerald-100 leading-relaxed">
+          <span class="text-xs font-semibold text-teal-200 tracking-wider uppercase">Order by 2:00 PM</span>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1 mb-2 leading-tight tracking-[-0.02em]">Same-Day Express Grocery Delivery</h3>
+          <p class="text-sm font-normal text-teal-100 leading-relaxed">
             Need urgent dinner ingredients or daily pantry refills? We pack and deliver temperature-controlled fresh groceries to your doorstep across Bangladesh.
           </p>
         </div>
         <button 
           onclick="window.Router.navigate('/categories')" 
-          class="z-10 bg-white text-[#007d83] hover:bg-gray-100 active:scale-98 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm flex-shrink-0"
+          class="z-10 bg-white hover:bg-teal-50 active:scale-98 text-[#007d83] font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center gap-2 shadow-sm flex-shrink-0 tracking-[-0.01em]"
         >
           <span>Order Fresh Today</span>
           <span>${icons.arrowRight ? icons.arrowRight(16) : '→'}</span>
@@ -300,8 +300,8 @@ window.Pages.home = () => {
             <div class="w-12 h-12 rounded-lg bg-[#eefbfc] flex items-center justify-center mb-4">
               ${pillar.icon}
             </div>
-            <h4 class="font-bold text-[#17212B] text-base mb-1.5">${pillar.title}</h4>
-            <p class="text-xs text-[#667085] leading-relaxed">${pillar.desc}</p>
+            <h4 class="font-semibold text-[#17212B] text-base mb-1.5 tracking-[-0.01em]">${pillar.title}</h4>
+            <p class="text-xs font-normal text-[#667085] leading-relaxed">${pillar.desc}</p>
           </div>
         `).join('')}
       </div>

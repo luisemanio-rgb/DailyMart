@@ -34,10 +34,10 @@ window.Pages.category = (params) => {
                   <span>/</span>
                   <span class="text-[#17212B] font-medium">Categories</span>
                 </nav>
-                <h1 class="text-xl sm:text-2xl font-bold text-[#17212B] leading-tight">${category.name}</h1>
+                <h1 class="text-xl sm:text-2xl font-bold text-[#17212B] leading-tight tracking-[-0.02em]">${category.name}</h1>
               </div>
             </div>
-            <div class="text-xs text-[#007d83] bg-[#eefbfc] border border-[#007d83]/20 rounded-md px-3 py-1 font-semibold hidden xs:block">
+            <div class="text-xs text-[#007d83] bg-[#eefbfc] border border-[#93e2e4] rounded-md px-3 py-1 font-semibold tracking-[-0.01em] hidden xs:block">
               ${products.length} Products
             </div>
           </div>
@@ -49,9 +49,9 @@ window.Pages.category = (params) => {
         <!-- Subcategory chips -->
         ${category.subcategories && category.subcategories.length > 0 ? `
         <div class="flex gap-2 overflow-x-auto pb-3 mb-6 scrollbar-hide">
-          <button onclick="window.Router.navigate('/category/${slug}')" class="flex-shrink-0 px-3.5 py-1.5 bg-[#007d83] text-white text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap shadow-xs">All ${category.name}</button>
+          <button onclick="window.Router.navigate('/category/${slug}')" class="flex-shrink-0 px-3.5 py-1.5 bg-[#007d83] text-white text-xs sm:text-sm font-semibold rounded-lg whitespace-nowrap shadow-xs tracking-[-0.01em]">All ${category.name}</button>
           ${category.subcategories.map(sub => `
-            <button class="subcategory-chip flex-shrink-0 px-3.5 py-1.5 bg-white border border-[#E5E7EB] text-[#667085] hover:text-[#17212B] hover:border-[#007d83]/50 text-xs sm:text-sm font-medium rounded-lg whitespace-nowrap transition-colors" onclick="window.Router.navigate('/category/${slug}/${sub.slug}')">
+            <button class="subcategory-chip flex-shrink-0 px-3.5 py-1.5 bg-white border border-[#E5E7EB] text-[#667085] hover:text-[#17212B] hover:border-[#007d83] text-xs sm:text-sm font-medium rounded-lg whitespace-nowrap transition-colors tracking-[-0.01em]" onclick="window.Router.navigate('/category/${slug}/${sub.slug}')">
               ${sub.name}
             </button>
           `).join('')}
@@ -61,11 +61,11 @@ window.Pages.category = (params) => {
         <!-- Sort & Filter Bar -->
         <div class="flex items-center justify-between gap-4 mb-6 bg-white p-3 rounded-xl border border-[#E5E7EB]">
           <div class="flex items-center gap-3">
-            <button id="toggle-filters-btn" class="flex items-center gap-2 px-3 py-1.5 bg-[#f4fdfe] border border-[#E5E7EB] rounded-lg text-xs sm:text-sm font-semibold text-[#17212B] hover:bg-gray-100 transition-colors md:hidden" onclick="window.toggleCategoryFilters()">
+            <button id="toggle-filters-btn" class="flex items-center gap-2 px-3 py-1.5 bg-[#f4fdfe] border border-[#E5E7EB] rounded-lg text-xs sm:text-sm font-semibold text-[#17212B] hover:bg-gray-100 transition-colors md:hidden tracking-[-0.01em]" onclick="window.toggleCategoryFilters()">
               ${window.Icons ? window.Icons.render('filter', 'w-3.5 h-3.5 text-[#007d83]') : ''}
               <span>Filters</span>
             </button>
-            <span class="text-xs sm:text-sm font-medium text-[#667085]" id="result-count">Showing <strong class="text-[#17212B]">${filteredProducts.length}</strong> products</span>
+            <span class="text-xs sm:text-sm font-normal text-[#667085]" id="result-count">Showing <strong class="font-semibold text-[#17212B]">${filteredProducts.length}</strong> products</span>
           </div>
           <div class="flex items-center gap-2">
             <label class="text-xs sm:text-sm text-[#667085] font-medium hidden sm:block">Sort by:</label>
@@ -204,10 +204,10 @@ window.Pages.subcategory = (params) => {
                   <span>/</span>
                   <span class="text-[#17212B] font-medium">${subcategory.name}</span>
                 </nav>
-                <h1 class="text-xl sm:text-2xl font-bold text-[#17212B] leading-tight">${subcategory.name} Varieties</h1>
+                <h1 class="text-xl sm:text-2xl font-bold text-[#17212B] leading-tight tracking-[-0.02em]">${subcategory.name} Varieties</h1>
               </div>
             </div>
-            <div class="text-xs text-[#007d83] bg-[#eefbfc] border border-[#007d83]/20 rounded-md px-3 py-1 font-semibold hidden xs:block">
+            <div class="text-xs text-[#007d83] bg-[#eefbfc] border border-[#93e2e4] rounded-md px-3 py-1 font-semibold tracking-[-0.01em] hidden xs:block">
               ${products.length} Products
             </div>
           </div>
@@ -219,11 +219,11 @@ window.Pages.subcategory = (params) => {
         <!-- Origin / Variety Filter Chips -->
         ${origins.length > 1 ? `
         <div class="mb-6 bg-white p-3 rounded-xl border border-[#E5E7EB]">
-          <div class="text-xs font-bold text-[#667085] uppercase tracking-wider mb-2">Filter by Origin / Country:</div>
+          <div class="text-xs font-semibold text-[#667085] uppercase tracking-wider mb-2">Filter by Origin / Country:</div>
           <div class="flex flex-wrap gap-2">
             ${origins.map(orig => `
               <button
-                class="origin-chip px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${orig === activeOrigin ? 'bg-[#007d83] text-white shadow-xs' : 'bg-[#f4fdfe] text-[#17212B] hover:bg-gray-100 border border-[#E5E7EB]'}"
+                class="origin-chip px-3 py-1.5 rounded-lg text-xs font-semibold transition-all tracking-[-0.01em] ${orig === activeOrigin ? 'bg-[#007d83] text-white shadow-xs' : 'bg-[#f4fdfe] text-[#17212B] hover:bg-gray-100 border border-[#E5E7EB]'}"
                 onclick="window.filterSubByOrigin('${orig}')"
               >
                 ${getOriginLabel(orig)}

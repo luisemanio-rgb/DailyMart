@@ -52,21 +52,21 @@ window.ProductCard = {
       <div class="p-3.5 flex flex-col justify-between flex-1 bg-white">
         <div>
           <!-- Category / Short Info -->
-          <div class="text-[11px] font-medium text-[#007d83] capitalize mb-1">
+          <div class="text-[11px] font-semibold text-[#007d83] uppercase tracking-[0.03em] mb-1">
             ${product.subcategory ? product.subcategory.replace(/-/g, ' ') : product.category}
           </div>
 
           <!-- Product Title -->
           <h3 
-            class="text-[14px] sm:text-[15px] font-semibold text-[#17212B] group-hover:text-[#007d83] transition-colors line-clamp-2 leading-snug mb-1.5" 
+            class="product-title text-[14px] sm:text-[15px] font-semibold text-[#17212B] group-hover:text-[#007d83] transition-colors line-clamp-2 leading-snug tracking-[-0.01em] mb-1.5" 
             title="${cleanName}"
           >
             ${cleanName}
           </h3>
 
-          <!-- Price Row (20px bold price tightly paired with unit & strike old price) -->
+          <!-- Price Row (Bold price tightly paired with unit & strike old price) -->
           <div class="flex items-baseline gap-1.5 mb-1.5 flex-wrap">
-            <span class="text-base sm:text-[18px] font-bold text-[#007d83] tracking-tight">
+            <span class="text-base sm:text-[18px] font-bold text-[#007d83] tracking-[-0.02em]">
               ${window.Utils.formatPrice(v.price)}
             </span>
             <span class="text-xs text-[#667085] font-normal">
@@ -81,7 +81,7 @@ window.ProductCard = {
           <!-- Star Rating -->
           <div class="flex items-center gap-1 mb-3">
             ${window.Utils.stars(product.rating || 5, 'sm')}
-            <span class="text-[11px] text-[#667085] font-medium">(${product.reviewCount || 120})</span>
+            <span class="text-[11px] text-[#667085] font-normal">(${product.reviewCount || 120})</span>
           </div>
         </div>
 

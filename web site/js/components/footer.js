@@ -20,8 +20,8 @@ window.Footer = {
                 </svg>
               </div>
               <div class="flex items-center">
-                <span class="text-xl font-extrabold text-white tracking-tight">DailyMart</span>
-                <span class="ml-1 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-wider bg-[#007d83] text-white rounded">BD</span>
+                <span class="font-brand text-xl font-bold text-white tracking-tight">DailyMart</span>
+                <span class="font-brand ml-1 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[#007d83] text-white rounded">BD</span>
               </div>
             </a>
             <p class="text-xs sm:text-sm text-gray-400 mb-5 leading-relaxed">
