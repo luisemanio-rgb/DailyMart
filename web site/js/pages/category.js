@@ -44,7 +44,7 @@ window.Pages.category = (params) => {
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-4 py-6 pb-24 sm:pb-12">
+      <div class="max-w-7xl mx-auto px-4 py-6 pb-28 sm:pb-16">
 
         <!-- Subcategory chips -->
         ${category.subcategories && category.subcategories.length > 0 ? `
@@ -214,7 +214,7 @@ window.Pages.subcategory = (params) => {
         </div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-4 py-6 pb-24 sm:pb-12">
+      <div class="max-w-7xl mx-auto px-4 py-6 pb-28 sm:pb-16">
 
         <!-- Origin / Variety Filter Chips -->
         ${origins.length > 1 ? `

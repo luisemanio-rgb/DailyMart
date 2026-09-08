@@ -220,11 +220,11 @@ window.Header = (() => {
       </nav>
 
       <!-- 4. Production Sidebar Drawer (40% Desktop / 85% Mobile) -->
-      <div id="sidebar-drawer-backdrop" class="fixed inset-0 bg-[#17212B]/50 backdrop-blur-xs z-[99] hidden transition-opacity duration-250 opacity-0"></div>
+      <div id="sidebar-drawer-backdrop" class="fixed inset-0 bg-[#17212B]/50 backdrop-blur-xs z-[999] hidden transition-opacity duration-250 opacity-0"></div>
 
       <aside
         id="sidebar-drawer"
-        class="fixed top-0 bottom-0 left-0 z-[100] w-[85vw] sm:w-[50vw] md:w-[40vw] max-w-[380px] h-full transform -translate-x-full transition-transform duration-280 ease-out flex flex-col pointer-events-none"
+        class="fixed top-0 bottom-0 left-0 z-[1000] w-[75vw] sm:w-[50vw] md:w-[40vw] max-w-[360px] h-full transform -translate-x-full transition-transform duration-280 ease-out flex flex-col pointer-events-none"
         aria-label="Main Navigation Sidebar"
       >
         <div class="pointer-events-auto h-full w-full bg-white text-[#17212B] rounded-r-2xl shadow-xl flex flex-col overflow-hidden border-r border-[#E5E7EB]">

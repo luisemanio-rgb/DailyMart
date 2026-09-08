@@ -335,3 +335,39 @@ img.fallback {
     right: 24px;
   }
 }
+
+/* Uniform Product Card Image Aspect Ratio & Sizing */
+.product-card .product-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #F8FAF9;
+  overflow: hidden;
+}
+
+.product-card .product-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Scrollbar Hide Utility */
+.scrollbar-hide {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Ensure mobile content has space above docked bottom bar */
+@media (max-width: 767px) {
+  #page-content {
+    padding-bottom: 76px !important;
+  }
+}

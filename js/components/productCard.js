@@ -19,30 +19,30 @@ window.ProductCard = {
       onclick="window.Router.navigate('/product/${product.slug}')"
     >
       <!-- Top Badges & Wishlist -->
-      <div class="relative w-full h-40 sm:h-44 bg-[#F8FAF9] p-3 flex items-center justify-center overflow-hidden">
+      <div class="product-img-wrapper relative w-full aspect-[4/3] bg-[#F8FAF9] overflow-hidden">
         <!-- Top-Left: Discrete Discount Badge -->
         ${discountPct > 0 ? `
-          <span class="absolute top-2.5 left-2.5 z-10 bg-[#E5484D] text-white text-[11px] font-bold px-2 py-0.5 rounded-md shadow-2xs pointer-events-none">
+          <span class="absolute top-2 left-2 z-10 bg-[#E5484D] text-white text-[10px] sm:text-[11px] font-bold px-1.5 sm:px-2 py-0.5 rounded shadow-2xs pointer-events-none">
             -${discountPct}%
           </span>
         ` : ''}
 
         <!-- Top-Right: Wishlist Heart -->
         <button
-          class="wishlist-btn absolute top-2.5 right-2.5 z-10 w-8 h-8 bg-white/95 backdrop-blur-xs rounded-full border border-[#E5E7EB] shadow-2xs flex items-center justify-center ${inWishlist ? 'active text-[#E5484D]' : 'text-[#667085] hover:text-[#E5484D]'} transition-colors"
+          class="wishlist-btn absolute top-2 right-2 z-10 w-7 h-7 sm:w-8 sm:h-8 bg-white/95 backdrop-blur-xs rounded-full border border-[#E5E7EB] shadow-2xs flex items-center justify-center ${inWishlist ? 'active text-[#E5484D]' : 'text-[#667085] hover:text-[#E5484D]'} transition-colors"
           data-product-id="${product.id}"
           onclick="event.stopPropagation(); window.ProductCard.toggleWishlist(this, '${product.id}')"
           aria-label="Add to Wishlist"
           title="Add to Wishlist"
         >
-          ${icons.heart ? icons.heart(16, inWishlist ? 'text-[#E5484D]' : 'text-[#667085]', inWishlist) : '♥'}
+          ${icons.heart ? icons.heart(15, inWishlist ? 'text-[#E5484D]' : 'text-[#667085]', inWishlist) : '♥'}
         </button>
 
-        <!-- Product Image (Clean Containment, No Stretched Produce) -->
+        <!-- Product Image: 100% Uniform Size across ALL cards -->
         <img
           src="${v.image || product.image}"
           alt="${cleanName}"
-          class="product-img w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+          class="product-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           onerror="this.src='images/potatoes/potato-deshi.jpg';this.classList.add('fallback')"
           loading="lazy"
         />
@@ -86,25 +86,25 @@ window.ProductCard = {
         </div>
 
         <!-- Action Buttons: [ Buy Now ] [ Cart ] -->
-        <div class="flex items-center gap-2 pt-2.5 border-t border-[#E5E7EB] mt-auto">
+        <div class="flex items-center gap-1.5 sm:gap-2 pt-2 sm:pt-2.5 border-t border-[#E5E7EB] mt-auto">
           <!-- Buy Now (Primary CTA) -->
           <button
-            class="btn-buy-now flex-1 h-9 sm:h-10 bg-[#FF7A18] hover:bg-[#EA680C] active:scale-98 text-white font-semibold text-xs sm:text-sm px-3 rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-2xs"
+            class="btn-buy-now flex-1 h-8 sm:h-9 bg-[#FF7A18] hover:bg-[#EA680C] active:scale-98 text-white font-semibold text-[11px] sm:text-xs px-2 rounded-lg transition-colors flex items-center justify-center gap-1 shadow-2xs whitespace-nowrap"
             onclick="event.stopPropagation(); window.ProductCard.buyNow(this, '${product.id}', '${v.variantId}')"
             title="Buy Now"
           >
-            <span>${icons.zap ? icons.zap(15) : '⚡'}</span>
+            <span>${icons.zap ? icons.zap(13) : ''}</span>
             <span>Buy Now</span>
           </button>
 
           <!-- Cart Button (Compact secondary) -->
           <button
-            class="w-9 sm:w-10 h-9 sm:h-10 bg-[#F8FAF9] hover:bg-[#E8F7F1] text-[#17212B] hover:text-[#087F5B] border border-[#E5E7EB] hover:border-[#087F5B]/30 rounded-lg flex items-center justify-center transition-colors active:scale-95 flex-shrink-0"
+            class="w-8 sm:w-9 h-8 sm:h-9 bg-[#F8FAF9] hover:bg-[#E8F7F1] text-[#17212B] hover:text-[#087F5B] border border-[#E5E7EB] hover:border-[#087F5B]/30 rounded-lg flex items-center justify-center transition-colors active:scale-95 flex-shrink-0"
             onclick="event.stopPropagation(); window.ProductCard.quickAdd(this, '${product.id}', '${v.variantId}')"
             title="Add to Cart"
             aria-label="Add to Cart"
           >
-            ${icons.cart ? icons.cart(18) : '🛒'}
+            ${icons.cart ? icons.cart(16) : ''}
           </button>
         </div>
 
